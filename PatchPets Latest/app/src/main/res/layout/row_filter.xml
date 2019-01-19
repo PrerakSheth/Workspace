@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_5"
+    android:layout_marginRight="@dimen/margin_5"
+    android:background="@drawable/bg_button"
+    android:gravity="center_horizontal"
+    android:paddingLeft="@dimen/padding_5"
+    android:paddingRight="@dimen/padding_5">
+
+    <com.patchpets.utils.MyTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/scale_30"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/margin_5"
+        android:gravity="center_vertical"
+        android:text="aaa"
+        android:textColor="@color/tab_bg_color"
+        android:textSize="@dimen/textSize_16"
+        app:font="@string/font_poppins_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivremove"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/scale_30"
+        android:layout_toRightOf="@+id/title"
+        android:padding="@dimen/padding_8"
+        android:src="@drawable/close"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintLeft_toRightOf="@+id/title"
+        app:layout_constraintTop_toTopOf="@+id/title" />
+
+</android.support.constraint.ConstraintLayout>

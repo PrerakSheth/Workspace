@@ -1,0 +1,180 @@
+package com.patchpets.model.responseModel;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.List;
+
+public class ProfileResponse {
+//    {
+//        "message": "Profile fatch successfully.",
+//        "status": 1,
+//        "userData": {
+//            "userId": 93,
+//            "firstName": "Testjj",
+//            "lastName": "4m",
+//            "businessName": "",
+//            "profilePic": "http:\/\/dev2.ifuturz.com\/Laravel\/printr\/uploads\/userimage\/1545973167-userimage.jpg",
+//            "isProfileHide": 0,
+//            "userType": 1,
+//            "dogList": [{
+//                "dogId": 1,
+//                "profilePic": "URL"
+//            }]
+//        }
+//    }
+
+    private String message;
+    private int status;
+    private UserDataBean userData;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public UserDataBean getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserDataBean userData) {
+        this.userData = userData;
+    }
+
+    public static class UserDataBean {
+
+        private int userId;
+        private String firstName;
+        private String lastName;
+        private String businessName;
+        private String profilePic;
+        private int isProfileHide;
+        private int userType;
+        private List<DogListBean> dogList;
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getBusinessName() {
+            return businessName;
+        }
+
+        public void setBusinessName(String businessName) {
+            this.businessName = businessName;
+        }
+
+        public String getProfilePic() {
+            return profilePic;
+        }
+
+        public void setProfilePic(String profilePic) {
+            this.profilePic = profilePic;
+        }
+
+        public int getIsProfileHide() {
+            return isProfileHide;
+        }
+
+        public void setIsProfileHide(int isProfileHide) {
+            this.isProfileHide = isProfileHide;
+        }
+
+        public int getUserType() {
+            return userType;
+        }
+
+        public void setUserType(int userType) {
+            this.userType = userType;
+        }
+
+        public List<DogListBean> getDogList() {
+            return dogList;
+        }
+
+        public void setDogList(List<DogListBean> dogList) {
+            this.dogList = dogList;
+        }
+
+        public static class DogListBean implements Parcelable {
+
+            private int dogId;
+            private String profilePic;
+
+            protected DogListBean(Parcel in) {
+                dogId = in.readInt();
+                profilePic = in.readString();
+            }
+
+            public static final Creator<DogListBean> CREATOR = new Creator<DogListBean>() {
+                @Override
+                public DogListBean createFromParcel(Parcel in) {
+                    return new DogListBean(in);
+                }
+
+                @Override
+                public DogListBean[] newArray(int size) {
+                    return new DogListBean[size];
+                }
+            };
+
+            public int getDogId() {
+                return dogId;
+            }
+
+            public void setDogId(int dogId) {
+                this.dogId = dogId;
+            }
+
+            public String getProfilePic() {
+                return profilePic;
+            }
+
+            public void setProfilePic(String profilePic) {
+                this.profilePic = profilePic;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeInt(dogId);
+                dest.writeString(profilePic);
+            }
+        }
+    }
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.patchpets.utils.HeaderBar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_2"
+            android:background="@drawable/view_shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clDogName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvShareBuddy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_40"
+                    android:layout_marginTop="@dimen/margin_30"
+                    android:text="@string/share_buddy"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/textSize_26"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:font="@string/font_poppins_bold" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etWriteMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_70"
+                    android:background="@null"
+                    android:hint="@string/write_message"
+                    android:maxLines="4"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_32"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvShareBuddy"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShareBuddy" />
+
+                <View
+                    android:id="@+id/view_bottom_line_dog_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etWriteMessage"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etWriteMessage" />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_next"
+                android:textColor="@color/view_line"
+                android:textSize="@dimen/textSize_20"
+                app:layout_constraintBottom_toBottomOf="@id/ivNextArrow"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivNextArrow"
+                app:font="@string/font_poppins_bold" />
+
+            <ImageView
+                android:id="@+id/ivNextArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:background="@drawable/next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvNext"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

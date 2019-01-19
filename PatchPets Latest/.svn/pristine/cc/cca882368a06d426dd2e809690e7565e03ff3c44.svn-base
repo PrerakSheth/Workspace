@@ -1,0 +1,95 @@
+package com.patchpets.Activitys;
+
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Display;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.patchpets.R;
+import com.patchpets.databinding.ActivityFullDogProfileBinding;
+import com.squareup.picasso.Picasso;
+
+public class FullDogProfileActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ActivityFullDogProfileBinding binding;
+
+    private TextView tvAddOtherProfile;
+    private ImageView ivDone, toolbarImage;
+    private CoordinatorLayout coordinatorLayout;
+    private AppBarLayout appBarLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_full_dog_profile);
+
+        bindViews();
+        setListener();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        final Display dWidth = getWindowManager().getDefaultDisplay();
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.cordinator_layout);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+        appBarLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                int heightPx = dWidth.getWidth() * 1 / 3;
+                setAppBarOffset(heightPx);
+            }
+        });
+
+        Picasso.get().load("https://wallpapercave.com/wp/wp2316902.jpg").into(toolbarImage);
+      /*  final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
+        ImageView toolbarImage = (ImageView) findViewById(R.id.toolbarImage);
+        toolbarImage.getLayoutParams().height = dWidth.getWidth();
+*/
+    }
+
+    private void setAppBarOffset(int offsetPx) {
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
+        behavior.onNestedPreScroll(coordinatorLayout, appBarLayout, null, 0, offsetPx, new int[]{0, 0});
+    }
+
+    private void bindViews() {
+        tvAddOtherProfile = binding.tvAddOtherProfile;
+        ivDone = binding.ivDone;
+        toolbarImage = binding.toolbarImage;
+    }
+
+    private void setListener() {
+        tvAddOtherProfile.setOnClickListener(this);
+        ivDone.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            Intent intent;
+            switch (v.getId()) {
+                case R.id.tvAddOtherProfile:
+                    intent = new Intent(FullDogProfileActivity.this, AddDogProfileActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    break;
+
+                case R.id.ivDone:
+                    intent = new Intent(FullDogProfileActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

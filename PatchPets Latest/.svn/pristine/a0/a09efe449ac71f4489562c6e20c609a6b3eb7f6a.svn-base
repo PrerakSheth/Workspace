@@ -1,0 +1,107 @@
+package com.patchpets.Activitys;
+
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
+
+import com.patchpets.R;
+import com.patchpets.databinding.ActivitySocialSharingBinding;
+import com.patchpets.utils.HeaderBar;
+
+public class SocialSharingActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private ActivitySocialSharingBinding binding;
+    private HeaderBar headerBar;
+    private TextView tvViaSms;
+    private TextView tvShareToFacebook;
+    private TextView tvShareToInstagram;
+
+//    CallbackManager callbackManager;
+//    ShareDialog shareDialog;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_social_sharing);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        callbackManager = CallbackManager.Factory.create();
+
+        bindViews();
+        setHeaderBar();
+        setListener();
+    }
+
+    private void bindViews() {
+        headerBar = binding.headerBar;
+        tvViaSms = binding.tvViaSms;
+        tvShareToFacebook = binding.tvShareToFacebook;
+        tvShareToInstagram = binding.tvShareToInstagram;
+    }
+
+    private void setHeaderBar() {
+        headerBar.ibLeft.setVisibility(View.VISIBLE);
+        headerBar.ibLeft.setImageResource(R.drawable.back);
+        headerBar.tvTitle.setVisibility(View.VISIBLE);
+        headerBar.tvTitle.setText(R.string.social_sharing);
+    }
+
+    private void setListener() {
+        headerBar.ibLeft.setOnClickListener(this);
+        tvViaSms.setOnClickListener(this);
+        tvShareToFacebook.setOnClickListener(this);
+        tvShareToInstagram.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ibLeft:
+                onBackPressed();
+                break;
+
+            case R.id.tvShareToFacebook:
+//                ShareDialog shareDialog = new ShareDialog(this);
+//                callbackManager = CallbackManager.Factory.create();
+//                shareDialog.registerCallback(callbackManager, new
+//
+//                        FacebookCallback<Sharer.Result>() {
+//                            @Override
+//                            public void onSuccess(Sharer.Result result) {
+//                                Log.d(TAG, "onSuccess: ");
+//                                Toast.makeText(SocialSharingActivity.this, "You have shared successfully.", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                            @Override
+//                            public void onCancel() {
+//                                Log.d(TAG, "onCancel: ");
+////                                    Toast.makeText(SocialSharingActivity.this, "onCancel", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                            @Override
+//                            public void onError(FacebookException error) {
+//                                Log.d(TAG, "onError: ");
+////                                    Toast.makeText(SocialSharingActivity.this, "onError" + error.toString(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//
+//                if (ShareDialog.canShow(ShareLinkContent.class)) {
+//                    ShareLinkContent linkContent = new ShareLinkContent.Builder()
+//                            .setContentTitle("KonkR")
+//                            .setContentDescription("This my description")
+//                            .setContentUrl(Uri.parse("https://play.google.com/store?hl=en"))
+//                            .build();
+//
+//                    shareDialog.show(linkContent);
+//                }
+                break;
+
+            case R.id.tvViaSms:
+                Intent signInIntent = new Intent(SocialSharingActivity.this, ViaSMSActivity.class);
+                startActivity(signInIntent);
+                break;
+        }
+    }
+}

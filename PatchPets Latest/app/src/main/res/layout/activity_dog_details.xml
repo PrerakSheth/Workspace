@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpDogs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/padding_10"
+                android:src="@drawable/back_white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibPark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/park"
+                app:layout_constraintBottom_toBottomOf="@+id/ibInstagram"
+                app:layout_constraintRight_toLeftOf="@+id/ibInstagram"
+                app:layout_constraintTop_toTopOf="@+id/ibInstagram" />
+
+            <ImageButton
+                android:id="@+id/ibInstagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/instagram_green"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ibBack" />
+
+            <ImageButton
+                android:id="@+id/ibMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/message_green"
+                app:layout_constraintBottom_toBottomOf="@+id/ibInstagram"
+                app:layout_constraintLeft_toRightOf="@+id/ibInstagram"
+                app:layout_constraintTop_toTopOf="@+id/ibInstagram" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="@dimen/scale_120"
+            app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_30"
+                android:background="@drawable/rounded_corner_top_side"
+                android:padding="@dimen/padding_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="German Shepherd"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize_20"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:font="@string/font_poppins_regular" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvLastActiveStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Active 2 Hours Ago"
+                    android:textColor="@color/text_hint_color"
+                    android:textSize="@dimen/textSize_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDogName"
+                    app:font="@string/font_poppins_regular" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/dog_profile_map_marker"
+                    android:drawablePadding="@dimen/padding_5"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="88/Lorem Ipsum"
+                    android:textColor="@color/text_hint_color"
+                    android:textSize="@dimen/textSize_12"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLastActiveStatus"
+                    app:font="@string/font_poppins_regular" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/textSize_15"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                    app:font="@string/font_poppins_regular" />
+            </android.support.constraint.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/ibLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_50"
+                android:background="@drawable/unfav"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

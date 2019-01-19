@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+
+            <solid android:color="@color/number_not_selected_setupprofile" />
+            <size
+                android:width="@dimen/scale_40"
+                android:height="@dimen/scale_40" />
+            <padding
+                android:bottom="@dimen/padding_15"
+                android:left="@dimen/padding_15"
+                android:right="@dimen/padding_15"
+                android:top="@dimen/padding_15" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/plus" />
+
+</layer-list>

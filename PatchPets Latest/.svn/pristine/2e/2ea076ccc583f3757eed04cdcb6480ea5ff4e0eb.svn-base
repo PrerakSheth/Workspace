@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.patchpets.utils.HeaderBar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubmit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:theme="@style/TextLabel"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.patchpets.utils.MyEditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:layout_marginTop="@dimen/scale_30"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:background="@android:color/transparent"
+                        android:focusableInTouchMode="true"
+                        android:hint="Title"
+                        android:inputType="textCapSentences"
+                        android:maxLength="15"
+                        android:maxLines="1"
+                        android:padding="@dimen/padding_5"
+                        android:singleLine="true"
+                        android:textCursorDrawable="@drawable/cursor_drawable"
+                        android:textSize="@dimen/textSize_22"
+                        app:font="@string/font_poppins_regular"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginLeft="@dimen/margin_25"
+                    android:background="@color/number_not_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/input_layout_first"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_first" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etExperiance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_50"
+                    android:layout_marginRight="@dimen/margin_20"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/which_features_would_you_like_to_see_in_future"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="5"
+                    android:padding="@dimen/margin_5"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_18"
+                    app:font="@string/font_poppins_regular"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/input_layout_first" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginLeft="@dimen/margin_25"
+                    android:background="@color/number_not_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etExperiance"
+                    app:layout_constraintTop_toBottomOf="@id/etExperiance" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etFutureFeature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_40"
+                    android:layout_marginRight="@dimen/margin_20"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/share_us_your_experince_us"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="5"
+                    android:padding="@dimen/margin_5"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_18"
+                    app:font="@string/font_poppins_regular"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etExperiance" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginLeft="@dimen/margin_25"
+                    android:background="@color/number_not_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etFutureFeature"
+                    app:layout_constraintTop_toBottomOf="@id/etFutureFeature" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    app:layout_constraintTop_toBottomOf="@id/etFutureFeature" />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_2"
+            android:background="@drawable/view_shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="@dimen/padding_10"
+            android:text="@string/cp_submit"
+            android:textAllCaps="true"
+            android:textColor="@color/view_line"
+            android:textSize="@dimen/textSize_20"
+            app:font="@string/font_poppins_semibold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

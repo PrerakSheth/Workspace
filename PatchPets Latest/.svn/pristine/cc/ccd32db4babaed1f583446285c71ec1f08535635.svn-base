@@ -1,0 +1,199 @@
+package com.patchpets.Activitys;
+
+import android.app.ProgressDialog;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.patchpets.Adapters.SlidingImagePagerAdapter;
+import com.patchpets.R;
+import com.patchpets.databinding.ActivityDogDetailsBinding;
+import com.patchpets.model.User;
+import com.patchpets.model.requestModel.FavouriteUnFavDogRequest;
+import com.patchpets.model.responseModel.ApiResponse;
+import com.patchpets.sharedPreferences.SessionManager;
+import com.patchpets.utils.AlertDialogUtility;
+import com.patchpets.utils.Constants;
+import com.patchpets.utils.Helper;
+import com.patchpets.webservices.APIRequest;
+import com.patchpets.webservices.ResponseCallback;
+
+import java.util.ArrayList;
+
+public class DogDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private ActivityDogDetailsBinding binding;
+    private ConstraintLayout clMain, clBottomSheet;
+    private ImageButton ibBack, ibPark, ibInstagram, ibMessage, ibLike;
+    private TextView tvDogName, tvLastActiveStatus, tvLocation, tvDogDescription;
+    private BottomSheetBehavior bottomSheetBehavior;
+    private ViewPager vpDogs;
+    private View snackBar;
+    private User user;
+
+    private APIRequest apiRequest;
+    private ProgressDialog pDialog;
+    private int fav = Constants.UN_FAVOURITE;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_dog_details);
+        snackBar = findViewById(android.R.id.content);
+        user = SessionManager.getInstance().getUser(DogDetailsActivity.this);
+        fav = getIntent().getIntExtra(Constants.FAV_UN_FAV, Constants.UN_FAVOURITE);
+
+        bindViews();
+        setListener();
+
+        bottomSheetBehavior = BottomSheetBehavior.from(clBottomSheet);
+        bottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback);
+
+        ArrayList<String> alString = new ArrayList<>();
+        alString.add("https://wallpapercave.com/wp/wp2316825.jpg");
+        alString.add("https://wallpapercave.com/wp/wp2316825.jpg");
+        alString.add("https://wallpapercave.com/wp/wp2316825.jpg");
+        alString.add("https://wallpapercave.com/wp/wp2316825.jpg");
+        alString.add("https://wallpapercave.com/wp/wp2316825.jpg");
+
+        SlidingImagePagerAdapter viewPagerAdapter = new SlidingImagePagerAdapter(DogDetailsActivity.this, alString);
+        vpDogs.setAdapter(viewPagerAdapter);
+    }
+
+    private void bindViews() {
+        clMain = binding.clMain;
+        vpDogs = binding.vpDogs;
+        clBottomSheet = binding.clBottomSheet;
+        ibBack = binding.ibBack;
+        ibPark = binding.ibPark;
+        ibInstagram = binding.ibInstagram;
+        ibMessage = binding.ibMessage;
+        ibLike = binding.ibLike;
+        tvDogName = binding.tvDogName;
+        tvLastActiveStatus = binding.tvLastActiveStatus;
+        tvLocation = binding.tvLocation;
+        tvDogDescription = binding.tvDogDescription;
+    }
+
+    private void setListener() {
+        ibBack.setOnClickListener(this);
+        ibPark.setOnClickListener(this);
+        ibInstagram.setOnClickListener(this);
+        ibMessage.setOnClickListener(this);
+        ibLike.setOnClickListener(this);
+        clBottomSheet.setOnClickListener(this);
+    }
+
+    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
+        @Override
+        public void onStateChanged(@NonNull View view, int newState) {
+            switch (newState) {
+                case BottomSheetBehavior.STATE_HIDDEN:
+                    break;
+                case BottomSheetBehavior.STATE_EXPANDED:
+                    break;
+                case BottomSheetBehavior.STATE_COLLAPSED:
+                    break;
+                case BottomSheetBehavior.STATE_DRAGGING:
+                    break;
+                case BottomSheetBehavior.STATE_SETTLING:
+                    break;
+            }
+        }
+
+        @Override
+        public void onSlide(@NonNull View view, float v) {
+        }
+    };
+
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.ibBack:
+                    onBackPressed();
+                    break;
+
+                case R.id.ibPark:
+                    break;
+
+                case R.id.ibInstagram:
+                    break;
+
+                case R.id.ibMessage:
+                    break;
+
+                case R.id.ibLike:
+                    callFavUnFavAPI();
+                    break;
+
+                case R.id.clBottomSheet:
+                    if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    } else {
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    }
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void callFavUnFavAPI() {
+        if (Helper.isCheckInternet(DogDetailsActivity.this)) {
+            pDialog = new ProgressDialog(DogDetailsActivity.this);
+            pDialog.setCancelable(false);
+            pDialog.setMessage(getResources().getString(R.string.please_wait));
+            pDialog.show();
+            apiRequest = new APIRequest();
+            apiRequest.favouriteOrUnfavouriteDogAPI(favUnFavRequest(), responseCallback);
+        }
+    }
+
+    private FavouriteUnFavDogRequest favUnFavRequest() {
+        FavouriteUnFavDogRequest favUnFavRequest = new FavouriteUnFavDogRequest();
+        favUnFavRequest.setUserId(user.getUserId());
+        favUnFavRequest.setAccessToken(user.getAccessToken());
+        favUnFavRequest.setDogId(3);
+        favUnFavRequest.setFavouriteOrUnfavourite(fav);
+        return favUnFavRequest;
+    }
+
+    ResponseCallback responseCallback = new ResponseCallback() {
+        @Override
+        public void ResponseSuccessCallBack(Object object) {
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+            if (object != null) {
+                ApiResponse response = (ApiResponse) object;
+                if (response.getStatus() == 1) {
+                    if (fav == Constants.UN_FAVOURITE) {
+                        fav = Constants.FAVOURITE;
+                        ibLike.setBackground(getResources().getDrawable(R.drawable.fav));
+                    } else {
+                        fav = Constants.UN_FAVOURITE;
+                        ibLike.setBackground(getResources().getDrawable(R.drawable.unfav));
+                    }
+                } else {
+                    AlertDialogUtility.showSnakeBar(response.getMessage(), snackBar, DogDetailsActivity.this);
+                }
+            }
+        }
+
+        @Override
+        public void ResponseFailCallBack(Object object) {
+            if (pDialog != null && pDialog.isShowing()) {
+                pDialog.dismiss();
+            }
+        }
+    };
+}

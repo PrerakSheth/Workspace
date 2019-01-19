@@ -1,0 +1,130 @@
+package com.patchpets.Activitys;
+
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.patchpets.Adapters.DogsGridAdapter;
+import com.patchpets.R;
+import com.patchpets.databinding.ActivityProfileBinding;
+import com.patchpets.interfaces.OnItemClickListener;
+import com.patchpets.model.User;
+import com.patchpets.sharedPreferences.SessionManager;
+import com.patchpets.utils.CircleTransform;
+import com.patchpets.utils.Constants;
+import com.patchpets.utils.HeaderBar;
+import com.squareup.picasso.Picasso;
+
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, OnItemClickListener {
+
+    private ActivityProfileBinding binding;
+    private HeaderBar headerBar;
+    private ImageButton ibHide;
+    private ImageView ivProfile;
+    private TextView tvUserName;
+    private RecyclerView rvData;
+    private DogsGridAdapter adapter;
+    private User user;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        user = SessionManager.getInstance().getUser(ProfileActivity.this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
+
+        bindViews();
+        setListener();
+        setData();
+
+        adapter = new DogsGridAdapter(ProfileActivity.this, this);
+        rvData.setLayoutManager(new GridLayoutManager(this, 3));
+        rvData.setAdapter(adapter);
+    }
+
+    private void bindViews() {
+        headerBar = binding.headerBar;
+        ibHide = binding.ibHide;
+        ivProfile = binding.ivProfile;
+        tvUserName = binding.tvUserName;
+        rvData = binding.rvData;
+    }
+
+    private void setListener() {
+        headerBar.ibLeft.setOnClickListener(this);
+        headerBar.ibRight.setOnClickListener(this);
+        ibHide.setOnClickListener(this);
+    }
+
+    private void setData() {
+        headerBar.tvTitle.setText(getResources().getString(R.string.owner_profile));
+        headerBar.ibLeft.setImageDrawable(getResources().getDrawable(R.drawable.back));
+        headerBar.ibRight.setImageDrawable(getResources().getDrawable(R.drawable.edit));
+
+        if (user.getUserType() == Constants.BUSINESS_USER) {
+            tvUserName.setText(user.getBusinessName());
+        } else if (user.getUserType() == Constants.DOG_OWNER) {
+            tvUserName.setText(user.getFirstName() + " " + user.getLastName());
+        }
+        if (user.getProfilePic() != null && user.getProfilePic().length() > 0) {
+            Picasso.get()
+                    .load(user.getProfilePic())
+                    .placeholder(R.drawable.profile)
+                    .error(R.drawable.profile)
+                    .fit().centerCrop()
+                    .rotate(90)
+                    .transform(new CircleTransform())
+                    .into(ivProfile);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.ibLeft:
+                    onBackPressed();
+                    break;
+
+                case R.id.ibRight:
+                    Intent iSetUpProfile = new Intent(ProfileActivity.this, SetupProfileActivity.class);
+                    startActivity(iSetUpProfile);
+                    break;
+
+                case R.id.ibHide:
+                    setProfileUI();
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent iDogDetails = new Intent(this, DogDetailsActivity.class);
+        startActivity(iDogDetails);
+    }
+
+    private void setProfileUI() {
+        try {
+            if (ivProfile.getVisibility() == View.VISIBLE) {
+                ivProfile.setVisibility(View.GONE);
+                tvUserName.setVisibility(View.INVISIBLE);
+                ibHide.setBackgroundDrawable(getResources().getDrawable(R.drawable.visible));
+            } else {
+                ivProfile.setVisibility(View.VISIBLE);
+                tvUserName.setVisibility(View.VISIBLE);
+                ibHide.setBackgroundDrawable(getResources().getDrawable(R.drawable.hide));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

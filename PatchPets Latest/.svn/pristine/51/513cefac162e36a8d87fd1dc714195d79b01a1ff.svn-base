@@ -1,0 +1,82 @@
+package com.patchpets.model.responseModel;
+
+public class SetUpBusinessProfileResponse {
+
+    private String message;
+    private int status;
+    private UserDataBean userData;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public UserDataBean getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserDataBean userData) {
+        this.userData = userData;
+    }
+
+    public static class UserDataBean {
+
+        private String businessName;
+        private int isProfileSetup;
+        private String profilePic;
+        private int userId;
+
+        public String getBusinessName() {
+            return businessName;
+        }
+
+        public void setBusinessName(String businessName) {
+            this.businessName = businessName;
+        }
+
+        public int getIsProfileSetup() {
+            return isProfileSetup;
+        }
+
+        public void setIsProfileSetup(int isProfileSetup) {
+            this.isProfileSetup = isProfileSetup;
+        }
+
+        public String getProfilePic() {
+            return profilePic;
+        }
+
+        public void setProfilePic(String profilePic) {
+            this.profilePic = profilePic;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+    }
+//    {
+//        "message": "we set up your profile successfully.",
+//            "status": 1,
+//            "userData": {
+//                "businessName": "Test",
+//                "isProfileSetup": 1,
+//                "profilePic": "http://dev2.ifuturz.com/Laravel/printr/uploads/userimage/1545641469-userimage.jpeg",
+//                "userId": 31
+//        }
+//    }
+}

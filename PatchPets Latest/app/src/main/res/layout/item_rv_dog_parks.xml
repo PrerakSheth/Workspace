@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4"
+        android:background="@color/directory_item_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivDogParkImage"
+            android:layout_width="@dimen/scale_80"
+            android:layout_height="@dimen/scale_80"
+            android:layout_margin="@dimen/margin_4"
+            android:background="@drawable/dog_park_image"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvDogParkName"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_7"
+            android:layout_marginTop="@dimen/margin_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Kroll Gardens"
+            android:textColor="@color/text_color_dark"
+            android:textSize="@dimen/textSize_14"
+            app:layout_constraintLeft_toRightOf="@+id/ivDogParkImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:font="@string/font_poppins_regular" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvDogParkService"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Dog off leash park"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/textSize_10"
+            app:layout_constraintLeft_toLeftOf="@+id/tvDogParkName"
+            app:layout_constraintTop_toBottomOf="@+id/tvDogParkName"
+            app:font="@string/font_poppins_regular" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvDogParkLocation"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:drawableLeft="@drawable/explore_map_marker"
+            android:drawablePadding="@dimen/padding_5"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Kroll gardens, Clontarf"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/textSize_9"
+            app:layout_constraintLeft_toLeftOf="@+id/tvDogParkName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDogParkService"
+            app:font="@string/font_poppins_regular" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvDogParkDistance"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/km"
+            android:drawablePadding="@dimen/padding_5"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="2.4 KM"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/textSize_9"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDogParkImage"
+            app:layout_constraintLeft_toLeftOf="@+id/tvDogParkName"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDogParkLocation"
+            app:font="@string/font_poppins_regular" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_1"
+            android:background="@color/directory_item_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

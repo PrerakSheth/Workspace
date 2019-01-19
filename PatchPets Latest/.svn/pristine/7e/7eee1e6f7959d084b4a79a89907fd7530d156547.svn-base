@@ -1,0 +1,252 @@
+<resources>
+    <string name="map_key">AIzaSyCK4LygBWkiyv_6JdtDPw-k02Gdkk3rGdc</string>
+
+    <string name="please_wait">Please wait...</string>
+    <string name="gps_alert">GPS is not enabled. Please enable it from settings menu.</string>
+    <string name="gps_settings">SETTINGS</string>
+    <string name="msg_permission_denied">Unfortunately, you have denied permission, hence some functionality may not work.</string>
+    <string name="session_timeout">Session Expired</string>
+
+    <string name="app_name">PatchPets</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="user_type">User Type</string>
+    <string name="already_have_an_account">Already have an account?  Sign In</string>
+    <string name="dont_have_an_account">Don\'t have an account?  Sign Up</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="forgot_passwords">Forgot Password</string>
+    <string name="use_facebook_for_sign_in">Use Facebook for Sign in</string>
+    <string name="explore">Explore</string>
+    <string name="home">Home</string>
+    <string name="submit_a_park">Submit a Park</string>
+    <string name="favourites">Favourites</string>
+    <string name="favourites_dog">Favourites Dog</string>
+    <string name="find_a_park">Find a Park</string>
+    <string name="directory">Directory</string>
+    <string name="messages">Messages</string>
+    <string name="ads">Ads</string>
+    <string name="settings">Settings</string>
+    <string name="filter_by">Filter by</string>
+    <string name="submit">Submit</string>
+    <string name="txt_email">Email Address</string>
+    <string name="txt_these">these</string>
+    <string name="txt_understandaccept">I understand &amp; accept</string>
+    <string name="txt_resete_password">Enter your email to receive Reset Password Link..</string>
+    <string name="str_countinue">Continue</string>
+    <string name="txt_loarnipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="advertisement">Advertisement</string>
+    <string name="logout_alert_message">Are you sure you want to logout?</string>
+
+    <string name="label_setupcard">Setup Card</string>
+    <string name="label_partners">Partners</string>
+    <string name="label_notification">Notification</string>
+    <string name="label_howappworks">How the App works</string>
+    <string name="label_changepassword">Change Password</string>
+    <string name="label_shareexperience">Share your Experience</string>
+    <string name="label_socialsharing">Social Sharing</string>
+    <string name="label_donations">Donations</string>
+    <string name="label_termscondition">Terms &amp; Conditions</string>
+    <string name="label_logout">Logout</string>
+    <string name="drop_paw_on_park_location">Drop paw on park location</string>
+
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="cancel">Cancel</string>
+    <string name="profile_pic">Profile Picture</string>
+    <string name="select_file">Select File</string>
+
+    <string name="edt_old_password" translatable="false">Enter old password*</string>
+    <string name="edt_new_password" translatable="false">Enter new password*</string>
+    <string name="edt_confirm_new_password" translatable="false">Confirm new password*</string>
+    <string name="msg_enter_old_password" translatable="false">Please enter Current Password</string>
+    <string name="msg_enter_new_password" translatable="false">Please enter New Password</string>
+    <string name="msg_enter_confirm_new_password" translatable="false">Please enter Confirm Password</string>
+    <string name="msg_old_password_length" translatable="false">Current Password should be minimum 6 characters long</string>
+    <string name="msg_new_password_length" translatable="false">New Password should be minimum 6 characters long</string>
+    <string name="msg_confrim_password_length" translatable="false">Confrim Password should be minimum 6 characters long</string>
+    <string name="msg_new_password_confirmpass_not_match" translatable="false">New Password and Confirm Password does not match</string>
+    <string name="msg_current_password_new_password_match" translatable="false">Current Password and New Password should not be same</string>
+    <string name="valid_new_combination_pwd">New Password must contain at least one uppercase, lowercase, numeric value &amp; special character</string>
+
+    <string name="dexter">Dexter</string>
+
+    <!--setup profile-->
+    <string name="empty_email">Please enter an Email</string>
+    <string name="invalid_email">Please enter valid Email</string>
+    <string name="empty_password">Please enter Password</string>
+    <string name="invalid_password_length">Password should not be less than six characters</string>
+    <string name="invalid_password">Password must contain at least one uppercase, lowercase, numeric value &amp; special character.</string>
+    <string name="select_user_type">Please select User Type</string>
+    <string name="location_not_available">Please enable location for Sign Up</string>
+
+    <string name="setup_proile">Setup Profile</string>
+    <string name="txt_first_name">First Name</string>
+    <string name="txt_last_name">Last Name</string>
+    <string name="add_dog_profile">Add Dog Profile</string>
+    <string name="empty_first_name">Please enter First Name</string>
+    <string name="empty_last_name">Please enter Last Name</string>
+    <string name="empty_profile_pic">Please select profile photo</string>
+    <string name="empty_business_name">Please enter Business Name</string>
+    <string name="empty_contact_number">Please enter Contact Number</string>
+    <string name="empty_about">Please enter About</string>
+    <string name="empty_services">Please enter Services</string>
+
+    <string name="owner_profile">Owner Profile</string>
+    <string name="map_view">Map View</string>
+    <string name="tab_dog_parks">Dog Parks</string>
+    <string name="tab_directory">Directory</string>
+    <string name="search_business">Search Business</string>
+    <string name="search_park_or_suburb">Search park or suburb</string>
+
+    <!--business setup profile-->
+    <string name="business_name">Business Name</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="services">Services</string>
+    <string name="add_your_instagram_account">Add your Instagram account</string>
+
+    <!--add dog profile-->
+    <string name="add_your_dog_name">Add Your Dog\'s Name..</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="breed_name">Enter Breed</string>
+    <string name="txt_next">NEXT</string>
+    <string name="breed">breed?</string>
+    <string name="age">Age?</string>
+    <string name="gender">Gender?</string>
+    <string name="vaccinations_qm">Vaccinations?</string>
+    <string name="tell_us_something">Tell us something about \n</string>
+    <string name="vaccinations">Vaccinations</string>
+    <string name="write_here">Write here..</string>
+    <string name="enter_link">Enter Link</string>
+    <string name="desexed">Desexed?</string>
+    <string name="does">Does</string>
+    <string name="done">DONE</string>
+
+    <string name="link">Link</string>
+    <string name="instagram_account">instagram \naccount..</string>
+
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="are_you_sure_dlt_card">Are you sure you want to delete this card?</string>
+
+    <string name="or_click_here">Or Click here</string>
+
+    <string name="breed_full">Breed</string>
+    <string name="age_full">Age</string>
+    <string name="gender_full">Gender</string>
+    <string name="german_shepherd">German\nShepherd</string>
+    <string name="add_photos">Add Photos</string>
+    <string name="status">Status</string>
+    <string name="neutered">Neutered</string>
+    <string name="vaccination">Vaccination</string>
+    <string name="c7">C7</string>
+    <string name="about">About</string>
+    <string name="lorem_epsum">Lorem Epsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+    <string name="add_another_profile">ADD ANOTHER PROILE</string>
+
+    <string name="search">Search</string>
+    <string name="park_name">Park Name</string>
+    <string name="dog_park">Dog Park</string>
+    <string name="off_leash_park">Off Leash Park</string>
+    <string name="submit_park">Submit Park</string>
+    <string name="group_name">Group Name</string>
+    <string name="add_people">Add People</string>
+    <string name="from_directory">From Directory</string>
+    <string name="through_qr_code">Through QR Code</string>
+    <string name="create_group">Create Group</string>
+    <string name="scan_to_add_group">SCAN TO ADD IN GROUP</string>
+    <string name="scan_qr_code">Scan QR Code</string>
+
+    <!--Card list-->
+    <string name="setup_card">Setup Card</string>
+    <string name="no_data_available">"No card(s) found"</string>
+    <!--<string name="card_no_text">XXXX-XXXX-XXXX-1234</string>-->
+    <!--<string name="card_asterisk">&#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; </string>-->
+    <string name="card_asterisk">&#42;&#42;&#42;&#42; &#42;&#42;&#42;&#42; &#42;&#42;&#42;&#42;</string>
+    <string name="card_no_text">Card number</string>
+    <string name="expires">Expires</string>
+    <string name="card_date">5/20</string>
+    <string name="add">ADD</string>
+    <string name="cvv_code">CVV</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="not_supported_card">Your card is not supported. Please use a Visa, MasterCard, or American Express card.</string>
+    <string name="card_detail">Card Detail</string>
+    <string name="add_card">Add Card</string>
+    <string name="no_partner_found">No partner(s) found</string>
+    <string name="no_notification_found">No notification(s) found</string>
+    <string name="partners">Partners</string>
+    <string name="share_buddy">Share Buddy with your friends...</string>
+    <string name="write_message">Write message...</string>
+    <string name="send">Send</string>
+    <string name="johne_doe"><b>John Doe</b></string>
+    <string name="how_app_title">How the App Works</string>
+    <string name="edit_this_card">EDIT THIS CARD</string>
+    <string name="empty_expirydate">Please select expiry</string>
+    <string name="chat_hint">Type a message</string>
+
+    <string name="add_card_title">ADD CARD</string>
+    <string name="card_detail_title">CARD DETAILS</string>
+    <string name="set_up_card_title">SET UP CARD</string>
+    <string name="select_your_card_title">SELECT YOUR CARD</string>
+    <string name="donate_us_title">DONATIONS</string>
+    <string name="card_number">Card number</string>
+    <string name="name_on_card_filed">Please enter Name on card</string>
+    <string name="card_number_null">Please enter Card number</string>
+    <string name="cvv_null">Please enter CVV</string>
+    <string name="valid_card_number">Please enter valid Card number</string>
+    <string name="valid_expirydate">Please enter valid Expiry Date</string>
+    <string name="valid_cvv">Please enter valid CVV</string>
+    <string name="success_payment">Payment has been success !!</string>
+    <string name="success_add_card">Card has been added successfully !!</string>
+    <string name="delete_added_card">Are you sure you want to delete this card?</string>
+
+    <!-- Social Sharing -->
+    <string name="via_sms">Via SMS</string>
+    <string name="share_to_facebook">Share to Facebook</string>
+    <string name="share_to_instagram">Share to Instagram</string>
+    <string name="social_sharing">Social Sharing</string>
+    <string name="er_write_your_message">Please write your message</string>
+
+    <string name="title_null">Please enter Title</string>
+    <string name="experince_null">Please enter Your experience</string>
+    <string name="feature_null">Please enter Future Feature</string>
+
+    <!-- Change Password -->
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="make_sure">Make sure it\'s unique and difficult to guess!</string>
+    <string name="cp_submit">Submit</string>
+
+    <!-- Share Your Experience Screen -->
+    <string name="title">Title</string>
+    <string name="share_us_your_experince_title">Share your Experience</string>
+    <string name="share_us_your_experince_us">Share us your experince with us,\nWe\'d love to hear from you.</string>
+    <string name="_500_characters_remaining">500 Characters Remaining</string>
+    <string name="which_features_would_you_like_to_see_in_future">Which features would you like to see in future ?</string>
+    <string name="ad_title">Ad Title</string>
+    <string name="select_position">Select Position</string>
+    <string name="select_timeslot">Select Timeslot</string>
+    <string name="duration">Duration</string>
+    <string name="timeslot">Timeslot</string>
+    <string name="start_date_time">Start Date</string>
+    <string name="end_date_time">End Date</string>
+    <string name="add_image">Add Image</string>
+    <string name="business_profile">Business Profile</string>
+    <string name="select_contact">Select Contact</string>
+
+    <!--fonts-->
+    <string name="font_poppins_medium" translatable="false">Fonts/Poppins-Medium.ttf</string>
+    <string name="font_poppins_regular" translatable="false">Fonts/Poppins-Regular.ttf</string>
+    <string name="font_poppins_light" translatable="false">Fonts/Poppins-Light.ttf</string>
+    <string name="font_poppins_bold" translatable="false">Fonts/Poppins-Bold.ttf</string>
+    <string name="font_poppins_semibold" translatable="false">Fonts/Poppins-SemiBold.ttf</string>
+    <string name="font_opensans_bold" translatable="false">Fonts/OpenSans-Bold.ttf</string>
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clSong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:padding="@dimen/_8sdp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivSongPhoto"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:background="@drawable/placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSongTitle"
+            style="@style/MyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Pullup to Knee Raise"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintLeft_toRightOf="@+id/ivSongPhoto"
+            app:layout_constraintRight_toLeftOf="@+id/tvEstTime"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvEstTime"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_18sdp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:singleLine="true"
+            android:text="45.58"
+            android:textColor="@color/text_color_light_grey"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tvSongTitle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvSongTitle"
+            mytextview:txt_custom_font="@string/font_poppins_light" />
+
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSingerName"
+            style="@style/MyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintLeft_toRightOf="@+id/ivSongPhoto"
+            app:layout_constraintRight_toRightOf="@+id/tvSongTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvSongTitle"
+            mytextview:txt_custom_font="@string/font_poppins_light" />
+
+        <ImageView
+            android:id="@+id/ivPlayPause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tvEstTime"
+            app:layout_constraintRight_toRightOf="@+id/tvEstTime"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/scale_0.5dp"
+            android:background="@color/green"
+            app:layout_constraintBottom_toBottomOf="@+id/ivSongPhoto"
+            app:layout_constraintLeft_toLeftOf="@+id/tvSongTitle"
+            app:layout_constraintRight_toRightOf="@+id/tvEstTime" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
+
+

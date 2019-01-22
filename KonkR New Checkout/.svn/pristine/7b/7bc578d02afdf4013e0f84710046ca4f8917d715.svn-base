@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+        xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MiSupplimentProfileActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></com.konkr.Utils.Headerbar>
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/rvBckground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMiSuppliment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/setting_shadow"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/_15sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:paddingTop="@dimen/_20sdp"
+                android:visibility="visible" />
+
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvEmpty"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/no_supp_available"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_14ssp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:txt_custom_font="@string/font_mavenpro_regular" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

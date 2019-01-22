@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.VideoActivity">
+
+        <SurfaceView
+            android:id="@+id/surfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivMedia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/back_fullscreen"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/rowCom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:background="@drawable/expresstion_shadow_two"
+            android:padding="@dimen/_15sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/ivLike"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/goal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivAdmiring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/admiring"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/ivGoal"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivInspiring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/inspiration"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/ivAdmiring"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvLikeCount" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvCommentCount"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:singleLine="true"
+            android:text="39"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivComment"
+            app:layout_constraintLeft_toRightOf="@+id/ivLike"
+            app:layout_constraintTop_toTopOf="@+id/ivComment"
+            app:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/comment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvCommentCount" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvLikeCount"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:singleLine="true"
+            android:text="12"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivLike"
+            app:txt_custom_font="@string/font_mavenpro_bold" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

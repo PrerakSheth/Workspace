@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-16dp"
+    android:background="@drawable/shadow">
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvCardNo"
+        style="@style/MyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/card_no_text"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCard"
+        app:layout_constraintRight_toRightOf="parent"
+        app:txt_custom_font="@string/font_mavenpro_medium" />
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvValidUpTo"
+        style="@style/MyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="center"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/valid_up_to"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCard"
+        app:txt_custom_font="@string/font_mavenpro_medium" />
+
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/card_date"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/tvCardNo"
+        app:layout_constraintTop_toBottomOf="@id/tvCardNo"
+        app:txt_custom_font="@string/font_mavenpro_medium" />
+
+</android.support.constraint.ConstraintLayout>

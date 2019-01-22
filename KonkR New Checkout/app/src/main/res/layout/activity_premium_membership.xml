@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.konkr.Activities.PremiumMemberShipActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header" />
+
+        <LinearLayout
+            android:id="@+id/llRemainingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/shadow"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.konkr.Utils.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Remaining Time"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_18ssp"
+                mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+                <!--<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterMonthsValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="10"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Months"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterDaysValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterDays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Days"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterHoursValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterHours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Hours"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterMinutesValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterMinutes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Min"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterSecondsValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCounterSeconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="Sec"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clSubscription"
+            android:layout_width="match_parent"
+            android:layout_marginTop="-25dp"
+            android:layout_height="wrap_content">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clOne"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/shadow"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <!-- <com.fitinc.Utils.MyTextView
+                                        android:id="@+id/tvPlatinum"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/platinum"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/_16ssp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="@+id/ivPlatinam"
+                                        app:layout_constraintLeft_toRightOf="@+id/ivPlatinam"
+                                        app:layout_constraintTop_toTopOf="@+id/ivPlatinam"
+                                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />-->
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvMonthlySubscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_32sdp"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/monthly_subscription"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivMonthSelect"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvMonthPrice"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundAsCircle="true" />
+
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvMonthPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_30ssp"
+                    app:layout_constraintLeft_toRightOf="@+id/tvMonthlySubscription"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvMonthlySubscription"
+                    app:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvMonthPrice"
+                    app:layout_constraintRight_toRightOf="@+id/tvMonthPrice"
+                    app:layout_constraintTop_toBottomOf="@id/tvMonthPrice" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clTwo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/shadow"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clOne">
+
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvAnnualSubscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_32sdp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/annual_subscription"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/clTwo"
+                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivAnnualSelect"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvAnnualPrice"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundAsCircle="true" />
+
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvAnnualPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_30ssp"
+                    app:layout_constraintLeft_toRightOf="@+id/tvAnnualSubscription"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvAnnualSubscription"
+                    app:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvAnnualPrice"
+                    app:layout_constraintRight_toRightOf="@+id/tvAnnualPrice"
+                    app:layout_constraintTop_toBottomOf="@id/tvAnnualPrice" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvPremium"
+            style="@style/MyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="left"
+            android:text="@string/premium_membership_text"
+            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/proceedBtn"
+            style="@style/MyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/button_shadow"
+            android:gravity="center"
+            android:text="@string/proceed"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_14ssp"
+            app:txt_custom_font="@string/font_mavenpro_medium" />
+
+    </LinearLayout>
+
+</layout>

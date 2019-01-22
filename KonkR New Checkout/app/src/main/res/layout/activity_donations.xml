@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.konkr.Activities.DonationsActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.konkr.Utils.Headerbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etDonation"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                android:hint="Enter Donation Amount "
+                android:inputType="numberDecimal"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:paddingTop="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_15sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_13ssp"
+                app:edt_custom_font="@string/font_mavenpro_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivCard" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:padding="@dimen/_15sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etDonation"
+                app:layout_constraintTop_toBottomOf="@id/etDonation" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintLeft_toLeftOf="@+id/etDonation"
+                app:layout_constraintTop_toBottomOf="@id/etDonation" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/proceedBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginRight="@dimen/_25sdp"
+            android:background="@drawable/shadow_bb"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/proceed"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clMain"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/proceedBtn">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clOne"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/shadow_donor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivPlatinam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/platinum"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvPlatinum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/platinum"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivPlatinam"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPlatinam"
+                        app:layout_constraintTop_toTopOf="@+id/ivPlatinam"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_10sdp"
+
+                        android:gravity="center"
+                        android:text="@string/platinumAmount"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_30ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvPlatinum"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPlatinum"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/shadow_donor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clOne">
+
+
+                    <ImageView
+                        android:id="@+id/ivGold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/gold"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvGold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/gold"
+                        android:textColor="@color/text_color"
+
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivGold"
+                        app:layout_constraintLeft_toRightOf="@+id/ivGold"
+                        app:layout_constraintTop_toTopOf="@+id/ivGold"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:text="@string/goldAmount"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_30ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvGold"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvGold"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clThree"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/shadow_donor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clTwo">
+
+
+                    <ImageView
+                        android:id="@+id/ivSilver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/silver"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSilver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/silver"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivSilver"
+                        app:layout_constraintLeft_toRightOf="@+id/ivSilver"
+                        app:layout_constraintTop_toTopOf="@+id/ivSilver"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/silverAmount"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_30ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSilver"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvSilver"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/shadow_donor"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/clThree">
+
+
+                    <ImageView
+                        android:id="@+id/ivBronze"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/bronze"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvBronze"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="@string/bronze"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivBronze"
+                        app:layout_constraintLeft_toRightOf="@+id/ivBronze"
+                        app:layout_constraintTop_toTopOf="@+id/ivBronze"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:gravity="center"
+                        android:text="@string/bronzeAmount"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_30ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvBronze"
+                        app:layout_constraintHorizontal_bias="0.46"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvBronze"
+                        app:layout_constraintVertical_bias="0.521"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

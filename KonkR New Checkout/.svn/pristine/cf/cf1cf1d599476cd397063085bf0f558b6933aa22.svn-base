@@ -1,0 +1,191 @@
+package com.konkr.Fragment;
+
+import android.app.Activity;
+import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.google.gson.Gson;
+import com.konkr.Activities.NotificationsActivity;
+import com.konkr.Adapters.NotificationsAdapter;
+import com.konkr.Models.Notifications;
+import com.konkr.R;
+import com.konkr.SharedPreferences.SessionManager;
+import com.konkr.Utils.AlertDialogUtility;
+import com.konkr.Utils.ConnectivityDetector;
+import com.konkr.Utils.GlobalData;
+import com.konkr.Utils.Headerbar;
+import com.konkr.Utils.LogM;
+import com.konkr.Utils.MyTextView;
+import com.konkr.Webservices.GetJsonWithAndroidNetworkingLib;
+import com.konkr.Webservices.OnUpdateListener;
+import com.konkr.Webservices.WebField;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link NotificationFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link NotificationFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class NotificationFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    private OnFragmentInteractionListener mListener;
+
+    //    private FragmentNotificationBinding binding;
+    private Activity context;
+    private Headerbar headerBar;
+    private RecyclerView notificationsRecyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private ArrayList<Notifications.NotificationList> notificationsArrayList;
+    private NotificationsAdapter adapter;
+    private View snackBarView;
+    private MyTextView tvEmpty;
+
+    public NotificationFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment NotificationFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static NotificationFragment newInstance(String param1, String param2) {
+        NotificationFragment fragment = new NotificationFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View view = inflater.inflate(R.layout.fragment_notification, container, false);
+        context = getActivity();
+        notificationsRecyclerView = (RecyclerView) view.findViewById(R.id.notificationRecyclerView);
+        tvEmpty = (MyTextView) view.findViewById(R.id.tvEmpty);
+        setLayoutManger();
+        getNotificationList();
+
+        return view;
+    }
+
+    private void getNotificationList() {
+
+        if (ConnectivityDetector.isConnectingToInternet(context)) {
+
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+                jsonObject.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+
+                LogM.LogE("Request : Get Expression List : : " + jsonObject.toString());
+
+                new GetJsonWithAndroidNetworkingLib(context, jsonObject, WebField.BASE_URL + WebField.GET_NOTIFICATION_LIST.MODE, 1, new OnUpdateListener() {
+                    @Override
+                    public void onUpdateComplete(JSONObject jsonObject, boolean isSuccess) {
+
+                        final Notifications notificationData = new Gson().fromJson(String.valueOf(jsonObject), Notifications.class);
+                        if (isSuccess) {
+                            LogM.LogE("Response : Get Expression List : " + jsonObject.toString());
+                            if (notificationData.getNotificationList().size() > 0) {
+                                notificationsArrayList = new ArrayList<>();
+                                notificationsArrayList.addAll(notificationData.getNotificationList());
+                                setNotificationAdapter();
+                                tvEmpty.setVisibility(View.GONE);
+                                notificationsRecyclerView.setVisibility(View.VISIBLE);
+                            } else {
+                                tvEmpty.setVisibility(View.VISIBLE);
+                                notificationsRecyclerView.setVisibility(View.GONE);
+                            }
+                        }
+
+                    }
+                }).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            AlertDialogUtility.showAlert(context, GlobalData.STR_INETRNET_ALERT_MESSAGE);
+        }
+
+    }
+
+    private void setLayoutManger() {
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        notificationsRecyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    private void setNotificationAdapter() {
+        adapter = new NotificationsAdapter(context, notificationsArrayList);
+        notificationsRecyclerView.setAdapter(adapter);
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
+}

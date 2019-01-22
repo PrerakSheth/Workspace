@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:context="com.fitinc.Activities.MiSupplimentActivity">-->
+
+<!--</android.support.constraint.ConstraintLayout>-->
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+        xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context="com.konkr.Activities.MiSupplimentActivity">
+
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_60dp"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivSupplimentPhoto"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/bg_mi_supps_add_photo"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundedCornerRadius="@dimen/_5sdp" />
+
+                <ImageView
+                    android:id="@+id/ivPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:src="@drawable/add_photos"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivSupplimentPhoto"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivSupplimentPhoto"
+                    app:layout_constraintRight_toRightOf="@+id/ivSupplimentPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/ivSupplimentPhoto" />
+
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvAddPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/add_supplement_photo"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/tab_text_color"
+                    app:layout_constraintBottom_toTopOf="@+id/ivPhoto"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivSupplimentPhoto"
+                    app:layout_constraintRight_toRightOf="@+id/ivSupplimentPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/ivSupplimentPhoto"
+                    mytextview:txt_custom_font="@string/font_poppins_bold" />
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/shadow"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivSupplimentPhoto">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etSupplimentName"
+                        style="@style/MyEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:clickable="true"
+                        android:ellipsize="end"
+                        android:hint="@string/suppliment_name"
+                        android:imeActionLabel="Search"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentName" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/_10sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentName"></Spinner>
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etSupplimentDes"
+                        style="@style/MyEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:ellipsize="end"
+                        android:hint="@string/suppliment_des"
+                        android:maxLength="1000"
+                        android:maxLines="5"
+                        android:overScrollMode="always"
+                        android:padding="@dimen/_10sdp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view1"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentDes" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvRemainingTextsuppDes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="1000"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintRight_toLeftOf="@+id/tvDesCharRemaining"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentDes"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvDesCharRemaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:maxLength="25"
+                        android:paddingBottom="@dimen/_20sdp"
+                        android:singleLine="true"
+                        android:text="@string/sp_char_remain"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentDes"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_20dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etSupplimentDes" />
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:TagsEditText="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.konkr.Activities.SetUpProfileActivity">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setup_bg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/back"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.konkr.Utils.MyTextView
+                    android:id="@+id/tvSetUpProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/title_setup_profile"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_18ssp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                <!--<com.facebook.drawee.view.SimpleDraweeView-->
+                <!--android:id="@+id/ivUserProfile"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:background="@drawable/home_feed_place_holder"-->
+                <!--app:actualImageScaleType="focusCrop"-->
+                <!--app:fadeDuration="300"-->
+                <!--app:failureImage="@drawable/home_feed_place_holder"-->
+                <!--app:failureImageScaleType="centerInside"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/image"-->
+                <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                <!--app:layout_constraintRight_toRightOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/image"-->
+                <!--app:placeholderImage="@drawable/home_feed_place_holder"-->
+                <!--app:placeholderImageScaleType="fitCenter"-->
+                <!--app:retryImage="@drawable/home_feed_place_holder"-->
+                <!--app:retryImageScaleType="centerCrop"-->
+                <!--app:roundAsCircle="true"-->
+                <!--app:roundingBorderColor="@color/colorPrimary" />-->
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivUserProfile"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:background="@drawable/user_profile"
+                    app:actualImageScaleType="focusCrop"
+                    app:fadeDuration="300"
+                    app:failureImage="@drawable/user_profile"
+                    app:failureImageScaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="@+id/image"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/image"
+                    app:placeholderImage="@drawable/user_profile"
+                    app:placeholderImageScaleType="fitCenter"
+                    app:retryImage="@drawable/user_profile"
+                    app:retryImageScaleType="centerCrop"
+                    app:roundAsCircle="true" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clNineImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/clAddIntroductoryVideo"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivUserProfile">
+
+                    <!--<com.facebook.drawee.view.SimpleDraweeView-->
+                        <!--android:id="@+id/ivPhotoOne"-->
+                        <!--android:layout_width="@dimen/_50sdp"-->
+                        <!--android:layout_height="@dimen/_50sdp"-->
+                        <!--android:layout_marginLeft="@dimen/_10sdp"-->
+                        <!--android:background="@drawable/add_new_photo_setup"-->
+                        <!--app:actualImageScaleType="focusCrop"-->
+                        <!--app:fadeDuration="300"-->
+                        <!--app:failureImage="@drawable/add_new_photo_setup"-->
+                        <!--app:failureImageScaleType="centerInside"-->
+                        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                        <!--app:layout_constraintRight_toLeftOf="@+id/ivPhotoTwo"-->
+                        <!--app:placeholderImage="@drawable/add_new_photo_setup"-->
+                        <!--app:placeholderImageScaleType="fitCenter"-->
+                        <!--app:retryImage="@drawable/add_new_photo_setup"-->
+                        <!--app:retryImageScaleType="centerCrop"-->
+                        <!--app:roundingBorderColor="@color/white"-->
+                        <!--app:roundingBorderWidth="@dimen/_1sdp" />-->
+
+                    <ImageView
+                        android:id="@+id/ivPhotoOne"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:clickable="false"
+                        android:background="@drawable/add_new_photo_setup"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ivPhotoTwo"
+                        app:placeholderImage="@drawable/add_new_photo_setup"
+                        />
+                    <ImageView
+                        android:id="@+id/ivPhotoTwo"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoOne"
+                        app:layout_constraintRight_toLeftOf="@+id/ivPhotoThree"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoThree"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoTwo"
+                        app:layout_constraintRight_toLeftOf="@+id/ivPhotoFour"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                         />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoFour"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoThree"
+                        app:layout_constraintRight_toLeftOf="@+id/ivPhotoFive"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                       />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoFive"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoFour"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+
+                      />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoSix"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toLeftOf="@+id/ivPhotoOne"
+                        app:layout_constraintTop_toBottomOf="@+id/ivPhotoOne"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                      />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoSeven"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoSix"
+                        app:layout_constraintTop_toBottomOf="@+id/ivPhotoOne"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                         />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/ivPhotoEight"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoSeven"
+                        app:layout_constraintTop_toBottomOf="@+id/ivPhotoOne"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivPhotoNine"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/mi_camera_placeholder"
+                        android:clickable="false"
+                        app:layout_constraintLeft_toRightOf="@+id/ivPhotoEight"
+                        app:layout_constraintTop_toBottomOf="@+id/ivPhotoOne"
+                        app:placeholderImage="@drawable/mi_camera_placeholder"
+                        />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clAddIntroductoryVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/scale_90dp"
+                    android:background="@drawable/add_iv_shadow"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/clInnerData"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clNineImage">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvAddIntroductoryVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableRight="@drawable/left_arrow"
+                        android:gravity="center_vertical"
+                        android:text="@string/sp_add_introductory_video"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clVideoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/ivIntroductoryVideo"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/placeholder"
+                            app:actualImageScaleType="focusCrop"
+                            app:fadeDuration="200"
+                            app:failureImageScaleType="centerInside"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholderImageScaleType="fitCenter"
+                            app:retryImageScaleType="centerCrop"
+                            app:roundAsCircle="false" />
+
+                        <ImageButton
+                            android:id="@+id/ibPlay"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:src="@drawable/play"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintLeft_toLeftOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintRight_toRightOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintTop_toTopOf="@+id/ivIntroductoryVideo" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvAboutMe"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="@string/sp_add_introductory_video_about_me"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintRight_toLeftOf="@+id/ibEdit"
+                            app:layout_constraintTop_toTopOf="parent"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <ImageButton
+                            android:id="@+id/ibEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:background="@null"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/edit_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clInnerData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/add_iv_shadow"
+                    app:layout_constraintBottom_toTopOf="@+id/clUpdateProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/clAddIntroductoryVideo">
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/glData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        TagsEditText:layout_constraintGuide_begin="180dp"
+                        app:layout_constraintGuide_percent=".5" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etFirstName"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@null"
+                        android:hint="@string/sp_first_name"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:maxLength="25"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/glData"
+                        app:layout_constraintTop_toTopOf="parent"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/View1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/glData"
+                        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etLastName"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/sp_last_name"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:maxLength="25"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/etFirstName"
+                        app:layout_constraintLeft_toRightOf="@+id/glData"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/etFirstName"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="@+id/etLastName"
+                        app:layout_constraintRight_toRightOf="@+id/etLastName"
+                        app:layout_constraintTop_toBottomOf="@id/etLastName" />
+
+                    <!--<com.konkr.Utils.MyEditText-->
+                        <!--android:id="@+id/etNickname"-->
+                        <!--style="@style/MyEditText"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="@dimen/_5sdp"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="@string/sp_nick_name"-->
+                        <!--android:imeActionLabel="Next"-->
+                        <!--android:imeOptions="actionNext"-->
+                        <!--android:inputType="textCapSentences"-->
+                        <!--android:maxLength="15"-->
+                        <!--android:padding="@dimen/_10sdp"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColorHint="@color/hint_text_color"-->
+                        <!--android:textSize="@dimen/_15ssp"-->
+                        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                        <!--app:layout_constraintRight_toLeftOf="@+id/glData"-->
+                        <!--app:layout_constraintTop_toBottomOf="@+id/View1"-->
+                        <!--myedittext:edt_custom_font="@string/font_mavenpro_regular" />-->
+
+                    <!--<View-->
+                        <!--android:id="@+id/view3"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="@dimen/_1sdp"-->
+                        <!--android:layout_marginLeft="@dimen/_10sdp"-->
+                        <!--android:layout_marginRight="@dimen/_10sdp"-->
+                        <!--android:background="@color/colorGray"-->
+                        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                        <!--app:layout_constraintRight_toLeftOf="@+id/glData"-->
+                        <!--app:layout_constraintTop_toBottomOf="@+id/etNickname" />-->
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvDateOfBirth"
+                        style="@style/MyTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/sp_date_of_birth"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/View1"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvDateOfBirth"
+                        app:layout_constraintRight_toRightOf="@+id/tvDateOfBirth"
+                        app:layout_constraintTop_toBottomOf="@id/tvDateOfBirth" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvGender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="@dimen/_10sdp"
+                        android:text="@string/sp_gender"
+                        android:textColor="@color/hint_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view4"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinGender"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@null"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvGender"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvGender"
+                        app:layout_constraintRight_toRightOf="@+id/tvGender"
+                        app:layout_constraintTop_toTopOf="@+id/tvGender" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvGender"
+                        app:layout_constraintRight_toRightOf="@+id/tvGender"
+                        app:layout_constraintTop_toBottomOf="@id/tvGender" />
+
+                    <mabbas007.tagsedittext.TagsEditText
+                        android:id="@+id/etCurrentTrainingGoal"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@null"
+                        android:hint="@string/sp_current_training_goal"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        TagsEditText:allowSpaceInTag="true"
+                        TagsEditText:tagsBackground="@drawable/square"
+                        TagsEditText:tagsCloseImagePadding="@dimen/defaultTagsCloseImagePadding"
+                        TagsEditText:tagsCloseImageRight="@drawable/tag_close"
+                        TagsEditText:tagsTextColor="@color/hint_color"
+                        TagsEditText:tagsTextSize="@dimen/defaultTagsTextSize"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvGender"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view25"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etCurrentTrainingGoal"
+                        app:layout_constraintRight_toRightOf="@+id/etCurrentTrainingGoal"
+                        app:layout_constraintTop_toBottomOf="@id/etCurrentTrainingGoal" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvBodyType"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="@string/body_type"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etCurrentTrainingGoal"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <ImageView
+                        android:id="@+id/ivEctomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/ectomorph"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvBodyType"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBodyType" />
+
+                    <ImageView
+                        android:id="@+id/ivMesomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/mesomorph_selected"
+                        app:layout_constraintLeft_toRightOf="@+id/ivEctomorph"
+                        app:layout_constraintRight_toLeftOf="@+id/ivEndomorph"
+                        app:layout_constraintTop_toTopOf="@+id/ivEctomorph" />
+
+                    <ImageView
+                        android:id="@+id/ivEndomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/endomorph"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivEctomorph" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvEctomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sp_ectomorph"
+                        android:textColor="@color/hint_color"
+                        app:layout_constraintLeft_toLeftOf="@+id/ivEctomorph"
+                        app:layout_constraintRight_toRightOf="@+id/ivEctomorph"
+                        app:layout_constraintTop_toBottomOf="@+id/ivEctomorph"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvMesomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sp_mesomorph"
+                        android:textColorHint="@color/hint_color"
+                        app:layout_constraintLeft_toLeftOf="@+id/ivMesomorph"
+                        app:layout_constraintRight_toRightOf="@+id/ivMesomorph"
+                        app:layout_constraintTop_toBottomOf="@+id/ivMesomorph"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvEndomorph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sp_endomorph"
+                        android:textColorHint="@color/hint_color"
+                        app:layout_constraintLeft_toLeftOf="@+id/ivEndomorph"
+                        app:layout_constraintRight_toRightOf="@+id/ivEndomorph"
+                        app:layout_constraintTop_toBottomOf="@+id/ivEndomorph"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvMeasurements"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center_vertical"
+                        android:maxLength="25"
+                        android:padding="@dimen/scale_5dp"
+                        android:singleLine="true"
+                        android:text="@string/sp_measurement"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivEctomorph"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etWeight"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/sp_weight"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMeasurements"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etHeight"
+                        style="@style/MyEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/sp_height"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/etWeight"
+                        app:layout_constraintRight_toLeftOf="@+id/etBodyFat"
+                        app:layout_constraintTop_toTopOf="@+id/etWeight"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etBodyFat"
+                        style="@style/MyEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="@string/sp_fat"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/etHeight"
+                        app:layout_constraintRight_toRightOf="@+id/tvMeasurements"
+                        app:layout_constraintTop_toTopOf="@+id/etWeight"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view7"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etWeight"
+                        app:layout_constraintRight_toRightOf="@+id/etWeight"
+                        app:layout_constraintTop_toBottomOf="@id/etWeight" />
+
+                    <View
+                        android:id="@+id/view8"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etHeight"
+                        app:layout_constraintRight_toRightOf="@+id/etHeight"
+                        app:layout_constraintTop_toBottomOf="@id/etHeight" />
+
+                    <View
+                        android:id="@+id/view9"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etBodyFat"
+                        app:layout_constraintRight_toRightOf="@+id/etBodyFat"
+                        app:layout_constraintTop_toBottomOf="@id/etBodyFat" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvBio"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@string/sp_bio"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintTop_toBottomOf="@+id/view7"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etBio"
+                        style="@style/MyEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/sp_bio_desc"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLength="200"
+                        android:maxLines="3"
+                        android:overScrollMode="always"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvBio"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBio"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view10"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvBio"
+                        app:layout_constraintRight_toRightOf="@+id/tvBio"
+                        app:layout_constraintTop_toBottomOf="@id/etBio" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTwoHundredCharacter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="200"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintRight_toLeftOf="@+id/tvCharacterRemaining"
+                        app:layout_constraintTop_toBottomOf="@+id/etBio"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvCharacterRemaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="@string/sp_char_remain"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintRight_toRightOf="@+id/etBio"
+                        app:layout_constraintTop_toBottomOf="@+id/etBio"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSocialLinks"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@string/sp_social_link"
+                        android:textSize="@dimen/_15ssp"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCharacterRemaining"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <ImageView
+                        android:id="@+id/ivFacebook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/fb"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSocialLinks" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etFacebook"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_facebook"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivFacebook"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivFacebook"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view11"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etFacebook"
+                        app:layout_constraintRight_toRightOf="@+id/etFacebook"
+                        app:layout_constraintTop_toBottomOf="@id/etFacebook" />
+
+                    <ImageView
+                        android:id="@+id/ivInstagram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:src="@drawable/instagram"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/ivFacebook" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etInstagram"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_instagram"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivInstagram"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivInstagram"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view12"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etInstagram"
+                        app:layout_constraintRight_toRightOf="@+id/etInstagram"
+                        app:layout_constraintTop_toBottomOf="@id/etInstagram" />
+
+                    <ImageView
+                        android:id="@+id/ivSnapchat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:src="@drawable/sapchat"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/ivInstagram" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etSnapchat"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_snapchat"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivSnapchat"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivSnapchat"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view13"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etSnapchat"
+                        app:layout_constraintRight_toRightOf="@+id/etSnapchat"
+                        app:layout_constraintTop_toBottomOf="@id/etSnapchat" />
+
+                    <ImageView
+                        android:id="@+id/ivTwitter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_7sdp"
+                        android:src="@drawable/twitter"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/ivSnapchat" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etTwitter"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_twitter"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivTwitter"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivTwitter"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view14"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etTwitter"
+                        app:layout_constraintRight_toRightOf="@+id/etTwitter"
+                        app:layout_constraintTop_toBottomOf="@id/etTwitter" />
+
+                    <ImageView
+                        android:id="@+id/ivYouTube"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/youtube"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/ivTwitter" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etYouTube"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_youtube"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivYouTube"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivYouTube"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view15"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etYouTube"
+                        app:layout_constraintRight_toRightOf="@+id/etYouTube"
+                        app:layout_constraintTop_toBottomOf="@id/etYouTube" />
+
+                    <ImageView
+                        android:id="@+id/ivLinkedin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_7sdp"
+                        android:src="@drawable/linkedin"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSocialLinks"
+                        app:layout_constraintTop_toBottomOf="@+id/ivYouTube" />
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etLinkedin"
+                        style="@style/MyEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@null"
+                        android:hint="@string/hint_linkedin"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/ivLinkedin"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivLinkedin"
+                        myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+                    <View
+                        android:id="@+id/view17"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/colorGray"
+                        app:layout_constraintLeft_toLeftOf="@+id/etLinkedin"
+                        app:layout_constraintRight_toRightOf="@+id/etLinkedin"
+                        app:layout_constraintTop_toBottomOf="@id/etLinkedin" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clMis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etLinkedin">
+
+                        <View
+                            android:id="@+id/view18"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:background="@color/colorGray"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvMiMeals"
+                            style="@style/MyTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="@string/sp_mimeals"
+                            android:textSize="@dimen/_15ssp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view18"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <ImageView
+                            android:id="@+id/ivMiMeals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/edit"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tvMiMeals" />
+
+                        <View
+                            android:id="@+id/view19"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@color/colorGray"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvMiMeals" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvMiTraining"
+                            style="@style/MyTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="@string/sp_mitraining"
+                            android:textSize="@dimen/_15ssp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view19"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <ImageView
+                            android:id="@+id/ivMiTraining"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/edit"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tvMiTraining" />
+
+                        <View
+                            android:id="@+id/view20"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@color/colorGray"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvMiTraining" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvMiSupps"
+                            style="@style/MyTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:text="@string/sp_misupps"
+                            android:textSize="@dimen/_15ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view20"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <ImageView
+                            android:id="@+id/ivMiSupps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/edit"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tvMiSupps" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/button_shadow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clInnerData"
+                    tools:ignore="TooManyViews">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvUpdateProfile"
+                        style="@style/MyTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/_10sdp"
+                        android:text="@string/sp_update_profile"
+                        android:textSize="@dimen/_16sdp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

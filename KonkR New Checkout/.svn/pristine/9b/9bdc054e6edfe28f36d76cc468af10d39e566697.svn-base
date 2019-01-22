@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp">
+
+    <!--<com.facebook.drawee.view.SimpleDraweeView-->
+    <!--android:id="@+id/ivContact"-->
+    <!--android:layout_width="@dimen/_50sdp"-->
+    <!--android:layout_height="@dimen/_50sdp"-->
+    <!--app:actualImageScaleType="focusCrop"-->
+    <!--android:background="@drawable/profile_place_holder"-->
+    <!--app:failureImage="@drawable/profile_place_holder"-->
+    <!--app:failureImageScaleType="centerInside"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:placeholderImage="@drawable/profile_place_holder"-->
+    <!--app:placeholderImageScaleType="fitCenter"-->
+    <!--app:retryImage="@drawable/profile_place_holder"-->
+    <!--app:retryImageScaleType="centerCrop"-->
+    <!--app:roundAsCircle="true" />-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivContact"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/profile_place_holder"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvContactName"
+        style="@style/MyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="AAAAA"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintLeft_toRightOf="@+id/ivContact"
+        app:layout_constraintTop_toTopOf="@+id/ivContact"
+        app:txt_custom_font="@string/font_mavenpro_bold" />
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvContactNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="1111111111"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintLeft_toRightOf="@+id/ivContact"
+        app:layout_constraintTop_toBottomOf="@id/tvContactName"
+        app:txt_custom_font="@string/font_mavenpro_medium" />
+
+    <ImageView
+        android:id="@+id/ivSelectedContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:background="@drawable/unselected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

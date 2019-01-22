@@ -1,0 +1,595 @@
+package com.konkr.Adapters;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.RelativeSizeSpan;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
+import com.konkr.Activities.CommentsActivity;
+import com.konkr.Activities.MainActivity;
+import com.konkr.Activities.MiSupplementDetailActivity;
+import com.konkr.Activities.MyWorkoutDetailsActivity;
+import com.konkr.Activities.ProfileActivity;
+import com.konkr.Interfaces.OnRecyclerViewItemClickListener;
+import com.konkr.Models.ExpressionOnFeed;
+import com.konkr.Models.HomeFeed;
+import com.konkr.R;
+import com.konkr.SharedPreferences.SessionManager;
+import com.konkr.Utils.CustomTypefaceSpan;
+import com.konkr.Utils.GlobalData;
+import com.konkr.Utils.LogM;
+import com.konkr.Utils.MyTextView;
+import com.konkr.Webservices.GetJsonWithAndroidNetworkingLib;
+import com.konkr.Webservices.OnUpdateListener;
+import com.konkr.Webservices.WebField;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class HomeFeedAdapter extends RecyclerView.Adapter<HomeFeedAdapter.ViewHolder> {
+    Activity context;
+    private ArrayList<HomeFeed.HomeFeedsBean> alHomeFeed;
+    private OnRecyclerViewItemClickListener itemClick;
+    private MyReciclerClickListener myReciclerClickListener;
+    HomeFeedMiTrainingAdapter adapter;
+
+    private final String strFontMavenBold = "Fonts/MavenPro-Bold.ttf";
+    private final String strFontMavenRegular = "Fonts/MavenPro-Regular.ttf";
+
+    private Typeface typeFaceBold, typeFaceRegular;
+
+    public HomeFeedAdapter(OnRecyclerViewItemClickListener itemClick, MyReciclerClickListener myReciclerClickListener, Activity context, ArrayList<HomeFeed.HomeFeedsBean> homeFeedArrayList) {
+        this.context = context;
+        this.alHomeFeed = homeFeedArrayList;
+        this.myReciclerClickListener = myReciclerClickListener;
+        this.itemClick = itemClick;
+    }
+
+    public interface MyReciclerClickListener {
+        void onLikeClick(View view, int pos);
+
+        void onCommentClick(View view, int pos);
+
+        void onItemClick(View view, int pos);
+
+        void onPostexpressionClick(View view, int pos, int count);
+    }
+
+    @NonNull
+    @Override
+    public HomeFeedAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_home_feed, parent, false);
+
+        typeFaceBold = Typeface.createFromAsset(context.getAssets(), strFontMavenBold);
+        typeFaceRegular = Typeface.createFromAsset(context.getAssets(), strFontMavenRegular);
+
+        return new HomeFeedAdapter.ViewHolder(itemView, itemClick);
+    }
+
+    private SpannableString setFontsForFeedTitle(int position, String strUserName, String nameDesc, String nameDescMiItem, String strMealType) {
+        SpannableString spanString = new SpannableString(nameDescMiItem);
+        try {
+            spanString.setSpan(new RelativeSizeSpan(1.0f), 0, strUserName.length() + 1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            spanString.setSpan(new CustomTypefaceSpan("", typeFaceBold), 0, strUserName.length() + 1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            spanString.setSpan(new RelativeSizeSpan(0.8f), strUserName.length() + 1, nameDesc.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            spanString.setSpan(new CustomTypefaceSpan("", typeFaceRegular), strUserName.length() + 1, nameDesc.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            spanString.setSpan(new RelativeSizeSpan(1.0f), nameDesc.length() + 1, nameDescMiItem.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            spanString.setSpan(new CustomTypefaceSpan("", typeFaceBold), nameDesc.length() + 1, nameDescMiItem.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+
+            spanString.setSpan(new myClickableSpan(1, position, GlobalData.PROFILE, alHomeFeed), 0, strUserName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spanString.setSpan(new myClickableSpan(2, position, strMealType, alHomeFeed), strUserName.length() + 1, spanString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return spanString;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HomeFeedAdapter.ViewHolder holder, final int position) {
+        HomeFeed.HomeFeedsBean homeFeed = alHomeFeed.get(position);
+
+        holder.tvLikeCount.setText(String.valueOf(homeFeed.getExpressionCount()));
+        holder.tvCommentCount.setText(String.valueOf(homeFeed.getCommentCount()));
+        holder.ivUserPhoto.setImageURI(Uri.parse(homeFeed.getProfilePic()));
+
+        holder.ivUserPhoto.setTag(position);
+        holder.tvLikeCount.setTag(position);
+        holder.ivLike.setTag(position);
+        holder.ivGoal.setTag(position);
+        holder.ivAdmiring.setTag(position);
+        holder.ivInspiring.setTag(position);
+
+        switch (homeFeed.getBadge()) {
+            case "1": // Normal User
+                holder.ivBadge.setVisibility(View.GONE);
+                break;
+            case "2": // Celebrity
+                holder.ivBadge.setVisibility(View.VISIBLE);
+                holder.ivBadge.setBackground(context.getResources().getDrawable(R.drawable.celebrity));
+                break;
+            case "3": // Influencer
+                holder.ivBadge.setVisibility(View.VISIBLE);
+                holder.ivBadge.setBackground(context.getResources().getDrawable(R.drawable.inflencer));
+                break;
+            case "4": // Sponsor
+                holder.ivBadge.setVisibility(View.VISIBLE);
+                holder.ivBadge.setBackground(context.getResources().getDrawable(R.drawable.sponsor));
+                break;
+        }
+
+        String fullName = homeFeed.getFirstName() + " " + homeFeed.getLastName();
+
+        if (homeFeed.getSupplements().getSuppId() != 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_supplement);
+            String nameDescMiItem = nameDesc + " " + homeFeed.getSupplements().getSuppName();
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.SUPPLEMENT));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+            if (homeFeed.getSupplements().getSuppPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getSupplements().getSuppPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getMealsSnacks().size() > 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_meal);
+            String nameDescMiItem = nameDesc + " " + GlobalData.SNACK;
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.SNACK));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+            if (homeFeed.getMealsSnacks().get(0).getMealPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getMealsSnacks().get(0).getMealPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getMealsBreakfast().size() > 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_meal);
+            String nameDescMiItem = nameDesc + " " + GlobalData.BREAKFAST;
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.BREAKFAST));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+            if (homeFeed.getMealsBreakfast().get(0).getMealPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getMealsBreakfast().get(0).getMealPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getMealsLunch().size() > 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_meal);
+            String nameDescMiItem = nameDesc + " " + GlobalData.LUNCH;
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.LUNCH));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+            if (homeFeed.getMealsLunch().get(0).getMealPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getMealsLunch().get(0).getMealPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getMealsDinner().size() > 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_meal);
+            String nameDescMiItem = nameDesc + " " + GlobalData.DINNER;
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.DINNER));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+            if (homeFeed.getMealsDinner().get(0).getMealPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getMealsDinner().get(0).getMealPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getOtherMealData().size() > 0) {
+            holder.ivComplementPhoto.setVisibility(View.VISIBLE);
+            holder.rvMiTraining.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_meal);
+            String nameDescMiItem = nameDesc + " " + homeFeed.getOtherMealData().get(0).get(0).getMealName();
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.DINNER));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+            if (homeFeed.getOtherMealData().get(0).get(0).getMealPhoto().length() > 0) {
+                holder.myLayout.setVisibility(View.VISIBLE);
+                holder.ivComplementPhoto.setImageURI(Uri.parse(homeFeed.getOtherMealData().get(0).get(0).getMealPhoto()));
+            } else {
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        } else if (homeFeed.getWorkouts().getWorkoutId() != 0) {
+            holder.ivComplementPhoto.setVisibility(View.GONE);
+            String nameDesc = fullName + " " + context.getResources().getString(R.string.added_training);
+            String nameDescMiItem = nameDesc + " " + homeFeed.getWorkouts().getExcerciseName();
+
+            holder.tvFirstNameLastName.setText(setFontsForFeedTitle(position, fullName, nameDesc, nameDescMiItem, GlobalData.WORKOUT));
+            holder.tvFirstNameLastName.setMovementMethod(LinkMovementMethod.getInstance());
+
+            if (homeFeed.getWorkouts().getWorkoutMedia().size() > 0) {
+                holder.rvMiTraining.setVisibility(View.VISIBLE);
+                holder.myLayout.setVisibility(View.VISIBLE);
+                adapter = new HomeFeedMiTrainingAdapter(position, itemClick, context, (ArrayList<HomeFeed.HomeFeedsBean.WorkoutsBean.WorkoutMediaBean>) homeFeed.getWorkouts().getWorkoutMedia());
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                holder.rvMiTraining.setLayoutManager(mLayoutManager);
+                holder.rvMiTraining.setAdapter(adapter);
+            } else {
+                holder.rvMiTraining.setVisibility(View.GONE);
+                holder.myLayout.setVisibility(View.GONE);
+            }
+        }
+
+        LogM.LogE(position + " && " + holder.tvFirstNameLastName.getText().toString());
+        int goal = homeFeed.getIs_goals();
+        int admiring = homeFeed.getIs_admiring();
+        int inspiring = homeFeed.getIs_inspiring();
+        LogM.LogE(goal + " && " + admiring + " && " + inspiring);
+
+        holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.like));
+        holder.rowCom.setVisibility(View.GONE);
+        if (goal == 1) {
+            holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.goal_green));
+        } else if (admiring == 1) {
+            holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.admiring_green));
+        } else if (inspiring == 1) {
+            holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.inspiration_green));
+        }
+
+        holder.tvLikeCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myReciclerClickListener.onPostexpressionClick(view, (int) view.getTag(), alHomeFeed.get((int) view.getTag()).getExpressionCount());
+            }
+        });
+
+        holder.ivUserPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get((int) view.getTag()).getUserId()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.myLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClick.onItemClickListener(view, position);
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                if (homeFeed.getSupplements().getSuppId() != 0) {
+//                    Intent intent = new Intent(context, MiSupplementDetailActivity.class);
+//                    intent.putExtra(GlobalData.FROM, GlobalData.HOME_FEED);
+//                    intent.putExtra(GlobalData.SUPP_INFO, homeFeed.getSupplements());
+//                    context.startActivity(intent);
+//                } else if (homeFeed.getWorkouts().getWorkoutId() != 0) {
+//                    Intent myWorkoutDetailsIntent = new Intent(context, MyWorkoutDetailsActivity.class);
+//                    myWorkoutDetailsIntent.putExtra("WorkoutDetails", homeFeed.getWorkouts());
+//                    myWorkoutDetailsIntent.putExtra("WorkoutDuration", homeFeed.getWorkouts().getWorkoutDuration());
+//                    myWorkoutDetailsIntent.putParcelableArrayListExtra("WorkoutMedia", homeFeed.getWorkouts().getWorkoutMedia());
+//                    context.startActivity(myWorkoutDetailsIntent);
+//                }
+            }
+        });
+
+        holder.ivLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                myReciclerClickListener.onLikeClick(view, position);
+                int intPos = (int) view.getTag();
+                if (alHomeFeed.get(intPos).getIs_goals() == 0 && alHomeFeed.get(intPos).getIs_admiring() == 0 && alHomeFeed.get(intPos).getIs_inspiring() == 0) {
+//                    if (clickOne) {
+//                        holder.rowCom.setVisibility(View.GONE);
+//                        clickOne = false;
+//                    } else {
+//                        holder.rowCom.setVisibility(View.VISIBLE);
+//                        clickOne = true;
+//                    }
+                    holder.rowCom.setVisibility(View.VISIBLE);
+                } else {
+//                    holder.rowCom.setVisibility(View.GONE);
+//                    holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.like));
+//                    clickOne = false;
+                    holder.rowCom.setVisibility(View.GONE);
+                    if (alHomeFeed.get(intPos).getIs_goals() == 1) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_GOAL, intPos, holder);
+//                        holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.goal_green));
+                    } else if (alHomeFeed.get(intPos).getIs_admiring() == 1) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_ADMIRING, intPos, holder);
+//                        holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.admiring_green));
+                    } else if (alHomeFeed.get(intPos).getIs_inspiring() == 1) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_INSPIRING, intPos, holder);
+//                        holder.ivLike.setBackground(context.getResources().getDrawable(R.drawable.inspiration_green));
+                    }
+                }
+            }
+        });
+
+        holder.ivComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                myReciclerClickListener.onCommentClick(view, position);
+                Intent intent = new Intent(context, CommentsActivity.class);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeed.getHomeFeedId());
+                intent.putExtra(GlobalData.INITIAL_COUNT, homeFeed.getCommentCount());
+                intent.putExtra(GlobalData.POSITION, position);
+
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivityForResult(intent, GlobalData.COMMENT_REQ);
+                // context.startActivity(intent);
+            }
+        });
+
+        holder.tvCommentCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                myReciclerClickListener.onCommentClick(view, position);
+                Intent intent = new Intent(context, CommentsActivity.class);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeed.getHomeFeedId());
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.ivGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int intPos = (int) view.getTag();
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_GOAL, intPos, holder);
+            }
+        });
+
+        holder.ivAdmiring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int intPos = (int) view.getTag();
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_ADMIRING, intPos, holder);
+            }
+        });
+
+        holder.ivInspiring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int intPos = (int) view.getTag();
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_INSPIRING, intPos, holder);
+            }
+        });
+    }
+
+    private void callGiveExpressionOnFeed(int expression, int FeedPosition, HomeFeedAdapter.ViewHolder holder) {
+        try {
+            JSONObject jsonRequest = new JSONObject();
+            jsonRequest.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+            jsonRequest.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+            jsonRequest.put(WebField.PARAM_HOMEFEEDID, alHomeFeed.get(FeedPosition).getHomeFeedId());
+            jsonRequest.put(WebField.GIVE_EXPRESSION_ON_FEED.PARAM_EXPRESSION, expression);
+
+            Log.e("Feed", "Req--" + jsonRequest);
+
+            new GetJsonWithAndroidNetworkingLib(context, jsonRequest, WebField.BASE_URL + WebField.GIVE_EXPRESSION_ON_FEED.MODE, 1, new OnUpdateListener() {
+                @Override
+                public void onUpdateComplete(JSONObject jsonResponse, boolean isSuccess) {
+                    if (isSuccess) {
+                        Log.e("Feed", "Response--" + jsonResponse);
+                        ExpressionOnFeed expressionOnFeed = new Gson().fromJson(String.valueOf(jsonResponse), ExpressionOnFeed.class);
+                        holder.rowCom.setVisibility(View.GONE);
+
+                        if (expressionOnFeed.getStatus() == 2) {
+                            if (expressionOnFeed.getIs_goals() == GlobalData.EXPRESSION_GOAL) {
+                                alHomeFeed.get(FeedPosition).setIs_goals(0);
+                            } else if (expressionOnFeed.getIs_inspiring() == GlobalData.EXPRESSION_INSPIRING) {
+                                alHomeFeed.get(FeedPosition).setIs_inspiring(0);
+                            } else if (expressionOnFeed.getIs_admiring() == GlobalData.EXPRESSION_ADMIRING) {
+                                alHomeFeed.get(FeedPosition).setIs_admiring(0);
+                            }
+                        } else {
+                            if (expressionOnFeed.getIs_goals() == GlobalData.EXPRESSION_GOAL) {
+                                alHomeFeed.get(FeedPosition).setIs_goals(1);
+                            } else if (expressionOnFeed.getIs_inspiring() == GlobalData.EXPRESSION_INSPIRING) {
+                                alHomeFeed.get(FeedPosition).setIs_inspiring(1);
+                            } else if (expressionOnFeed.getIs_admiring() == GlobalData.EXPRESSION_ADMIRING) {
+                                alHomeFeed.get(FeedPosition).setIs_admiring(1);
+                            }
+                        }
+                        alHomeFeed.get(FeedPosition).setExpressionCount(expressionOnFeed.getExpressionCount());
+                        notifyItemChanged(FeedPosition);
+                    }
+                }
+            }).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return alHomeFeed.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ConstraintLayout rowCom;
+        TextView tvFirstNameLastName;
+        MyTextView tvFeedTitle;
+        SimpleDraweeView ivComplementPhoto;
+        SimpleDraweeView ivUserPhoto;
+        SimpleDraweeView ivBadge;
+        MyTextView tvLikeCount;
+        MyTextView tvCommentCount;
+        SimpleDraweeView ivLike;
+        SimpleDraweeView ivComment;
+        MyTextView tvDesctription;
+        SimpleDraweeView ivGoal;
+        SimpleDraweeView ivAdmiring;
+        SimpleDraweeView ivInspiring;
+        RecyclerView rvMiTraining;
+        ConstraintLayout clMain;
+        OnRecyclerViewItemClickListener itemClick;
+        ConstraintLayout myLayout;
+
+
+        public ViewHolder(View itemView, OnRecyclerViewItemClickListener itemClick) {
+            super(itemView);
+            this.itemClick = itemClick;
+            ivUserPhoto = itemView.findViewById(R.id.ivUserPhoto);
+            ivLike = itemView.findViewById(R.id.ivLike);
+            ivComment = itemView.findViewById(R.id.ivComment);
+            ivComplementPhoto = itemView.findViewById(R.id.ivComplementPhoto);
+            tvFirstNameLastName = itemView.findViewById(R.id.tvFirstNameLastName);
+//            tvDesctription = itemView.findViewById(R.id.tvDesctription);
+//            tvFeedTitle = itemView.findViewById(R.id.tvFeedTitle);
+            rowCom = itemView.findViewById(R.id.rowCom);
+            ivBadge = itemView.findViewById(R.id.ivBadge);
+            tvLikeCount = itemView.findViewById(R.id.tvLikeCount);
+            tvCommentCount = itemView.findViewById(R.id.tvCommentCount);
+            ivGoal = itemView.findViewById(R.id.ivGoal);
+            ivAdmiring = itemView.findViewById(R.id.ivAdmiring);
+            ivInspiring = itemView.findViewById(R.id.ivInspiring);
+            rvMiTraining = itemView.findViewById(R.id.rvMiTraining);
+            clMain = itemView.findViewById(R.id.clMain);
+            myLayout = itemView.findViewById(R.id.myLayout);
+            clMain.setOnClickListener(this);
+            ivComplementPhoto.setOnClickListener(this);
+            rvMiTraining.setOnClickListener(this);
+            myLayout.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.ivComplementPhoto:
+                    itemClick.onItemClickListener(view, getAdapterPosition());
+                    break;
+
+                case R.id.rvMiTraining:
+                    itemClick.onItemClickListener(view, getAdapterPosition());
+                    break;
+
+                case R.id.myLayout:
+                    itemClick.onItemClickListener(view, getAdapterPosition());
+                    break;
+            }
+
+        }
+    }
+
+    public class myClickableSpan extends ClickableSpan {
+
+        int spanPosition;    // span position
+        int pos;          // adpater position
+        String clickedOn;
+        ArrayList<HomeFeed.HomeFeedsBean> alHomeFeed;
+
+        public myClickableSpan(int spanPosition, int pos, String ClickedOn, ArrayList<HomeFeed.HomeFeedsBean> alHomeFeed) {
+            this.spanPosition = spanPosition;
+            this.pos = pos;
+            this.clickedOn = ClickedOn;
+            this.alHomeFeed = alHomeFeed;
+        }
+
+        @Override
+        public void onClick(View widget) {
+            // Toast.makeText(context, "Position " + spanPosition + " clicked!" + clickedOn, Toast.LENGTH_LONG).show();
+            LogM.LogE("you have clicked ==" + clickedOn);
+
+            Intent intent = null;
+            switch (clickedOn) {
+
+                case GlobalData.BREAKFAST:
+                    intent = new Intent(context, ProfileActivity.class);
+//                    intent.putExtra(GlobalData.FROM, GlobalData.MEAL);
+//                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+//                    context.startActivity(intent);
+                    ((MainActivity) context).ClickonFeedName(pos);
+                    break;
+                case GlobalData.LUNCH:
+                    intent = new Intent(context, ProfileActivity.class);
+//                    intent.putExtra(GlobalData.FROM, GlobalData.MEAL);
+//                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+//                    context.startActivity(intent);
+                    ((MainActivity) context).ClickonFeedName(pos);
+                    break;
+                case GlobalData.SNACK:
+                    intent = new Intent(context, ProfileActivity.class);
+//                    intent.putExtra(GlobalData.FROM, GlobalData.MEAL);
+//                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+//                    context.startActivity(intent);
+                    ((MainActivity) context).ClickonFeedName(pos);
+                    break;
+                case GlobalData.DINNER:
+                    intent = new Intent(context, ProfileActivity.class);
+//                    intent.putExtra(GlobalData.FROM, GlobalData.MEAL);
+//                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+//                    context.startActivity(intent);
+                    ((MainActivity) context).ClickonFeedName(pos);
+                    break;
+                case GlobalData.SUPPLEMENT:
+                    intent = new Intent(context, MiSupplementDetailActivity.class);
+                    intent.putExtra(GlobalData.FROM, GlobalData.HOME_FEED);
+                    intent.putExtra(GlobalData.SUPP_OBJECT, alHomeFeed.get(pos));
+                    context.startActivity(intent);
+                    break;
+                case GlobalData.WORKOUT:
+                    intent = new Intent(context, MyWorkoutDetailsActivity.class);
+                    intent.putExtra(GlobalData.IS_FROM, GlobalData.HOME_FEED);
+                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+                    intent.putExtra("WorkoutDetails", alHomeFeed.get(pos).getWorkouts());
+                    intent.putExtra("WorkoutDuration", alHomeFeed.get(pos).getWorkouts().getWorkoutDuration());
+                    intent.putParcelableArrayListExtra("WorkoutMedia", (ArrayList<? extends Parcelable>) alHomeFeed.get(pos).getWorkouts().getWorkoutMedia());
+                    context.startActivity(intent);
+                    break;
+                case GlobalData.PROFILE:
+                    intent = new Intent(context, ProfileActivity.class);
+                    intent.putExtra(GlobalData.OTHER_USER_ID, Integer.parseInt(alHomeFeed.get(pos).getUserId()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    break;
+            }
+        }
+
+        public void updateDrawState(TextPaint ds) {// override updateDrawState
+            ds.setUnderlineText(false); // set to false to remove underline
+        }
+
+    }
+
+}
+

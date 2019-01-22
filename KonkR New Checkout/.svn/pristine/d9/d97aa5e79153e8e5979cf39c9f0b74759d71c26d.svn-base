@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.konkr.Activities.SetUpCardActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.konkr.Utils.Headerbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCard"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etNameOnCard"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                android:hint="Name on card "
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_13ssp"
+                app:edt_custom_font="@string/font_mavenpro_regular"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivCard" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etNameOnCard"
+                app:layout_constraintTop_toBottomOf="@id/etNameOnCard" />
+
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etCardNo"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/bullet"
+                android:inputType="phone"
+                android:maxLength="23"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_12ssp"
+                app:edt_custom_font="@string/font_mavenpro_regular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNameOnCard" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etCardNo"
+                app:layout_constraintTop_toBottomOf="@id/etCardNo" />
+
+            <!--<Spinner-->
+            <!--android:id="@+id/spinMonth"-->
+            <!--android:layout_width="@dimen/_118sdp"-->
+            <!--android:layout_height="@dimen/scale_35dp"-->
+            <!--android:layout_marginLeft="@dimen/scale_10dp"-->
+            <!--android:layout_marginRight="@dimen/_10sdp"-->
+            <!--android:layout_marginTop="@dimen/scale_10dp"-->
+            <!--android:background="@null"-->
+            <!--android:visibility="invisible"-->
+            <!--android:spinnerMode="dropdown"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toLeftOf="@+id/spinYear"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/etCardNo" />-->
+            <android.support.constraint.Guideline
+                android:id="@+id/glData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvMonth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/month"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/glData"
+                app:layout_constraintTop_toBottomOf="@id/etCardNo"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinMonth"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMonth"
+                app:layout_constraintLeft_toLeftOf="@+id/tvMonth"
+                app:layout_constraintRight_toRightOf="@+id/tvMonth"
+                app:layout_constraintTop_toTopOf="@+id/tvMonth" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/glData"
+                app:layout_constraintTop_toBottomOf="@id/spinMonth" />
+
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:text="@string/year"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintLeft_toRightOf="@+id/glData"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCardNo"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinYear"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvYear"
+                app:layout_constraintLeft_toLeftOf="@+id/tvYear"
+                app:layout_constraintRight_toRightOf="@+id/tvYear"
+                app:layout_constraintTop_toTopOf="@+id/tvYear" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toRightOf="@+id/glData"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinMonth" />
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etCvvCode"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/cvv_code"
+                android:inputType="numberPassword"
+                android:maxLength="3"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_12ssp"
+                app:edt_custom_font="@string/font_mavenpro_regular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinYear" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etCvvCode"
+                app:layout_constraintTop_toBottomOf="@id/etCvvCode" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                app:layout_constraintLeft_toLeftOf="@+id/etCvvCode"
+                app:layout_constraintTop_toBottomOf="@id/etCvvCode" />
+        </android.support.constraint.ConstraintLayout>
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/addCardBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/button_shadow"
+            android:gravity="center"
+            android:text="@string/add_card"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/payNowBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/button_shadow"
+            android:gravity="center"
+            android:text="@string/pay_now"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

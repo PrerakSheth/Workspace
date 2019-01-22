@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent">--><!--</LinearLayout>-->
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/clOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivPartner"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/partner_shadow_bg"
+            app:actualImageScaleType="centerInside"
+            app:failureImageScaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:placeholderImageScaleType="fitCenter"
+            app:roundedCornerRadius="@dimen/_5sdp" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

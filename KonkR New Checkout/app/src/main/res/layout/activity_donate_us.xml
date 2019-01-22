@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.konkr.Activities.DonateUsActivity">
+
+    <com.konkr.Utils.Headerbar
+        android:id="@+id/headerBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scale_50dp"
+        android:background="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.konkr.Utils.Headerbar>
+
+    <WebView
+        android:id="@+id/webViewDonateUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/scale_60dp"
+        android:text="@string/lorem_ipsum"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/txt_15"
+        android:textStyle="normal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnDonateUs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scale_40dp"
+        android:layout_marginLeft="@dimen/scale_10dp"
+        android:layout_marginRight="@dimen/scale_10dp"
+        android:layout_marginTop="@dimen/scale_20dp"
+        android:background="@android:color/black"
+        android:text="@string/donate"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/txt_12"
+        app:layout_constraintTop_toBottomOf="@+id/webViewDonateUs" />
+
+
+</android.support.constraint.ConstraintLayout>

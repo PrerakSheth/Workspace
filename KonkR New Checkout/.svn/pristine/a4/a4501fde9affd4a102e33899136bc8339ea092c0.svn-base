@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+//// Map for the version code that gives each ABI a value.
+//ext.abiCodes = ['armeabi-v7a':1, mips:2, x86:3]
+
+// For per-density APKs, create a similar map like this:
+ext.densityCodes = ['hdpi': 1, 'xhdpi': 2, 'xxhdpi': 3, 'xxxhdpi': 4]
+
+import com.android.build.OutputFile
+
+// For each APK output variant, override versionCode with a combination of
+// ext.abiCodes * 1000 + variant.versionCode. In this example, variant.versionCode
+// is equal to defaultConfig.versionCode. If you configure product flavors that
+// define their own versionCode, variant.versionCode uses that value instead.
+android.applicationVariants.all { variant ->
+
+// Assigns a different version code for each output APK
+// other than the universal APK.
+    variant.outputs.each { output ->
+
+//// Stores the value of ext.abiCodes that is associated with the ABI for this variant.
+//        def baseAbiVersionCode =
+//// Determines the ABI for this variant and returns the mapped value.
+//                project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
+
+        def baseDensityVersionCode =
+// Determines the ABI for this variant and returns the mapped value.
+                project.ext.densityCodes.get(output.getFilter(OutputFile.DENSITY))
+
+// Because abiCodes.get() returns null for ABIs that are not mapped by ext.abiCodes,
+// the following code does not override the version code for universal APKs.
+// However, because we want universal APKs to have the lowest version code,
+// this outcome is desirable.
+        if (baseDensityVersionCode != null) {
+
+// Assigns the new version code to versionCodeOverride, which changes the version code
+// for only the output APK, not for the variant itself. Skipping this step simply
+// causes Gradle to use the value of variant.versionCode for the APK.
+            output.versionCodeOverride =
+                    baseDensityVersionCode * 1000 + variant.versionCode
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.konkr"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dataBinding {
+            enabled = true
+        }
+        multiDexEnabled true
+    }
+    splits {
+        density {
+            enable true
+            include "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.1' //To call APIs
+    implementation 'com.google.code.gson:gson:2.4'
+    implementation 'com.facebook.fresco:fresco:1.5.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+    //An android SDK that provides a new size unit - sdp (scalable dp)
+    implementation 'com.intuit.ssp:ssp-android:1.0.5'
+    //An android SDK that provides a new size unit - ssp (scalable sp)
+    implementation 'com.facebook.android:facebook-share:[4,5)'
+    implementation 'com.stripe:stripe-android:6.1.2'
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
+    //scroll Alphabet
+    implementation 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
+    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.92'
+    implementation 'me.dm7.barcodescanner:zxing:1.8.4'//scanner
+    implementation project(':videocompressor')
+    implementation project(':k4l-video-trimmer')
+    implementation project(':Lib_TagEditText')
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+    compile 'com.github.iwgang:countdownview:2.1.6'
+
+    // This library handles authentication and authorization
+    implementation 'com.spotify.android:auth:1.0.0-alpha'
+
+    // This library handles music playback
+    implementation 'com.spotify.sdk:spotify-player-24-noconnect-2.20b@aar'
+}
+apply plugin: 'com.google.gms.google-services'

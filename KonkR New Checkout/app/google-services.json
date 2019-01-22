@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "148984969958",
+    "firebase_url": "https://konkr-40d3b.firebaseio.com",
+    "project_id": "konkr-40d3b",
+    "storage_bucket": "konkr-40d3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148984969958:android:b8fb1ec6b1c64f4c",
+        "android_client_info": {
+          "package_name": "com.konkr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148984969958-g17ss0913v9gh0ksik9ab05emp2n6lm4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.konkr",
+            "certificate_hash": "e6deffc35a51fc5541b971dc1c86cf74e0f677f4"
+          }
+        },
+        {
+          "client_id": "148984969958-ptba39rhjgdvnpu902d0eqg4t92np8s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRlchB1SQ3D8PE7y-ahLceeDQd7USP6Kg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148984969958-ptba39rhjgdvnpu902d0eqg4t92np8s9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_feed"
+            android:title="@string/menu_home_feed" />
+        <item
+            android:id="@+id/nav_mi_training"
+            android:title="@string/menu_mi_training" />
+        <item
+            android:id="@+id/nav_mi_meal"
+            android:title="@string/menu_mi_meal" />
+        <item
+            android:id="@+id/nav_mi_supplemnet"
+            android:title="@string/menu_mi_supplement" />
+        <item
+            android:id="@+id/nav_seach_user"
+            android:title="@string/menu_search_user" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/menu_settings" />
+    </group>
+
+</menu>

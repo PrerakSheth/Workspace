@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/select_country"
+            android:textAlignment="center"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvCountry"
+            style="@style/MyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/down_arrow"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/country"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintBottom_toTopOf="@+id/etEmailId"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinCountry"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@null"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCountry"
+            app:layout_constraintLeft_toLeftOf="@+id/tvCountry"
+            app:layout_constraintRight_toRightOf="@+id/tvCountry"
+            app:layout_constraintTop_toTopOf="@+id/tvCountry" />
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clCancelOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCountry">
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/cancel"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/gl"
+                app:layout_constraintTop_toTopOf="parent"
+                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/gl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvOk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/ok"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/gl"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

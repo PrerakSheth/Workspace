@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@android:color/white">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/user_profile"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/clOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivBadgePhoto"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:background="@drawable/sponsor"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginLeft="@dimen/_18sdp"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/clOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clOne"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        app:layout_constraintLeft_toRightOf="@+id/ivUserPhoto"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvUserName"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="AAAAA"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintLeft_toLeftOf="@+id/clOne"
+            app:layout_constraintTop_toTopOf="@+id/clOne"
+            app:txt_custom_font="@string/font_mavenpro_bold" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

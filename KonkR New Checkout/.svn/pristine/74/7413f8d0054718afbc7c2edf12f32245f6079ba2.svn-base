@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivAdCardSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:background="@drawable/search_ad_placeholder"
+        android:visibility="gone"
+        fresco:failureImage="@drawable/search_ad_placeholder"
+        fresco:placeholderImage="@drawable/search_ad_placeholder"
+        fresco:placeholderImageScaleType="centerCrop"
+        fresco:retryImage="@drawable/search_ad_placeholder" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivAdCardPartner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/partner_ad_placeholder"
+        android:visibility="gone"
+        fresco:failureImage="@drawable/partner_ad_placeholder"
+        fresco:placeholderImage="@drawable/partner_ad_placeholder"
+        fresco:placeholderImageScaleType="centerCrop"
+        fresco:retryImage="@drawable/partner_ad_placeholder" />
+
+
+</android.support.constraint.ConstraintLayout>

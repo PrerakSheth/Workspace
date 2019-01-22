@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <com.konkr.Utils.MyTextView
+            style="@style/MyTextView"
+            android:id="@+id/tvMealName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="left"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:textColor="@color/colorGray"
+            android:singleLine="true"
+            android:text="Apple"
+            android:textSize="@dimen/_12sdp"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        <com.konkr.Utils.MyTextView
+            style="@style/MyTextView"
+            android:id="@+id/tvQuant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center_horizontal"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:text="qty"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12sdp"
+            mytextview:txt_custom_font="@string/font_poppins_bold" />
+
+
+        <com.konkr.Utils.MyTextView
+            style="@style/MyTextView"
+            android:id="@+id/tvUnit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textColor="@color/colorGray"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:text="Unit"
+            android:textSize="@dimen/_12sdp"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scale_0.5dp"
+        android:background="@color/view_color" />
+
+
+</LinearLayout>

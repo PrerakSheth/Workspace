@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_rounded">
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvMsg"
+        style="@style/MyTextView"
+        android:layout_width="0dp"
+        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Which meal(s) you want to remove?"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clBreakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMsg">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/breakfast"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Breakfast"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clBreakfast"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <CheckBox
+            android:id="@+id/ivCheckBreakfast"
+            style="@style/MyCheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_25sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/breakfast"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/breakfast" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_0.5dp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@color/green"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breakfast" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clBreakfast">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/lunch"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Lunch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <CheckBox
+            android:id="@+id/ivCheckLunch"
+            style="@style/MyCheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_25sdp"
+            android:src="@drawable/checkbox"
+            app:layout_constraintBottom_toBottomOf="@+id/lunch"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lunch" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_0.5dp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@color/green"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lunch" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clSnacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clLunch">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/snack"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Snack"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+        <CheckBox
+            android:id="@+id/ivCheckSnack"
+            style="@style/MyCheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_25sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/snack"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/snack" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_0.5dp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@color/green"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/snack" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clDinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clSnacks">
+
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/dinner"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Dinner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <CheckBox
+            android:id="@+id/ivCheckDinner"
+            style="@style/MyCheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_25sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/dinner"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dinner" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_0.5dp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@color/green"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dinner" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/btnCancel"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/following_bg_one"
+        android:gravity="center"
+        android:text="Cancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btnDelete"
+        app:layout_constraintTop_toBottomOf="@+id/clDinner"
+        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/following_bg_one"
+        android:gravity="center"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
+        app:layout_constraintLeft_toRightOf="@+id/btnCancel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCancel"
+        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnCancel"
+        app:layout_constraintRight_toRightOf="@+id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@+id/btnCancel" />
+
+</android.support.constraint.ConstraintLayout>
+

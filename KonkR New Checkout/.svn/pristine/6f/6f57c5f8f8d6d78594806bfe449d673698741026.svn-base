@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v21\\notification_template_custom_big.xml"
+    }
+]

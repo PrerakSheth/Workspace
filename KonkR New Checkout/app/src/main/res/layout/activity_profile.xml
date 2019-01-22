@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context="com.konkr.Activities.ProfileActivity">
+
+        <ScrollView
+            android:id="@+id/scrollViewMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setup_bg"
+                    android:paddingBottom="@dimen/scale_10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/header"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp">
+
+                        <ImageButton
+                            android:id="@+id/ibBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:adjustViewBounds="true"
+                            android:background="@null"
+                            android:padding="@dimen/scale_10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/back"
+                            android:visibility="visible" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="@string/title_profile"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="gone"
+                            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                        <!--<com.konkr.Utils.MyTextView-->
+                        <!--android:id="@+id/tvFollow"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:adjustViewBounds="true"-->
+                        <!--android:background="@null"-->
+                        <!--android:gravity="center"-->
+
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="14sp"-->
+                        <!--android:visibility="visible"-->
+                        <!--mytextview:txt_custom_font="@string/font_mavenpro_medium" />-->
+                    </RelativeLayout>
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvFollow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSubscribe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/ivUserProfile"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginTop="@dimen/_40sdp"
+                        android:background="@drawable/user_profile"
+                        app:actualImageScaleType="focusCrop"
+                        app:fadeDuration="300"
+                        app:failureImage="@drawable/user_profile"
+                        app:failureImageScaleType="centerInside"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:placeholderImage="@drawable/user_profile"
+                        app:placeholderImageScaleType="fitCenter"
+                        app:retryImage="@drawable/user_profile"
+                        app:retryImageScaleType="centerCrop"
+                        app:roundAsCircle="true" />
+
+                    <ImageButton
+                        android:id="@+id/ibBadge"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+                        app:layout_constraintRight_toRightOf="@+id/ivUserProfile" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="Kp Kp"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/tvFollowers"
+                        app:layout_constraintRight_toLeftOf="@+id/tvSubscribers"
+                        app:layout_constraintTop_toBottomOf="@+id/ivUserProfile"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvFollowers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/scale_15dp"
+                        android:text="@string/followers"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvUserName"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvFollowersCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_20ssp"
+                        app:layout_constraintBottom_toTopOf="@+id/tvFollowers"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvFollowers"
+                        app:layout_constraintRight_toRightOf="@+id/tvFollowers"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSubscribers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/scale_15dp"
+                        android:text="Subscribers"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvUserName"
+                        app:layout_constraintRight_toRightOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSubscribersCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_20ssp"
+                        app:layout_constraintBottom_toTopOf="@+id/tvSubscribers"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvSubscribers"
+                        app:layout_constraintRight_toRightOf="@+id/tvSubscribers"
+                        mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:background="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTabProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/profile_profile"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/tvTabMeals"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTabMeals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/profile_meals"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/tvTabProfile"
+                        app:layout_constraintRight_toLeftOf="@+id/ibMedia"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <ImageButton
+                        android:id="@+id/ibMedia"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/camera"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTabTraining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/profile_training"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/ibMedia"
+                        app:layout_constraintRight_toLeftOf="@+id/tvTabSupps"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTabSupps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/profile_supps"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/tvTabTraining"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_7sdp"
+                    android:background="@drawable/shadow_theme_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clTab" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clAddIntroductoryVideo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_90dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/add_iv_shadow"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvAddIntroductoryVideo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableRight="@drawable/left_arrow"
+                        android:gravity="center_vertical"
+                        android:text="@string/sp_add_introductory_video"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16ssp"
+                        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clVideoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/ivIntroductoryVideo"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/placeholder"
+                            app:actualImageScaleType="focusCrop"
+                            app:fadeDuration="200"
+                            app:failureImageScaleType="centerInside"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholderImageScaleType="fitCenter"
+                            app:retryImageScaleType="centerCrop"
+                            app:roundAsCircle="false" />
+
+                        <ImageButton
+                            android:id="@+id/ibPlay"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:src="@drawable/play"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintLeft_toLeftOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintRight_toRightOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintTop_toTopOf="@+id/ivIntroductoryVideo" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvAboutMe"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="@string/sp_add_introductory_video_about_me"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/ivIntroductoryVideo"
+                            app:layout_constraintRight_toLeftOf="@+id/ibEdit"
+                            app:layout_constraintTop_toTopOf="parent"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <ImageButton
+                            android:id="@+id/ibEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:background="@null"
+                            android:padding="@dimen/_10sdp"
+                            android:src="@drawable/edit_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setting_shadow"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/clAddIntroductoryVideo">
+
+
+                    <!-- <ImageView
+
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:scaleType="fitXY"
+                         android:src="@drawable/setting_shadow"
+                         app:layout_constraintLeft_toLeftOf="parent"
+                         app:layout_constraintRight_toRightOf="parent" />-->
+
+                    <android.support.v4.widget.NestedScrollView
+                        android:id="@+id/svProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none"
+                        android:visibility="gone">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/clProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_10sdp">
+
+                            <!--<LinearLayout-->
+                            <!--android:id="@+id/llNickName"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal"-->
+                            <!--android:paddingBottom="@dimen/_10sdp"-->
+                            <!--android:paddingTop="@dimen/_10sdp"-->
+                            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                            <!--app:layout_constraintRight_toRightOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="parent">-->
+
+                            <!--<com.konkr.Utils.MyTextView-->
+                            <!--android:id="@+id/tvNickName"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="2"-->
+                            <!--android:ellipsize="end"-->
+                            <!--android:singleLine="true"-->
+                            <!--android:text="@string/profile_nickname"-->
+                            <!--android:textColor="@color/hint_text_color"-->
+                            <!--android:textSize="@dimen/_12ssp"-->
+                            <!--app:layout_constraintHorizontal_weight="2"-->
+                            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="parent"-->
+                            <!--mytextview:txt_custom_font="@string/font_mavenpro_regular" />-->
+
+                            <!--<com.konkr.Utils.MyTextView-->
+                            <!--android:id="@+id/tvNickNameValue"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:ellipsize="end"-->
+                            <!--android:singleLine="true"-->
+                            <!--android:text="Jhony"-->
+                            <!--android:textColor="@color/text_color"-->
+                            <!--android:textSize="@dimen/_11ssp"-->
+                            <!--app:layout_constraintHorizontal_weight="1"-->
+                            <!--app:layout_constraintRight_toRightOf="parent"-->
+                            <!--app:layout_constraintTop_toTopOf="parent"-->
+                            <!--mytextview:txt_custom_font="@string/font_mavenpro_bold" />-->
+                            <!--</LinearLayout>-->
+
+                            <!--<View-->
+                            <!--android:id="@+id/viewNickName"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="@dimen/scale_0.5dp"-->
+                            <!--android:background="@color/view_color"-->
+                            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                            <!--app:layout_constraintRight_toRightOf="parent"-->
+                            <!--app:layout_constraintTop_toBottomOf="@+id/llNickName" />-->
+
+                            <LinearLayout
+                                android:id="@+id/llAge"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvAge"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/profile_age"
+                                    android:textColor="@color/hint_text_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    app:layout_constraintHorizontal_weight="2"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvAgeValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="27"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_11ssp"
+                                    app:layout_constraintHorizontal_weight="1"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewAge"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/llAge" />
+
+                            <LinearLayout
+                                android:id="@+id/llGender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/viewAge">
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvGender"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/profile_gender"
+                                    android:textColor="@color/hint_text_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    app:layout_constraintHorizontal_weight="2"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvGenderValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="Male"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_11ssp"
+                                    app:layout_constraintHorizontal_weight="1"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewGender"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/llGender" />
+
+                            <LinearLayout
+                                android:id="@+id/llCurrentTrainingGoals"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/_10sdp"
+                                android:paddingBottom="@dimen/_10sdp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/viewGender">
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvCurrentTrainingGoals"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/profile_current_training_goals"
+                                    android:textColor="@color/hint_text_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    app:layout_constraintHorizontal_weight="2"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvCurrentTrainingGoalsValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_11ssp"
+                                    app:layout_constraintHorizontal_weight="1"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewCurrentTrainingGoals"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/llCurrentTrainingGoals" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvBodyType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/body_type"
+                                android:textSize="@dimen/_13ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/viewCurrentTrainingGoals"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <ImageView
+                                android:id="@+id/ivEctomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ectomorph"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/ivMesomorph"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBodyType" />
+
+                            <ImageView
+                                android:id="@+id/ivMesomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/mesomorph"
+                                app:layout_constraintLeft_toRightOf="@+id/ivEctomorph"
+                                app:layout_constraintRight_toLeftOf="@+id/ivEndomorph"
+                                app:layout_constraintTop_toTopOf="@+id/ivEctomorph" />
+
+                            <ImageView
+                                android:id="@+id/ivEndomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/endomorph"
+                                app:layout_constraintLeft_toRightOf="@+id/ivMesomorph"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/ivEctomorph" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvEctomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sp_ectomorph"
+                                android:textColor="@color/hint_text_color"
+                                android:textSize="@dimen/_10ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/tvMesomorph"
+                                app:layout_constraintTop_toBottomOf="@+id/ivEctomorph"
+                                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvMesomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sp_mesomorph"
+                                android:textColor="@color/hint_text_color"
+                                android:textSize="@dimen/_10ssp"
+                                app:layout_constraintLeft_toRightOf="@+id/tvEctomorph"
+                                app:layout_constraintRight_toLeftOf="@+id/tvEndomorph"
+                                app:layout_constraintTop_toBottomOf="@+id/ivMesomorph"
+                                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvEndomorph"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sp_endomorph"
+                                android:textColor="@color/hint_text_color"
+                                android:textSize="@dimen/_10ssp"
+                                app:layout_constraintLeft_toRightOf="@+id/tvMesomorph"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/ivEndomorph"
+                                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvMeasurement"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/profile_measurement"
+                                android:textSize="@dimen/_13ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvEctomorph"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvWeight"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/profile_weight_hint"
+                                android:padding="@dimen/_5sdp"
+                                android:singleLine="true"
+                                android:textColor="@color/hint_text_color"
+                                android:textColorHint="@color/hint_text_color"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/tvHeight"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMeasurement"
+                                mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvHeight"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/profile_height_hint"
+                                android:padding="@dimen/_5sdp"
+                                android:singleLine="true"
+                                android:textColor="@color/hint_text_color"
+                                android:textColorHint="@color/hint_text_color"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintLeft_toRightOf="@+id/tvWeight"
+                                app:layout_constraintRight_toLeftOf="@+id/tvFat"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMeasurement"
+                                mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvFat"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/profile_fat_hint"
+                                android:padding="@dimen/_5sdp"
+                                android:singleLine="true"
+                                android:textColor="@color/hint_text_color"
+                                android:textColorHint="@color/hint_text_color"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintLeft_toRightOf="@+id/tvHeight"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMeasurement"
+                                mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                            <View
+                                android:id="@+id/viewWeight"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/viewHeight"
+                                app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+                            <View
+                                android:id="@+id/viewHeight"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toRightOf="@+id/viewWeight"
+                                app:layout_constraintRight_toLeftOf="@+id/viewFat"
+                                app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+                            <View
+                                android:id="@+id/viewFat"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toRightOf="@+id/viewHeight"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvBio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/profile_bio"
+                                android:textSize="@dimen/_13ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/viewWeight"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvBioDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="6"
+                                android:padding="@dimen/_5sdp"
+                                android:textColor="@color/hint_text_color"
+                                android:textColorHint="@color/hint_text_color"
+                                android:textSize="@dimen/_12sdp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBio"
+                                mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                            <View
+                                android:id="@+id/viewBio"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/scale_0.5dp"
+                                android:background="@color/view_color"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBioDesc" />
+
+                            <LinearLayout
+                                android:id="@+id/llSocialLinks"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_15sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="6"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/viewBio">
+
+                                <ImageButton
+                                    android:id="@+id/ib1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/fb"
+                                    android:visibility="gone" />
+
+                                <ImageButton
+                                    android:id="@+id/ib2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/instagram"
+                                    android:visibility="gone" />
+
+                                <ImageButton
+                                    android:id="@+id/ib3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/sapchat"
+                                    android:visibility="gone" />
+
+                                <ImageButton
+                                    android:id="@+id/ib4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/twitter"
+                                    android:visibility="gone" />
+
+                                <ImageButton
+                                    android:id="@+id/ib5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/youtube"
+                                    android:visibility="gone" />
+
+                                <ImageButton
+                                    android:id="@+id/ib6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/linkedin"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+                        </android.support.constraint.ConstraintLayout>
+                    </android.support.v4.widget.NestedScrollView>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clMeals"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvAddMealDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/profile_add_meal_details"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_16ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvNumberOfMeals"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/tvNumberOfMeals"
+                            app:layout_constraintTop_toTopOf="@+id/tvNumberOfMealsCount"
+                            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvNumberOfMealsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_20ssp"
+                            app:layout_constraintLeft_toLeftOf="@+id/tvNumberOfMeals"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvNumberOfMeals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/profile_number_of_meals"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10ssp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvNumberOfMealsCount"
+                            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                        <View
+                            android:id="@+id/viewAddMeal"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/scale_0.5dp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@color/view_color"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvNumberOfMeals" />
+
+
+                        <!--add recyclerview here -->
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvMeals"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintBottom_toTopOf="@+id/tvViewAllMeal"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewAddMeal">
+
+                        </android.support.v7.widget.RecyclerView>
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvViewAllMeal"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:text="@string/profile_view_all"
+                            android:textColor="@color/menu_text_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rvMeals"
+                            app:txt_custom_font="@string/font_poppins_bold" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvMiMealEmpty"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/no_meal_available"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewAddMeal"
+                            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clImages"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvImages"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="Mi Album"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:txt_custom_font="@string/font_mavenpro_bold" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvImages"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvImages" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvImageEmpty"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_40sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/no_image_available"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clTraining"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <android.support.design.widget.AppBarLayout
+                            android:id="@+id/appBar"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/mi_training_shadow"
+                            app:elevation="0dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <android.support.design.widget.TabLayout
+                                android:id="@+id/tabs"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:elevation="0dp"
+                                app:tabGravity="fill"
+                                app:tabIndicatorColor="@color/tab_indicator_color"
+                                app:tabIndicatorHeight="@dimen/_4sdp"
+                                app:tabMode="fixed"
+                                app:tabSelectedTextColor="@color/tab_text_color"
+                                app:tabTextAppearance="@style/tab_text"
+                                app:tabTextColor="@color/tab_text_color" />
+                        </android.support.design.widget.AppBarLayout>
+
+                        <View
+                            android:id="@+id/viewTraining"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_7sdp"
+                            android:background="@drawable/shadow_theme_color"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/appBar" />
+<!--i change height wrap to match-->
+                        <com.konkr.Utils.CustomViewPager
+                            android:id="@+id/viewPager"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/viewTraining" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvViewAllTraining"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:text="@string/profile_view_all"
+                            android:textColor="@color/menu_text_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:txt_custom_font="@string/font_poppins_bold" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clSupps"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvMiSuppliment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:overScrollMode="never"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toTopOf="@+id/tvViewAll"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvMiSupplementEmpty"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/no_supp_available"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+                        <com.konkr.Utils.MyTextView
+                            android:id="@+id/tvViewAll"
+                            style="@style/MyTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:text="@string/profile_view_all"
+                            android:textColor="@color/menu_text_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:txt_custom_font="@string/font_poppins_bold" />
+                    </android.support.constraint.ConstraintLayout>
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>

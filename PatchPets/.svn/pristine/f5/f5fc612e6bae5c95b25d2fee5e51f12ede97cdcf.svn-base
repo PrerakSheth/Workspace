@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dark">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_23"
+            android:layout_marginRight="@dimen/margin_30"
+            android:layout_marginBottom="@dimen/margin_50"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.patchpets.utils.MyEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:background="@drawable/bg_blank"
+                android:drawableLeft="@drawable/signin_user"
+                android:drawablePadding="@dimen/padding_20"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:paddingTop="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_10"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_hint_color"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/textSize_16"
+                app:font="@string/font_poppins_medium" />
+
+            <View
+                android:id="@+id/view_bottom_line_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scale_1"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:background="@color/view_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+            <com.patchpets.utils.MyEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:layout_marginTop="@dimen/margin_10"
+                android:background="@drawable/bg_blank"
+                android:drawableLeft="@drawable/lock"
+                android:drawablePadding="@dimen/padding_20"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLength="50"
+                android:paddingTop="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_10"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_hint_color"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="@dimen/textSize_16"
+                app:font="@string/font_poppins_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_bottom_line_email" />
+
+            <View
+                android:id="@+id/view_bottom_line_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scale_1"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:background="@color/view_line"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+            <com.patchpets.utils.MyCheckBox
+                android:id="@+id/cbRememberMe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:paddingTop="@dimen/padding_5"
+                android:paddingBottom="@dimen/padding_5"
+                android:text="@string/remember_me"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/textSize_12"
+                app:font="@string/font_poppins_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvForgotPassword"
+                app:layout_constraintTop_toBottomOf="@+id/view_bottom_line_password" />
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end|center_vertical"
+                android:maxLines="1"
+                android:paddingTop="@dimen/padding_5"
+                android:paddingBottom="@dimen/padding_5"
+                android:text="@string/forgot_password"
+                android:textColor="@color/hyper_link_forgot_password"
+                android:textSize="@dimen/textSize_12"
+                app:font="@string/font_poppins_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/cbRememberMe"
+                app:layout_constraintLeft_toRightOf="@+id/cbRememberMe"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cbRememberMe" />
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:layout_marginTop="@dimen/margin_20"
+                android:background="@drawable/bg_button_app_color"
+                android:gravity="center"
+                android:padding="@dimen/padding_12"
+                android:text="@string/sign_in"
+                android:textAllCaps="true"
+                android:textColor="@color/text_color_dark"
+                android:textSize="@dimen/textSize_18"
+                android:textStyle="bold"
+                app:font="@string/font_poppins_bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbRememberMe" />
+
+            <LinearLayout
+                android:id="@+id/llFacebookSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_7"
+                android:layout_marginTop="@dimen/margin_5"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSignIn">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvFacebookSignIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/use_facebook_for_sign_in"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/textSize_12"
+                    app:font="@string/font_poppins_medium" />
+
+                <ImageButton
+                    android:id="@+id/ibFacebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingLeft="@dimen/padding_5"
+                    android:paddingTop="@dimen/padding_5"
+                    android:paddingRight="@dimen/padding_5"
+                    android:paddingBottom="@dimen/padding_4"
+                    android:src="@drawable/facebook" />
+            </LinearLayout>
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvSignUpHyperLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/padding_5"
+                android:text="@string/dont_have_an_account"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/textSize_15"
+                app:font="@string/font_poppins_regular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llFacebookSignIn" />
+        </android.support.constraint.ConstraintLayout>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebookLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

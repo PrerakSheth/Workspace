@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/setting_shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp">
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSetupCard"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/set_up_card"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSetupCard"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvSetupCard" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSetupCard" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvVerificationBadge"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/verification_badge"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view1"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvVerificationBadge"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvVerificationBadge" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvVerificationBadge" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvPremiumMembership"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/premium_membership"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view2"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvPremiumMembership"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPremiumMembership" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPremiumMembership" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvPartners"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/partners"
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view3"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        android:visibility="gone"
+                         app:layout_constraintBottom_toBottomOf="@+id/tvPartners"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvPartners" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPartners" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvNotifications"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/notifications"
+                        android:visibility="gone"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view4"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvNotifications"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvNotifications" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNotifications" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvHowTheAppWorks"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/how_the_app_works"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view5"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvHowTheAppWorks"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvHowTheAppWorks" />
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHowTheAppWorks" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvChangePassword"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/change_password"
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view6"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:id="@+id/ivChangePassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvChangePassword"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvChangePassword" />
+
+                    <View
+                        android:id="@+id/view7"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/tvChangePassword" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvShareUsYourExperince"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/share_your_experience"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view7"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvShareUsYourExperince"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvShareUsYourExperince" />
+
+                    <View
+                        android:id="@+id/view8"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvShareUsYourExperince" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSocialSharing"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/social_sharing"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view8"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSocialSharing"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvSocialSharing" />
+
+                    <View
+                        android:id="@+id/view9"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSocialSharing" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvDonations"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/donations"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view9"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvDonations"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvDonations" />
+
+                    <View
+                        android:id="@+id/view10"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDonations" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvTearmsAndCondition"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/setting_terms_and_condition"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view10"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTearmsAndCondition"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvTearmsAndCondition" />
+
+                    <View
+                        android:id="@+id/view11"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTearmsAndCondition" />
+
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvSwitchAccount"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="Switch Spotify Account"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view11"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:id="@+id/ivSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSwitchAccount"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvSwitchAccount" />
+
+                    <View
+                        android:id="@+id/view12"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSwitchAccount" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvLogout"
+                        style="@style/MyTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:text="@string/logout"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view12"
+                        mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/left_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvLogout"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvLogout" />
+
+                    <View
+                        android:id="@+id/view13"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        android:visibility="invisible"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLogout" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </ScrollView>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:padding="@dimen/_5sdp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clTwo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ivUserPhoto"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserPhoto"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/ivUserPhoto">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvNotificationMsg"
+            style="@style/MyTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:gravity="left"
+            android:text="hi how are you ?what are you doing now "
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvNotificationTime"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:gravity="left"
+            android:text="2 hr ago "
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNotificationMsg"
+            app:txt_custom_font="@string/font_mavenpro_regular" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

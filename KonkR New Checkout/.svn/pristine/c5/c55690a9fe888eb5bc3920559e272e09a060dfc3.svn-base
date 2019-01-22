@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.konkr.Activities.MainActivity"
+        tools:openDrawer="start">
+
+        <include
+            layout="@layout/app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+
+            app:headerLayout="@layout/nav_header_main"
+            app:itemIconTint="@color/green"
+            app:itemTextColor="@color/hint_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/nav_header_main" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white">
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvHomeFeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/menu_home_feed"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvNotification"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/notifications"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvHomeFeed"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvNotificationCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/notification_rounded_background"
+                                android:padding="@dimen/_5ssp"
+                                tools:text="10"
+                                android:textColor="#ffffff"
+                                android:textSize="@dimen/_12ssp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@+id/tvNotification"
+                                app:layout_constraintLeft_toRightOf="@+id/tvNotification"
+                                app:layout_constraintRight_toRightOf="parent"
+
+                                app:layout_constraintTop_toTopOf="@+id/tvNotification"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvMiTraining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/menu_mi_training"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvNotification"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvMiMeals"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/menu_mi_meal"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMiTraining"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvMiSupplement"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+
+                                android:text="@string/menu_mi_supplement"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMiMeals"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvSearchUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20sp"
+                                android:text="@string/menu_search_user"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvMiSupplement"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvPartners"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/menu_partners"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvSearchUser"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.konkr.Utils.MyTextView
+                                android:id="@+id/tvSettings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:text="@string/menu_settings"
+                                android:textSize="@dimen/_16ssp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvPartners"
+                                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/ivQRCode"
+                                android:layout_width="@dimen/_70sdp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:layout_marginTop="@dimen/_20ssp"
+                                android:background="@null"
+                                app:actualImageScaleType="focusCrop"
+                                app:fadeDuration="300"
+                                app:failureImageScaleType="centerInside"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvSettings"
+                                app:placeholderImageScaleType="fitCenter"
+                                app:retryImageScaleType="centerCrop" />
+
+                        </android.support.constraint.ConstraintLayout>
+                    </ScrollView>
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
+</layout>

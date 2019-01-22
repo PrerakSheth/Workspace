@@ -1,0 +1,588 @@
+package com.konkr.Activities;
+
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
+import com.konkr.Models.ExpressionOnIndividualMedia;
+import com.konkr.Models.HomeFeed;
+import com.konkr.Models.MyWorkouts;
+import com.konkr.R;
+import com.konkr.SharedPreferences.SessionManager;
+import com.konkr.Utils.GlobalData;
+import com.konkr.Utils.LogM;
+import com.konkr.Utils.MyTextView;
+import com.konkr.Webservices.GetJsonWithAndroidNetworkingLib;
+import com.konkr.Webservices.OnUpdateListener;
+import com.konkr.Webservices.WebField;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class VideoActivity extends AppCompatActivity implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, View.OnClickListener {
+
+    private MediaPlayer mediaPlayer;
+    private SurfaceHolder vidHolder;
+    private SurfaceView vidSurface;
+    private ImageView ivMedia, ivPlayWhite;
+    private String videoUrl, imageUrl, videoThumbImage;
+    private int mediaType;
+    private ImageView ivBack;
+
+    private SimpleDraweeView ivLike, ivComment, ivGoal, ivAdmiring, ivInspiring;
+    private MyTextView tvLikeCount;
+    private MyTextView tvCommentCount;
+    private boolean isAlreadyLiked;
+
+    private ConstraintLayout rowCom;
+
+    private boolean isExpressVisible;
+    String homeFeedId;
+    int commentCount;
+
+    int goal, inspiring, admiring;
+    int workoutId;
+    String profileId;
+    String itemId;
+
+
+    private MyWorkouts.WorkoutsBean myWorkout;
+    private MyWorkouts.WorkoutsBean.WorkoutMediaBean myWorkoutMedia;
+
+    private HomeFeed.HomeFeedsBean.WorkoutsBean myWorkoutHome;
+    private HomeFeed.HomeFeedsBean.WorkoutsBean.WorkoutMediaBean myWorkoutMediaHome;
+
+    private ConstraintLayout clExpression;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_video);
+
+        tvLikeCount = findViewById(R.id.tvLikeCount);
+        tvCommentCount = findViewById(R.id.tvCommentCount);
+        ivGoal = findViewById(R.id.ivGoal);
+        ivAdmiring = findViewById(R.id.ivAdmiring);
+        ivInspiring = findViewById(R.id.ivInspiring);
+        rowCom = findViewById(R.id.rowCom);
+        ivComment = findViewById(R.id.ivComment);
+        ivLike = findViewById(R.id.ivLike);
+        ivPlayWhite = findViewById(R.id.ivPlayWhite);
+        clExpression = findViewById(R.id.clExpression);
+
+        if ((SessionManager.getIsProfileSetup(VideoActivity.this)).equalsIgnoreCase("0")) {
+            clExpression.setVisibility(View.GONE);
+        } else {
+            clExpression.setVisibility(View.VISIBLE);
+        }
+
+        vidSurface = findViewById(R.id.surfView);
+        ivMedia = findViewById(R.id.ivMedia);
+        ivBack = findViewById(R.id.ivBack);
+        vidSurface.setVisibility(View.GONE);
+        ivMedia.setVisibility(View.GONE);
+
+        mediaType = getIntent().getExtras().getInt("mediaType", 0);
+        videoUrl = getIntent().getExtras().getString("videoUrl", "");
+        videoThumbImage = getIntent().getExtras().getString("videoThumb", "");
+        imageUrl = getIntent().getExtras().getString("imageUrl", "");
+
+        setData();
+        setListener();
+
+        ivGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                int intPos = (int) view.getTag();
+//                callGiveExpressionOnFeed(GlobalData.EXPRESSION_GOAL, intPos, holder);
+                callGiveExpressionOnMedia(GlobalData.EXPRESSION_GOAL);
+            }
+        });
+
+        ivAdmiring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                int intPos = (int) view.getTag();
+//                callGiveExpressionOnFeed(GlobalData.EXPRESSION_ADMIRING, intPos, holder);
+
+                callGiveExpressionOnMedia(GlobalData.EXPRESSION_ADMIRING);
+            }
+        });
+
+        ivInspiring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                int intPos = (int) view.getTag();
+//                callGiveExpressionOnFeed(GlobalData.EXPRESSION_INSPIRING, intPos, holder);
+                callGiveExpressionOnMedia(GlobalData.EXPRESSION_INSPIRING);
+            }
+        });
+
+        ivComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(VideoActivity.this, CommentsActivity.class);
+                intent.putExtra(GlobalData.IS_FROM, GlobalData.INDIVIDUAL_MEDIA);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                intent.putExtra(GlobalData.INITIAL_COUNT, commentCount);
+//                intent.putExtra(GlobalData.WORKOUT_ID, getIntent().getIntExtra(GlobalData.WORKOUT_ID, 0));
+                intent.putExtra(GlobalData.WORKOUT_ID, workoutId);
+                intent.putExtra(GlobalData.PROFILE_ID, profileId);
+                intent.putExtra(GlobalData.ITEM_ID, itemId);
+
+                VideoActivity.this.startActivityForResult(intent, GlobalData.COMMENT_TRAINING_DETAILS_REQ);
+            }
+        });
+
+        tvCommentCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                myReciclerClickListener.onCommentClick(view, position);
+                Intent intent = new Intent(VideoActivity.this, CommentsActivity.class);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                intent.putExtra(GlobalData.INITIAL_COUNT, commentCount);
+                intent.putExtra(GlobalData.WORKOUT_ID, getIntent().getIntExtra(GlobalData.WORKOUT_ID, 0));
+                intent.putExtra(GlobalData.PROFILE_ID, profileId);
+                intent.putExtra(GlobalData.ITEM_ID, itemId);
+                VideoActivity.this.startActivityForResult(intent, GlobalData.COMMENT_TRAINING_DETAILS_REQ);
+            }
+        });
+
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = getIntent().getIntExtra(GlobalData.POSITION, 0);
+                Intent intent = new Intent();
+                intent.putExtra(GlobalData.LATEST_COUNT, tvCommentCount.getText().toString());
+                intent.putExtra(GlobalData.EXPRESSION_COUNT, tvLikeCount.getText().toString());
+                if (goal == 1) {
+                    intent.putExtra(GlobalData.GOAL, 1);
+                    intent.putExtra(GlobalData.ADMIRING, 0);
+                    intent.putExtra(GlobalData.INSPIRING, 0);
+                } else if (inspiring == 2) {
+                    intent.putExtra(GlobalData.GOAL, 0);
+                    intent.putExtra(GlobalData.ADMIRING, 0);
+                    intent.putExtra(GlobalData.INSPIRING, 1);
+                } else if (admiring == 3) {
+                    intent.putExtra(GlobalData.GOAL, 0);
+                    intent.putExtra(GlobalData.ADMIRING, 1);
+                    intent.putExtra(GlobalData.INSPIRING, 0);
+                }
+                intent.putExtra(GlobalData.POSITION, position);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        if (mediaType == GlobalData.MEDIA_TYPE_IMAGE && imageUrl.trim().length() > 0) {
+            ivPlayWhite.setVisibility(View.GONE);
+            ivMedia.setVisibility(View.VISIBLE);
+            vidSurface.setVisibility(View.GONE);
+            Glide.with(VideoActivity.this).asBitmap()
+                    .load(imageUrl)
+                    .into(ivMedia);
+        }
+
+        if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+            if (getIntent().getStringExtra(GlobalData.IS_FROM) != null) {
+                if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.SETUP_PROFILE)) {
+                    vidSurface.setVisibility(View.VISIBLE);
+                    ivMedia.setVisibility(View.GONE);
+                    vidHolder = vidSurface.getHolder();
+                    vidHolder.addCallback(this);
+                } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.WORKOUT)) {
+                    setThumb();
+                } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.HOME_FEED)) {
+                    setThumb();
+                } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.NOTIFICATION_MEDIA)) {
+                    setThumb();
+                } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.TRAINING_MEDIA)) {
+                    setThumb();
+                }
+            }
+
+        }
+    }
+
+    private void setThumb() {
+        ivMedia.setVisibility(View.VISIBLE);
+        vidSurface.setVisibility(View.GONE);
+        Glide.with(VideoActivity.this).asBitmap()
+                .load(videoThumbImage)
+                .into(ivMedia);
+    }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mediaPlayer.release();
+//    }
+
+    private void setData() {
+        if (getIntent().getExtras() != null) {
+            if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.WORKOUT)) {
+
+                myWorkout = getIntent().getParcelableExtra("WorkoutDetails");
+                myWorkoutMedia = getIntent().getParcelableExtra("WorkoutMedia");
+
+                workoutId = myWorkout.getWorkoutId();
+                homeFeedId = myWorkout.getHomeFeedId();
+                profileId = String.valueOf(myWorkout.getUserId());
+                itemId = myWorkoutMedia.getItemId();
+
+                commentCount = myWorkoutMedia.getCommentCount();
+                tvCommentCount.setText("" + commentCount);
+                tvLikeCount.setText("" + myWorkoutMedia.getExpressionCount());
+
+                goal = myWorkoutMedia.getIs_goals();
+                inspiring = myWorkoutMedia.getIs_inspiring();
+                admiring = myWorkoutMedia.getIs_admiring();
+
+                setLikeButton(goal, admiring, inspiring);
+            } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.HOME_FEED)) {
+                myWorkoutHome = getIntent().getParcelableExtra("WorkoutDetails");
+                myWorkoutMediaHome = getIntent().getParcelableExtra("WorkoutMedia");
+                int position = getIntent().getIntExtra(GlobalData.POSITION, 0);
+
+                workoutId = myWorkoutHome.getWorkoutId();
+//                homeFeedId = myWorkoutHome.getHomeFeedId();
+//                profileId = String.valueOf(myWorkoutHome.getUserId());
+                homeFeedId = getIntent().getStringExtra(GlobalData.HOME_FEED_ID);
+                profileId = getIntent().getStringExtra(GlobalData.USER_ID);
+                itemId = myWorkoutMediaHome.getItemId();
+
+                commentCount = myWorkoutMediaHome.getCommentCount();
+                tvCommentCount.setText("" + commentCount);
+                tvLikeCount.setText("" + myWorkoutMediaHome.getExpressionCount());
+
+                goal = myWorkoutMediaHome.getIs_goals();
+                inspiring = myWorkoutMediaHome.getIs_inspiring();
+                admiring = myWorkoutMediaHome.getIs_admiring();
+
+//                if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+//                    vidSurface.setVisibility(View.VISIBLE);
+//                    ivMedia.setVisibility(View.GONE);
+//                    vidHolder = vidSurface.getHolder();
+//                    vidHolder.addCallback(this);
+//                }
+
+                setLikeButton(goal, admiring, inspiring);
+            } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.NOTIFICATION_MEDIA)) {
+
+                myWorkout = getIntent().getParcelableExtra("WorkoutDetails");
+                myWorkoutMedia = getIntent().getParcelableExtra("WorkoutMedia");
+                homeFeedId = getIntent().getStringExtra(GlobalData.HOME_FEED_ID);
+                workoutId = myWorkout.getWorkoutId();
+                profileId = getIntent().getStringExtra(GlobalData.PROFILE_ID);
+
+                itemId = myWorkoutMedia.getItemId();
+
+                commentCount = myWorkoutMedia.getCommentCount();
+                tvCommentCount.setText("" + commentCount);
+                tvLikeCount.setText("" + myWorkoutMedia.getExpressionCount());
+
+                goal = myWorkoutMedia.getIs_goals();
+                inspiring = myWorkoutMedia.getIs_inspiring();
+                admiring = myWorkoutMedia.getIs_admiring();
+
+                setLikeButton(goal, admiring, inspiring);
+
+//                if (mediaType == GlobalData.MEDIA_TYPE_IMAGE && imageUrl.trim().length() > 0) {
+//                    ivMedia.setVisibility(View.VISIBLE);
+//                    vidSurface.setVisibility(View.GONE);
+//                    Glide.with(VideoActivity.this).asBitmap()
+//                            .load(imageUrl)
+//                            .into(ivMedia);
+//                }
+//
+//                if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+//                    vidSurface.setVisibility(View.VISIBLE);
+//                    ivMedia.setVisibility(View.GONE);
+//                    vidHolder = vidSurface.getHolder();
+//                    vidHolder.addCallback(this);
+//                }
+
+            } else if (getIntent().getStringExtra(GlobalData.IS_FROM).equalsIgnoreCase(GlobalData.TRAINING_MEDIA)) {
+                if (mediaType == GlobalData.MEDIA_TYPE_IMAGE && imageUrl.trim().length() > 0) {
+                    ivPlayWhite.setVisibility(View.GONE);
+                    ivMedia.setVisibility(View.VISIBLE);
+                    vidSurface.setVisibility(View.GONE);
+                    Glide.with(VideoActivity.this).asBitmap()
+                            .load(imageUrl)
+                            .into(ivMedia);
+                    ivLike.setVisibility(View.GONE);
+                    ivComment.setVisibility(View.GONE);
+                    tvLikeCount.setVisibility(View.GONE);
+                    tvCommentCount.setVisibility(View.GONE);
+                }
+
+                if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+                    vidSurface.setVisibility(View.VISIBLE);
+                    ivMedia.setVisibility(View.GONE);
+                    vidHolder = vidSurface.getHolder();
+                    vidHolder.addCallback(this);
+                    ivLike.setVisibility(View.GONE);
+                    ivComment.setVisibility(View.GONE);
+                    tvLikeCount.setVisibility(View.GONE);
+                    tvCommentCount.setVisibility(View.GONE);
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        int position = getIntent().getIntExtra(GlobalData.POSITION, 0);
+        Intent intent = new Intent();
+        intent.putExtra(GlobalData.LATEST_COUNT, tvCommentCount.getText().toString());
+        intent.putExtra(GlobalData.EXPRESSION_COUNT, tvLikeCount.getText().toString());
+        if (goal == 1) {
+            intent.putExtra(GlobalData.GOAL, 1);
+            intent.putExtra(GlobalData.ADMIRING, 0);
+            intent.putExtra(GlobalData.INSPIRING, 0);
+        } else if (inspiring == 2) {
+            intent.putExtra(GlobalData.GOAL, 0);
+            intent.putExtra(GlobalData.ADMIRING, 0);
+            intent.putExtra(GlobalData.INSPIRING, 1);
+        } else if (admiring == 3) {
+            intent.putExtra(GlobalData.GOAL, 0);
+            intent.putExtra(GlobalData.ADMIRING, 1);
+            intent.putExtra(GlobalData.INSPIRING, 0);
+        }
+        intent.putExtra(GlobalData.POSITION, position);
+        setResult(RESULT_OK, intent);
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GlobalData.COMMENT_TRAINING_DETAILS_REQ && resultCode == RESULT_OK && data != null) {
+            data.getIntExtra(GlobalData.LATEST_COUNT, 0);
+            LogM.LogE("Updated count" + data.getIntExtra(GlobalData.LATEST_COUNT, 0));
+            if (Integer.parseInt(tvCommentCount.getText().toString().trim()) < data.getIntExtra(GlobalData.LATEST_COUNT, 0))
+                tvCommentCount.setText("" + data.getIntExtra(GlobalData.LATEST_COUNT, 0));
+        }
+
+    }
+
+    private void setLikeButton(int goal, int adming, int inspiring) {
+
+        if (goal == 1) {
+            ivLike.setImageResource(R.drawable.goal_green);
+            isAlreadyLiked = true;
+        } else if (adming == 1) {
+            ivLike.setImageResource(R.drawable.admiring_green);
+            isAlreadyLiked = true;
+        } else if (inspiring == 1) {
+            ivLike.setImageResource(R.drawable.inspiration_green);
+            isAlreadyLiked = true;
+        } else {
+//            ivLike.setImageResource(R.drawable.like);
+            ivLike.setImageResource(R.drawable.like_white);
+        }
+
+    }
+
+
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        try {
+            if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+                mediaPlayer.start();
+                ivPlayWhite.setVisibility(View.GONE);
+//                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        ivPlayWhite.setVisibility(View.VISIBLE);
+//
+//                    }
+//                });
+            }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void setListener() {
+        try {
+            ivLike.setOnClickListener(this);
+            ivComment.setOnClickListener(this);
+            tvLikeCount.setOnClickListener(this);
+            ivPlayWhite.setOnClickListener(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        try {
+            if (mediaType == GlobalData.MEDIA_TYPE_VIDEO && videoUrl.trim().length() > 0) {
+                mediaPlayer = new MediaPlayer();
+                mediaPlayer.setDisplay(vidHolder);
+                mediaPlayer.setDataSource(videoUrl);
+                mediaPlayer.prepare();
+                mediaPlayer.setOnPreparedListener(this);
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.ivPlayWhite:
+                    vidSurface.setVisibility(View.VISIBLE);
+                    ivMedia.setVisibility(View.GONE);
+                    vidHolder = vidSurface.getHolder();
+                    vidHolder.addCallback(this);
+                    break;
+                case R.id.ivLike:
+                    if (!isAlreadyLiked) {
+                        if (isExpressVisible) {
+                            rowCom.setVisibility(View.GONE);
+                            isExpressVisible = false;
+                        } else {
+                            rowCom.setVisibility(View.VISIBLE);
+                            isExpressVisible = true;
+                        }
+                    } else {
+                        if (goal > 0) {
+                            callGiveExpressionOnMedia(GlobalData.EXPRESSION_GOAL);
+                        }
+                        if (inspiring > 0) {
+                            callGiveExpressionOnMedia(GlobalData.EXPRESSION_INSPIRING);
+                        }
+                        if (admiring > 0) {
+                            callGiveExpressionOnMedia(GlobalData.EXPRESSION_ADMIRING);
+                        }
+                    }
+
+                    break;
+
+                case R.id.tvLikeCount:
+                    try {
+                        if (Integer.parseInt(tvLikeCount.getText().toString().trim()) > 0) {
+//                        intent.putExtra("position", pos);
+                            Intent pIntent = new Intent(VideoActivity.this, PostExpressionActivity.class);
+                            pIntent.putExtra(GlobalData.IS_FROM, GlobalData.VIDEOACTIVITY);
+                            pIntent.putExtra(GlobalData.PROFILE_ID, profileId);
+                            pIntent.putExtra(GlobalData.ITEM_ID, itemId);
+                            pIntent.putExtra(GlobalData.WORKOUT_ID, workoutId);
+                            pIntent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                            if (goal == 1) {
+                                pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_GOAL);
+                            } else if (inspiring == 1) {
+                                pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_INSPIRING);
+                            } else if (admiring == 1) {
+                                pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_ADMIRING);
+                            }
+                            startActivityForResult(pIntent, 132);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                default:
+                    rowCom.setVisibility(View.GONE);
+                    isExpressVisible = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void callGiveExpressionOnMedia(int expression) {
+        try {
+            JSONObject jsonRequest = new JSONObject();
+            jsonRequest.put(WebField.PARAM_USER_ID, SessionManager.getUserId(VideoActivity.this));
+            jsonRequest.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(VideoActivity.this));
+            jsonRequest.put(WebField.PARAM_HOMEFEEDID, homeFeedId);
+            jsonRequest.put(WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.EXPRESSION, expression);
+            jsonRequest.put(WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.PROFILE_ID, profileId);
+            jsonRequest.put(WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.HOME_FEED_ID, homeFeedId);
+            jsonRequest.put(WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.ITEM_ID, itemId);
+            jsonRequest.put(WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.WORKOUTID, workoutId);
+
+            Log.e("Details", "Req--" + jsonRequest);
+
+            new GetJsonWithAndroidNetworkingLib(VideoActivity.this, jsonRequest, WebField.BASE_URL + WebField.ADD_EXPRESSION_ON_INDIVIDUAL_MEDIA.MODE, 1, new OnUpdateListener() {
+                @Override
+                public void onUpdateComplete(JSONObject jsonResponse, boolean isSuccess) {
+                    if (isSuccess) {
+                        Log.e("Details", "Response" + jsonResponse);
+                        ExpressionOnIndividualMedia expression = new Gson().fromJson(String.valueOf(jsonResponse), ExpressionOnIndividualMedia.class);
+                        rowCom.setVisibility(View.GONE);
+
+                        tvLikeCount.setText("" + expression.getExpressionCount());
+                        goal = expression.getIs_goals();
+                        inspiring = expression.getIs_inspiring();
+                        admiring = expression.getIs_admiring();
+
+                        rowCom.setVisibility(View.GONE);
+                        isAlreadyLiked = true;
+                        if (expression.getStatus() == 2) {
+                            if (expression.getIs_goals() == GlobalData.EXPRESSION_GOAL) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            } else if (expression.getIs_inspiring() == GlobalData.EXPRESSION_INSPIRING) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            } else if (expression.getIs_admiring() == GlobalData.EXPRESSION_ADMIRING) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            }
+                        } else {
+                            if (goal == 1) {
+                                goal = 1;
+                                ivLike.setImageResource(R.drawable.goal_green);
+                            } else if (inspiring == 2) {
+                                inspiring = 1;
+                                ivLike.setImageResource(R.drawable.inspiration_green);
+                            } else if (admiring == 3) {
+                                admiring = 1;
+                                ivLike.setImageResource(R.drawable.admiring_green);
+                            } else {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            }
+                        }
+                    }
+                }
+            }).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

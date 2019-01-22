@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+        xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.konkr.Activities.AddMiMealActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivMealPhoto"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/add_meal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:roundedCornerRadius="@dimen/_5sdp" />
+
+                <ImageView
+                    android:id="@+id/ivPhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:src="@drawable/add_photos"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivMealPhoto"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivMealPhoto"
+                    app:layout_constraintRight_toRightOf="@+id/ivMealPhoto"
+                    app:layout_constraintTop_toTopOf="@+id/ivMealPhoto" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/shadow"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivMealPhoto">
+
+
+                    <ScrollView
+                        android:id="@+id/scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/tableTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvTypeofMeal"
+                                    style="@style/MyTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:text="Type of Meal"
+
+                                    android:textSize="@dimen/_12ssp"
+                                    app:txt_custom_font="@string/font_mavenpro_medium" />
+
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvMealCategory"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_25sdp"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:drawableRight="@drawable/down_arrow"
+                                    android:ellipsize="end"
+                                    android:gravity="center_vertical"
+                                    android:maxLines="1"
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:paddingRight="@dimen/_10sdp"
+                                    android:text=""
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tvTypeofMeal"
+                                    mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+                                <android.support.v7.widget.AppCompatSpinner
+                                    android:id="@+id/spinnerMeal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:visibility="invisible"
+                                    app:layout_constraintBottom_toBottomOf="@+id/tvMealCategory"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/tvMealCategory" />
+
+
+                                <View
+                                    android:id="@+id/view5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_1sdp"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:layout_marginTop="-15dp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:background="@color/colorGray"
+                                    app:layout_constraintLeft_toLeftOf="@+id/tvMealCategory"
+                                    app:layout_constraintRight_toRightOf="@+id/tvMealCategory" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.konkr.Utils.MyEditText
+                                    android:id="@+id/etOtherMealType"
+                                    style="@style/MyEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:hint="Title"
+                                    android:visibility="gone"
+                                    myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-10dp"
+                                android:orientation="vertical">
+
+                                <com.konkr.Utils.MyTextView
+                                    style="@style/MyTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:text="Meal Details"
+                                    android:textSize="@dimen/_12ssp"
+                                    app:txt_custom_font="@string/font_mavenpro_medium" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/parentlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_30sdp"
+                                android:orientation="vertical"
+                                android:paddingBottom="@dimen/_10sdp">
+
+                                <com.konkr.Utils.MyTextView
+                                    android:id="@+id/tvAddMore"
+                                    style="@style/MyTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:drawableLeft="@drawable/add_more_"
+                                    android:drawablePadding="5dp"
+                                    android:text="Add More Meal"
+                                    android:textSize="@dimen/_10sdp"
+                                    app:txt_custom_font="@string/font_mavenpro_medium" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        app:layout_constraintLeft_toLeftOf="@+id/scroll"
+                        app:layout_constraintTop_toBottomOf="@id/scroll" />
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+        <!--</ScrollView>-->
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clExpression"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView">
+
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvLikeCount"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:paddingLeft="@dimen/_15sdp"
+                android:singleLine="true"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/ivLike"
+                app:layout_constraintTop_toTopOf="@+id/ivLike"
+                app:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvLikeCount" />
+
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/rowCom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/expresstion_shadow_two"
+                android:padding="@dimen/_15sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/ivLike"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/goal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivAdmiring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/admiring"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/ivGoal"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivInspiring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/inspiration"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/ivAdmiring"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvCommentCount"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:singleLine="true"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+                app:layout_constraintLeft_toRightOf="@+id/ivLike"
+                app:layout_constraintTop_toTopOf="@+id/ivLike"
+                app:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/comment"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+                app:layout_constraintLeft_toRightOf="@+id/tvCommentCount"
+                app:layout_constraintTop_toTopOf="@+id/ivLike" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

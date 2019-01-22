@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView-1.0.92">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AlphabetIndex-Fast-Scroll-RecyclerView-1.0.92.aar/76e9b738012d69de25deeae287062adb/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/AlphabetIndex-Fast-Scroll-RecyclerView-1.0.92.aar/76e9b738012d69de25deeae287062adb/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.myinnos/AlphabetIndex-Fast-Scroll-RecyclerView/1.0.92/1b1a4a14fb6bfa5d7840da0ba908820ff6ffa476/AlphabetIndex-Fast-Scroll-RecyclerView-1.0.92-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

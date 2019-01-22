@@ -1,0 +1,449 @@
+package com.konkr.Activities;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
+import com.konkr.Models.ExpressionOnFeed;
+import com.konkr.Models.HomeFeed;
+import com.konkr.Models.MiSuppliment;
+import com.konkr.Models.UserDetails;
+import com.konkr.R;
+import com.konkr.SharedPreferences.SessionManager;
+import com.konkr.Utils.AlertDialogUtility;
+import com.konkr.Utils.ConnectivityDetector;
+import com.konkr.Utils.GlobalData;
+import com.konkr.Utils.Headerbar;
+import com.konkr.Utils.LogM;
+import com.konkr.Utils.MyTextView;
+import com.konkr.Webservices.GetJsonWithAndroidNetworkingLib;
+import com.konkr.Webservices.OnUpdateListener;
+import com.konkr.Webservices.WebField;
+import com.konkr.databinding.ActivityMiSupplementDetailBinding;
+
+import org.json.JSONObject;
+
+public class MiSupplementDetailActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private ActivityMiSupplementDetailBinding binding;
+    private MiSuppliment.SupplementsBean supplimentSearchDataBean;
+    private UserDetails.UserDetailsBean.SupplementsBean profileSupplement;
+    private HomeFeed.HomeFeedsBean homeSuppObject;
+    private MyTextView tvSupplimentName;
+    private MyTextView tvSupplimentDes;
+    private SimpleDraweeView ivSupplimentPhoto;
+    private Headerbar headerBar;
+    private MiSupplementDetailActivity context;
+    private int supplimentId;
+    private int otherUserId;
+
+    int goal, inspiring, admiring;
+
+    private SimpleDraweeView ivLike, ivComment, ivGoal, ivAdmiring, ivInspiring;
+    private MyTextView tvLikeCount;
+    private MyTextView tvCommentCount;
+    private boolean isAlreadyLiked;
+
+    private ConstraintLayout rowCom;
+
+    private boolean isExpressVisible;
+    String homeFeedId;
+    int commentCount;
+    String suppPhoto;
+    private ConstraintLayout clExpression;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_mi_supplement_detail);
+        context = MiSupplementDetailActivity.this;
+
+        bindViews();
+        setHeaderBar();
+        getIntents();
+        setListener();
+
+        if ((SessionManager.getIsProfileSetup(MiSupplementDetailActivity.this)).equalsIgnoreCase("0")) {
+            clExpression.setVisibility(View.GONE);
+        } else {
+            clExpression.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    private void getIntents() {
+        if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.SUPP_LIST)) {
+            supplimentSearchDataBean = getIntent().getExtras().getParcelable(GlobalData.SUPP_INFO);
+
+            tvSupplimentName.setText(supplimentSearchDataBean.getSuppName());
+            tvSupplimentName.setSelected(true);
+            tvSupplimentDes.setText(supplimentSearchDataBean.getSuppDetails());
+            suppPhoto = supplimentSearchDataBean.getSuppPhoto();
+            ivSupplimentPhoto.setImageURI(suppPhoto);
+
+            supplimentId = supplimentSearchDataBean.getSuppId();
+            homeFeedId = supplimentSearchDataBean.getHomeFeedId();
+            commentCount = supplimentSearchDataBean.getCommentCount();
+            tvCommentCount.setText("" + supplimentSearchDataBean.getCommentCount());
+            tvLikeCount.setText("" + supplimentSearchDataBean.getExpressionCount());
+
+            goal = supplimentSearchDataBean.getIs_goals();
+            inspiring = supplimentSearchDataBean.getIs_inspiring();
+            admiring = supplimentSearchDataBean.getIs_admiring();
+            otherUserId = getIntent().getIntExtra(GlobalData.OTHER_USER_ID, 0);
+            setDeleteButtonVisibility();
+            setLikeButton(goal, admiring, inspiring);
+        } else if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.PROFILE_ACTIVITY)) {
+
+            profileSupplement = getIntent().getExtras().getParcelable(GlobalData.SUPP_INFO);
+
+            tvSupplimentName.setText(profileSupplement.getSuppName());
+            tvSupplimentName.setSelected(true);
+            tvSupplimentDes.setText(profileSupplement.getSuppDetails());
+            suppPhoto = profileSupplement.getSuppPhoto();
+            ivSupplimentPhoto.setImageURI(suppPhoto);
+
+            supplimentId = profileSupplement.getSuppId();
+            otherUserId = getIntent().getIntExtra(GlobalData.OTHER_USER_ID, 0);
+            setDeleteButtonVisibility();
+            homeFeedId = profileSupplement.getHomeFeedId();
+            commentCount = profileSupplement.getCommentCount();
+            tvCommentCount.setText("" + profileSupplement.getCommentCount());
+            tvLikeCount.setText("" + profileSupplement.getExpressionCount());
+
+            goal = profileSupplement.getIs_goals();
+            inspiring = profileSupplement.getIs_inspiring();
+            admiring = profileSupplement.getIs_admiring();
+            setLikeButton(goal, admiring, inspiring);
+        } else if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.HOME_FEED)) {
+//            setDeleteButtonVisibility();
+            homeSuppObject = getIntent().getExtras().getParcelable(GlobalData.SUPP_OBJECT);
+            tvSupplimentName.setText(homeSuppObject.getSupplements().getSuppName());
+            tvSupplimentName.setSelected(true);
+            tvSupplimentDes.setText(homeSuppObject.getSupplements().getSuppDetails());
+            suppPhoto = homeSuppObject.getSupplements().getSuppPhoto();
+            ivSupplimentPhoto.setImageURI(suppPhoto);
+            supplimentId = homeSuppObject.getSupplements().getSuppId();
+            otherUserId = Integer.parseInt(homeSuppObject.getUserId());
+            homeFeedId = homeSuppObject.getHomeFeedId();
+            commentCount = homeSuppObject.getCommentCount();
+            tvCommentCount.setText("" + commentCount);
+            tvLikeCount.setText("" + homeSuppObject.getExpressionCount());
+            goal = homeSuppObject.getIs_goals();
+            inspiring = homeSuppObject.getIs_inspiring();
+            admiring = homeSuppObject.getIs_admiring();
+            if ((SessionManager.getUserId(MiSupplementDetailActivity.this) == otherUserId)) {
+                headerBar.ibtnRightTwo.setVisibility(View.VISIBLE);
+            } else {
+                headerBar.ibtnRightTwo.setVisibility(View.GONE);
+            }
+            setLikeButton(goal, admiring, inspiring);
+        } else if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.ADD_SUPPLEMENT_NOTIFICATION)) {
+
+            supplimentSearchDataBean = getIntent().getExtras().getParcelable(GlobalData.SUPP_ARRAY);
+
+            tvSupplimentName.setText(supplimentSearchDataBean.getSuppName());
+            tvSupplimentName.setSelected(true);
+            tvSupplimentDes.setText(supplimentSearchDataBean.getSuppDetails());
+            suppPhoto = supplimentSearchDataBean.getSuppPhoto();
+            ivSupplimentPhoto.setImageURI(suppPhoto);
+
+            supplimentId = supplimentSearchDataBean.getSuppId();
+            homeFeedId = supplimentSearchDataBean.getHomeFeedId();
+            commentCount = supplimentSearchDataBean.getCommentCount();
+            tvCommentCount.setText("" + supplimentSearchDataBean.getCommentCount());
+            tvLikeCount.setText("" + supplimentSearchDataBean.getExpressionCount());
+
+            goal = supplimentSearchDataBean.getIs_goals();
+            inspiring = supplimentSearchDataBean.getIs_inspiring();
+            admiring = supplimentSearchDataBean.getIs_admiring();
+            setDeleteButtonVisibility();
+            setLikeButton(goal, admiring, inspiring);
+        } else if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.GIVE_EXPRESSIONON_FEED_NOTIFICATION)) {
+            setDeleteButtonVisibility();
+            supplimentSearchDataBean = getIntent().getExtras().getParcelable(GlobalData.SUPP_ARRAY);
+
+            tvSupplimentName.setText(supplimentSearchDataBean.getSuppName());
+            tvSupplimentName.setSelected(true);
+            tvSupplimentDes.setText(supplimentSearchDataBean.getSuppDetails());
+            suppPhoto = supplimentSearchDataBean.getSuppPhoto();
+            ivSupplimentPhoto.setImageURI(suppPhoto);
+
+            supplimentId = supplimentSearchDataBean.getSuppId();
+            homeFeedId = supplimentSearchDataBean.getHomeFeedId();
+            commentCount = supplimentSearchDataBean.getCommentCount();
+            tvCommentCount.setText("" + supplimentSearchDataBean.getCommentCount());
+            tvLikeCount.setText("" + supplimentSearchDataBean.getExpressionCount());
+
+            goal = supplimentSearchDataBean.getIs_goals();
+            inspiring = supplimentSearchDataBean.getIs_inspiring();
+            admiring = supplimentSearchDataBean.getIs_admiring();
+            setLikeButton(goal, admiring, inspiring);
+        }
+    }
+
+    private void setDeleteButtonVisibility() {
+        if (SessionManager.getUserId(context) == otherUserId || otherUserId == 0) {
+            headerBar.ibtnRightTwo.setVisibility(View.VISIBLE);
+        } else {
+            headerBar.ibtnRightTwo.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GlobalData.COMMENT_SUPP_REQ && resultCode == RESULT_OK && data != null) {
+            data.getIntExtra(GlobalData.LATEST_COUNT, 0);
+            LogM.LogE("Updated count" + data.getIntExtra(GlobalData.LATEST_COUNT, 0));
+            if (Integer.parseInt(tvCommentCount.getText().toString().trim()) < data.getIntExtra(GlobalData.LATEST_COUNT, 0))
+                tvCommentCount.setText("" + data.getIntExtra(GlobalData.LATEST_COUNT, 0));
+        }
+    }
+
+    private void setLikeButton(int goal, int adming, int inspiring) {
+        if (goal == 1) {
+            ivLike.setImageResource(R.drawable.goal_green);
+            isAlreadyLiked = true;
+        } else if (adming == 1) {
+            ivLike.setImageResource(R.drawable.admiring_green);
+            isAlreadyLiked = true;
+        } else if (inspiring == 1) {
+            ivLike.setImageResource(R.drawable.inspiration_green);
+            isAlreadyLiked = true;
+        } else {
+            ivLike.setImageResource(R.drawable.like);
+        }
+    }
+
+    private void setHeaderBar() {
+        headerBar.ibtnLeftOne.setVisibility(View.VISIBLE);
+        headerBar.ibtnLeftOne.setImageResource(R.drawable.back);
+        headerBar.ibtnRightTwo.setVisibility(View.GONE);
+        headerBar.ibtnRightTwo.setImageResource(R.drawable.delete);
+        headerBar.tvTitle.setVisibility(View.VISIBLE);
+        headerBar.tvTitle.setText(R.string.mi_suppliment_title);
+    }
+
+    private void setListener() {
+        headerBar.ibtnLeftOne.setOnClickListener(this);
+        headerBar.ibtnRightOne.setOnClickListener(this);
+        headerBar.ibtnRightTwo.setOnClickListener(this);
+        ivLike.setOnClickListener(this);
+        ivComment.setOnClickListener(this);
+        ivGoal.setOnClickListener(this);
+        ivAdmiring.setOnClickListener(this);
+        ivInspiring.setOnClickListener(this);
+        tvCommentCount.setOnClickListener(this);
+        tvLikeCount.setOnClickListener(this);
+        ivSupplimentPhoto.setOnClickListener(this);
+    }
+
+    private void bindViews() {
+        headerBar = binding.headerBar;
+        tvSupplimentName = binding.tvSupplimentName;
+        tvSupplimentDes = binding.tvSupplimentDes;
+        ivSupplimentPhoto = binding.ivSupplimentPhoto;
+        tvLikeCount = binding.tvLikeCount;
+        tvCommentCount = binding.tvCommentCount;
+        ivGoal = binding.ivGoal;
+        ivAdmiring = binding.ivAdmiring;
+        ivInspiring = binding.ivInspiring;
+        rowCom = binding.rowCom;
+        ivComment = binding.ivComment;
+        ivLike = binding.ivLike;
+        clExpression = binding.clExpression;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.ivSupplimentPhoto:
+                intent = new Intent(context, FullScreenProfileImages.class);
+                intent.putExtra(GlobalData.FROM, GlobalData.SUPPLEMENT_DETAILS);
+                intent.putExtra(GlobalData.IMAGE_URL, suppPhoto);
+                context.startActivity(intent);
+                break;
+            case R.id.tvCommentCount:
+                intent = new Intent(context, CommentsActivity.class);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                context.startActivity(intent);
+                break;
+            case R.id.ivComment:
+                intent = new Intent(context, CommentsActivity.class);
+                intent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                intent.putExtra(GlobalData.INITIAL_COUNT, commentCount);
+                context.startActivityForResult(intent, GlobalData.COMMENT_SUPP_REQ);
+                break;
+            case R.id.tvLikeCount:
+                try {
+                    if (Integer.parseInt(tvLikeCount.getText().toString().trim()) > 0) {
+                        Intent pIntent = new Intent(context, PostExpressionActivity.class);
+                        pIntent.putExtra(GlobalData.IS_FROM, GlobalData.DETAILS);
+                        pIntent.putExtra(GlobalData.HOME_FEED_ID, homeFeedId);
+                        if (goal == 1) {
+                            pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_GOAL);
+                        } else if (inspiring == 1) {
+                            pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_INSPIRING);
+                        } else if (admiring == 1) {
+                            pIntent.putExtra(GlobalData.EXPRESSION, GlobalData.EXPRESSION_ADMIRING);
+                        }
+                        startActivityForResult(pIntent, 132);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case R.id.ivGoal:
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_GOAL);
+                break;
+            case R.id.ivAdmiring:
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_ADMIRING);
+                break;
+            case R.id.ivInspiring:
+                callGiveExpressionOnFeed(GlobalData.EXPRESSION_INSPIRING);
+                break;
+
+            case R.id.ibtnLeftOne:
+                setResult(RESULT_CANCELED);
+                finish();
+                break;
+
+            case R.id.ibtnRightTwo:
+                showConfirmationDialog();
+                break;
+
+            case R.id.ivLike:
+                if (!isAlreadyLiked) {
+                    if (isExpressVisible) {
+                        rowCom.setVisibility(View.GONE);
+                        isExpressVisible = false;
+                    } else {
+                        rowCom.setVisibility(View.VISIBLE);
+                        isExpressVisible = true;
+                    }
+                } else {
+                    if (goal > 0) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_GOAL);
+                    }
+                    if (inspiring > 0) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_INSPIRING);
+                    }
+                    if (admiring > 0) {
+                        callGiveExpressionOnFeed(GlobalData.EXPRESSION_ADMIRING);
+                    }
+                }
+                break;
+            default:
+                rowCom.setVisibility(View.GONE);
+                isExpressVisible = false;
+        }
+    }
+
+    private void callGiveExpressionOnFeed(int expression) {
+        try {
+            JSONObject jsonRequest = new JSONObject();
+            jsonRequest.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+            jsonRequest.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+            jsonRequest.put(WebField.PARAM_HOMEFEEDID, homeFeedId);
+            jsonRequest.put(WebField.GIVE_EXPRESSION_ON_FEED.PARAM_EXPRESSION, expression);
+
+            LogM.LogE("Request : Details: " + jsonRequest);
+
+            new GetJsonWithAndroidNetworkingLib(context, jsonRequest, WebField.BASE_URL + WebField.GIVE_EXPRESSION_ON_FEED.MODE, 1, new OnUpdateListener() {
+                @Override
+                public void onUpdateComplete(JSONObject jsonResponse, boolean isSuccess) {
+                    if (isSuccess) {
+                        LogM.LogE("Details: Response" + jsonResponse);
+                        ExpressionOnFeed expression = new Gson().fromJson(String.valueOf(jsonResponse), ExpressionOnFeed.class);
+                        rowCom.setVisibility(View.GONE);
+
+                        tvLikeCount.setText("" + expression.getExpressionCount());
+                        goal = expression.getIs_goals();
+                        inspiring = expression.getIs_inspiring();
+                        admiring = expression.getIs_admiring();
+
+                        rowCom.setVisibility(View.GONE);
+                        isAlreadyLiked = true;
+                        if (expression.getStatus() == 2) {
+                            if (expression.getIs_goals() == GlobalData.EXPRESSION_GOAL) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            } else if (expression.getIs_inspiring() == GlobalData.EXPRESSION_INSPIRING) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            } else if (expression.getIs_admiring() == GlobalData.EXPRESSION_ADMIRING) {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            }
+                        } else {
+                            if (goal == 1) {
+                                goal = 1;
+                                ivLike.setImageResource(R.drawable.goal_green);
+                            } else if (inspiring == 2) {
+                                inspiring = 1;
+                                ivLike.setImageResource(R.drawable.inspiration_green);
+                            } else if (admiring == 3) {
+                                admiring = 1;
+                                ivLike.setImageResource(R.drawable.admiring_green);
+                            } else {
+                                isAlreadyLiked = false;
+                                ivLike.setImageResource(R.drawable.like);
+                            }
+                        }
+                    }
+                }
+            }).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showConfirmationDialog() {
+        AlertDialogUtility.showConfirmAlert(MiSupplementDetailActivity.this, getResources().getString(R.string.delete_added_suppliment), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                callDeleteSupplimentApi();
+            }
+        });
+    }
+
+    private void callDeleteSupplimentApi() {
+        if (ConnectivityDetector.isConnectingToInternet(context)) {
+            try {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+                jsonObject.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+                jsonObject.put(WebField.DELETE_SUPPLEMENT.SUPP_ID, supplimentId);
+                LogM.LogE("Request : DELETE Suppliment : " + jsonObject.toString());
+
+                new GetJsonWithAndroidNetworkingLib(context, jsonObject, WebField.BASE_URL + WebField.DELETE_SUPPLEMENT.MODE, 1, new OnUpdateListener() {
+                    @Override
+                    public void onUpdateComplete(JSONObject jsonObject, boolean isSuccess) {
+                        final MiSuppliment miSupplimentList = new Gson().fromJson(String.valueOf(jsonObject), MiSuppliment.class);
+                        if (isSuccess) {
+                            LogM.LogE("Response : DELETE Suppliment : " + jsonObject.toString());
+                            setResult(RESULT_OK);
+                            finish();
+                        } else {
+                            AlertDialogUtility.showSnakeBar(miSupplimentList.getMessage(), tvSupplimentDes, context);
+                        }
+                    }
+                }).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            AlertDialogUtility.showAlert(context, GlobalData.STR_INETRNET_ALERT_MESSAGE);
+        }
+    }
+}

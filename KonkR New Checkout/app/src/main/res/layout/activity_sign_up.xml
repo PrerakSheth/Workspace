@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sign_in_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSignUp"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/sign_up"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivIcon"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clEmailPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/signin_bg"
+            android:padding="@dimen/_15sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSignUp">
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvCountry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/down_arrow"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/country"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintBottom_toTopOf="@+id/etEmailId"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinCountry"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCountry"
+                app:layout_constraintLeft_toLeftOf="@+id/tvCountry"
+                app:layout_constraintRight_toRightOf="@+id/tvCountry"
+                app:layout_constraintTop_toTopOf="@+id/tvCountry" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinCountry" />
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etEmailId"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/email_id"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_13sdp"
+                app:edt_custom_font="@string/font_mavenpro_regular" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etEmailId"
+                app:layout_constraintTop_toBottomOf="@id/etEmailId" />
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etPassword"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_13sdp"
+                app:edt_custom_font="@string/font_mavenpro_regular"
+                app:layout_constraintTop_toBottomOf="@+id/etEmailId" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <CheckBox
+            android:id="@+id/cbIAccept"
+            style="@style/MyCheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvIAccept"
+            app:layout_constraintLeft_toLeftOf="@+id/tvSignUpBtn" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvIAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/i_accept"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@+id/tvSignUpBtn"
+            app:layout_constraintLeft_toRightOf="@+id/cbIAccept"
+            app:layout_constraintTop_toTopOf="@+id/cbIAccept"
+            mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvTearmsAndCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/terms_and_condition"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@+id/tvSignUpBtn"
+            app:layout_constraintLeft_toRightOf="@+id/tvIAccept"
+            app:layout_constraintTop_toTopOf="@+id/cbIAccept"
+            mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSignUpBtn"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/signin_button_bg"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toTopOf="@+id/clAlredayHaveAccount"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clAlredayHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvAlreadyHaveAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/already_have_acc"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintRight_toLeftOf="@+id/tvSignIn"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:padding="@dimen/_3sdp"
+                android:text="@string/sign_in"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvAlreadyHaveAccount"
+                app:layout_constraintRight_toRightOf="parent"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

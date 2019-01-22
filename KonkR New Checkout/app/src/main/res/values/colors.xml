@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorGray">#BEBEBE</color>
+    <color name="dropdown">#f4f3f3</color>
+
+    <color name="error_bg">#FF0000</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="green">#11FB20</color>
+    <color name="view_color">#BEBEBE</color>
+
+    <color name="purple_shadow">#f3e4fb</color>
+    <color name="purple_shadow_one">#F2f3e4fb</color>
+    <color name="purple_shadow_two">#BFf3e4fb</color>
+    <color name="purple_shadow_three">#8Cf3e4fb</color>
+    <color name="purple_shadow_four">#0Df3e4fb</color>
+    <!--@color/background_dark = #ffb8860b-->
+    <!--@color/background_light = #ffd2b48c-->
+    <!--@color/transparent = #00b8860b-->
+
+    <color name="background_dark">#ffb8860b</color>
+    <color name="background_light">#ffd2b48c</color>
+    <color name="transparent">#00b8860b</color>
+
+    <color name="text_color">#333333</color>
+    <color name="hint_color">#666666</color>
+    <color name="menu_text_color">#be3cff</color>
+
+    <color name="tab_text_color">#999999</color>
+    <color name="verification_tab_text_color">#D0D0D0</color>
+    <color name="tab_indicator_color">#BE3CFE</color>
+    <color name="text_color_light_grey">#9DA1A6</color>
+    <color name="hint_text_color">#AEAEAE</color>
+    <color name="camera_bg">#80000000</color>
+    <color name="advt_bg_black">#90000000</color>
+    <color name="home_feed_placeholder_image_color">#D0D0D0</color>
+</resources>

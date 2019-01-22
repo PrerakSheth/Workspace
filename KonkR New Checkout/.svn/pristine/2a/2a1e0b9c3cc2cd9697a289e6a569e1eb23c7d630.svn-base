@@ -1,0 +1,15 @@
+<resources>
+
+    <declare-styleable name="MyTextView">
+        <attr name="txt_custom_font" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyEditText">
+        <attr name="edt_custom_font" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyButton">
+        <attr name="btn_custom_font" format="reference" />
+    </declare-styleable>
+
+</resources>

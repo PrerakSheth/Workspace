@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent">-->
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/clOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ivHomeFeedMiTraining"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            app:actualImageScaleType="centerCrop"
+            app:failureImageScaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:placeholderImage="@drawable/place_holder"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundedCornerRadius="@dimen/_5sdp" />
+
+        <ImageButton
+            android:id="@+id/ibVideoIcon"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/video_mi_camera"
+            app:layout_constraintRight_toRightOf="@+id/ivHomeFeedMiTraining"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeFeedMiTraining" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

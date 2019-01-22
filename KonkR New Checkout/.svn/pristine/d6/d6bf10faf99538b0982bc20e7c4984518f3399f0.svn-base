@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".Activities.MiTrainingActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/ivTrainingVideoPhoto"
+                    android:layout_width="@dimen/_170sdp"
+                    android:layout_height="@dimen/_170sdp"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:background="@drawable/add_training_photos"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvVideoPhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivTrainingVideoPhoto" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setting_shadow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvVideoPhoto">
+
+                    <com.konkr.Utils.MyEditText
+                        android:id="@+id/etWorkoutName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:ellipsize="end"
+                        android:hint="@string/mi_training_workout_name"
+                        android:inputType="textCapSentences"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        myedittext:edt_custom_font="@string/font_poppins_regular" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etWorkoutName" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvWorkoutCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:ellipsize="end"
+                        android:hint="@string/mi_training_workout_category"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view1"
+                        mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                    <Spinner
+                        android:id="@+id/spinnerWorkoutCategory"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvWorkoutCategory"
+                        app:layout_constraintRight_toRightOf="@+id/tvWorkoutCategory"
+                        app:layout_constraintTop_toTopOf="@+id/tvWorkoutCategory" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWorkoutCategory" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etExercise"
+                        style="@style/MyEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:clickable="true"
+                        android:ellipsize="end"
+                        android:hint="@string/mi_training_exercise"
+                        android:imeActionLabel="Search"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view2"
+                        myedittext:edt_custom_font="@string/font_poppins_regular" />
+
+                    <Spinner
+                        android:id="@+id/spinnerExercise"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/etExercise"
+                        app:layout_constraintRight_toRightOf="@+id/etExercise"
+                        app:layout_constraintTop_toBottomOf="@+id/etExercise" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etExercise" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvWorkoutDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:ellipsize="end"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@string/mi_training_workout_duration"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view3"
+                        mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvHours"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:hint="@string/mi_training_hours"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/tvMinute"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWorkoutDuration"
+                        mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                    <Spinner
+                        android:id="@+id/spinnerHours"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvHours"
+                        app:layout_constraintRight_toRightOf="@+id/tvHours"
+                        app:layout_constraintTop_toTopOf="@+id/tvHours" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvHours"
+                        app:layout_constraintRight_toRightOf="@+id/tvHours"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHours" />
+
+                    <com.konkr.Utils.MyTextView
+                        android:id="@+id/tvMinute"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@drawable/bg_without_border"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:hint="@string/mi_training_minute"
+                        android:padding="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text_color"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintLeft_toRightOf="@+id/tvHours"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWorkoutDuration"
+                        mytextview:txt_custom_font="@string/font_poppins_regular" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMinute"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvMinute"
+                        app:layout_constraintRight_toRightOf="@+id/tvMinute"
+                        app:layout_constraintTop_toTopOf="@+id/tvMinute" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/scale_0.5dp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@color/view_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvMinute"
+                        app:layout_constraintRight_toRightOf="@+id/tvMinute"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMinute" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>

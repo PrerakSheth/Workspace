@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\videocompressor\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.4.0.aar\\3fcc46f1b480b9d1ef39adbfd8bbdb31\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    }
+]

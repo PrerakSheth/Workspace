@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:padding="@dimen/_5sdp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/user_profile"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvName"
+        style="@style/MyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text=""
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintLeft_toRightOf="@+id/ivUserPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:txt_custom_font="@string/font_mavenpro_bold" />
+
+</android.support.constraint.ConstraintLayout>
+

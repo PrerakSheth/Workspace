@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg">
+
+        <com.patchpets.utils.HeaderBar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_2"
+            android:background="@drawable/view_shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_0"
+            android:background="@drawable/bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvSetUpCard"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_setupcard"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_setupcard"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_setupcard"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSetUpCard" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvPartners"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_partners"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_partners"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_setupcard" />
+
+                <View
+                    android:id="@+id/view_partners"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPartners" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvNotification"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_notification"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_notification"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_partners" />
+
+                <View
+                    android:id="@+id/view_notification"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotification" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvHowappworks"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_howappworks"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_howworks"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_notification" />
+
+                <View
+                    android:id="@+id/view_howworks"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHowappworks" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvChangePassword"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_changepassword"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/viewChangePassword"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_howworks" />
+
+                <View
+                    android:id="@+id/viewChangePassword"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvChangePassword" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvShareExperience"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_shareexperience"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_shareexp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/viewChangePassword" />
+
+                <View
+                    android:id="@+id/view_shareexp"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShareExperience" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvSocialShare"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_socialsharing"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_socialshare"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_shareexp" />
+
+                <View
+                    android:id="@+id/view_socialshare"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSocialShare" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tv_donation"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_donations"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_donations"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_socialshare" />
+
+                <View
+                    android:id="@+id/view_donations"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_donation" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvTerms"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_termscondition"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_terms"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_donations" />
+
+                <View
+                    android:id="@+id/view_terms"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTerms" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvLogout"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_12"
+                    android:text="@string/label_logout"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="20sp"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/view_logout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/view_terms" />
+
+                <View
+                    android:id="@+id/view_logout"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_1"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLogout" />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>

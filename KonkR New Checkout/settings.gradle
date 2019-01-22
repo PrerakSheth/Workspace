@@ -1,0 +1,1 @@
+include ':app', ':videocompressor', ':k4l-video-trimmer', ':Lib_TagEditText'

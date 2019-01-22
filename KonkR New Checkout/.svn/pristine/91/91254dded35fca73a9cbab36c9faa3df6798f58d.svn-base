@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.ConnectSpotify">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.konkr.Utils.Headerbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:background="@drawable/shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tvForgotMessage"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/spotify_green"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/bar"
+                app:layout_constraintTop_toTopOf="parent"
+                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+            <View
+                android:id="@+id/bar"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/tvForgotMessage"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@+id/tvForgotMessage"
+                app:layout_constraintRight_toLeftOf="@+id/ivSpotyBlack"
+                app:layout_constraintTop_toTopOf="@+id/tvForgotMessage" />
+
+
+            <ImageView
+                android:id="@+id/ivSpotyBlack"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:src="@drawable/playlist_logo"
+                android:text="@string/forgot_pass_text"
+                app:layout_constraintBottom_toBottomOf="@+id/bar"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@+id/bar"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bar"
+                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvtagLine"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:text="@string/tag_line"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivSpotyBlack"
+                mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvapName"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:text="@string/app_name"
+                android:textSize="@dimen/_25sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvtagLine"
+                mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toBottomOf="@+id/tvapName" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/ivConnectBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:background="@drawable/button_shadow"
+            app:layout_constraintBottom_toTopOf="@+id/tvSkip"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableRight="@drawable/spotify_black"
+            android:gravity="center"
+            android:text="@string/connect_to"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivConnectBtn"
+            app:layout_constraintLeft_toLeftOf="@+id/ivConnectBtn"
+            app:layout_constraintRight_toRightOf="@+id/ivConnectBtn"
+            app:layout_constraintTop_toTopOf="@+id/ivConnectBtn"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+        <ImageView
+            android:id="@+id/ivSkiptBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:background="@drawable/button_shadow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivConnectBtn" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center"
+            android:text="@string/skip"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivSkiptBtn"
+            app:layout_constraintLeft_toLeftOf="@+id/ivSkiptBtn"
+            app:layout_constraintRight_toRightOf="@+id/ivSkiptBtn"
+            app:layout_constraintTop_toTopOf="@+id/ivSkiptBtn"
+            mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

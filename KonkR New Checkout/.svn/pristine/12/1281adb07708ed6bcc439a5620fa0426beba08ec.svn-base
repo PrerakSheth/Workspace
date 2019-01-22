@@ -1,0 +1,225 @@
+package com.konkr.Utils;
+
+public class GlobalData {
+
+    public static final String ARG_MUSICLIST = "MusicList";
+
+    public static final int REQUEST_PERMISSION = 1234;
+    public static final int CAPTURE_PHOTO = 1111;
+    public static final int CAPTURE_VIDEO = 2222;
+    public static final int PICK_PHOTO = 3333;
+    public static final int PICK_VIDEO = 4444;
+    public static final int TRIM_VIDEO = 5555;
+    public static final int PREMIUM_MEMBER = 6666;
+
+    public static final int MEDIA_TYPE_IMAGE = 2;
+    public static final int MEDIA_TYPE_VIDEO = 3;
+    public static final int COMMENT_REQ = 432;
+    public static final int COMMENT_SUPP_REQ = 431;
+    public static final int COMMENT_TRAINING_REQ = 430;
+    public static final int COMMENT_TRAINING_DETAILS_REQ = 430;
+    public static final int COMMENT_TRAINING_DETAILS_TO_INDIVIDUAL_REQ = 429;
+
+    public static final int intFlagShow = 1;
+    public static final int intFlagHide = 0;
+    public static final int DONATE = 1;
+    public static final String USER_ID = "userid";
+    public static final String ACCESS_TOKEN = "accesstoken";
+    public static final String PARAM_EMAIL_ID = "emailId";
+    public static final String FIRSTNAME = "firstName";
+    public static final String LASTNAME = "lastName";
+    public static final String PROFILEPIC = "profilePic";
+    public static final String PROFILE = "profile";
+    public static final String QRCODE = "qrcode";
+    public static final String IS_PROFILE_SETUP = "isProfileSetup";
+    public static final String IS_LOGIN = "isLogin";
+    public static final String LOGIN_TYPE = "loginType";
+    public static final String IS_SPOTIFY = "isSpotify";
+    public static final String SPOTIFY_ID = "isSpotify";
+
+    public static final String CONTACT_NAME = "CONTACT_NAMES";
+    public static final String CONNECTSPOTIFY = "ConnectSpotify";
+    public static final String USER_NAME = "userName";
+    public static final String ADD_MEAL_SCREEN = "addMealScreen";
+
+    public static final String PHOTO_URL = "PHOTO_URL";
+    public static final String PHOTO_POSITION = "POSITION";
+    public static final String APP_NAME = "KonkR";
+    public static String SIZE = "size";
+    public static int CAMERA_ID = 0;
+    public final static String VIDEO_FORMATE = ".mp4";
+    public static final int SETUP_PROFILE_REQUEST = 10245;
+    public static final int SPLASH_TIME_OUT = 3000;
+    public static final int TIME_OUT = 30000;
+    public static final int DELAY_TIME = 2000;
+    public static final int DELAY_TIME_LOGOUT = 1000;
+    public static final String SUPP_INFO = "suppInfo";
+    public static final String SUPP_OBJECT = "suppObject";
+    public static final String FROM = "from";
+    public static final String PROFILE_ACTIVITY = "profile_activity";
+    public static final String SUPP_LIST = "supp_list";
+    public static final String HOME_FEED = "homefeed";
+    public static final String CARD_INFO = "cardInfo";
+    public static final String CARD_NUMBER = "cardNumber";
+    public static final String EXPIRY = "expiry";
+    public static final String CVV = "cvv";
+    public static final String DONATION = "donation";
+    public static final String PAY_WITHOUT_ADD_CARD = "payWithoutAddCard";
+    public static final String MESSAGE = "message";
+    public static final String EXPRESSION_FOR = "expressionFor";
+
+    public static final String STR_INTERNET_ALERT_TITLE = "Network Error!";
+    public static final String STR_INETRNET_ALERT_MESSAGE = "Please check your Internet connection.";
+
+    public static final String USER_BLOCK_ALERT = "Your profile has been blocked by admin. Please contact to administrator.";
+    public static final String USER_NOT_EXIST = "User does not exist. Please contact to administrator for more info!";
+    public static final String YOUR_ACCESS_TOKEN_IS_EXPIRE = "Your access token is expire.";
+
+    public static final String MEDIA_ID = "mediaId";
+    public static final String ALBUM = "ALBUM";
+
+    public static final String PHOTOS_USER_PROFILE = "userprofile";
+    public static final String PHOTOS1 = "photo1";
+    public static final String PHOTOS2 = "photo2";
+    public static final String PHOTOS3 = "photo3";
+    public static final String PHOTOS4 = "photo4";
+    public static final String PHOTOS5 = "photo5";
+    public static final String PHOTOS6 = "photo6";
+    public static final String PHOTOS7 = "photos7";
+    public static final String PHOTOS8 = "photos8";
+    public static final String PHOTOS9 = "photos9";
+
+    public static final String SEARCH_USER_ARRAY = "searchUserArray";
+    public static final String RESULT_CODE_PROFILE_SUPP = "profile_supp";
+    public static final String OTHER_USER_ID = "profile_supp";
+    public static final String USER_Id = "userId";
+
+//    public static final String EXPRESSION = "expression";
+
+    public static final String FB_FIRST_NAME = "firstName";
+    public static final String FB_LAST_NAME = "lastName";
+    public static final String FB_PROFILE_PIC = "profilePic";
+    public static final String FB_SIGNIN_ACTIVITY = "fbSignInActivity";
+    public static final String MAKE_PROFILE_PIC = "makeProfilePic";
+
+
+    public static final String SEARCH_PARAM_GENDER = "gender";
+    public static final String SEARCH_PARAM_BODYTYPE = "bodyType";
+    public static final String SEARCH_PARAM_CURRENTTRAININGGOALS = "currentTrainingGoals";
+    public static final String SEARCH_PARAM_NICKNAME = "nickName";
+    public static final String SEARCH_PARAM_EMAIL_ID = "email";
+    public static final String SEARCH_PARAM_BADGE = "badge";
+    public static final String SEARCH_PARAM_NAME = "name";
+    public static final String SEARCH_PARAM_COUNTRYID = "countryId";
+
+    public static final int PAGE_ITEM_COUNT = 50;
+
+    public static final String FOLLOWERS = "followers";
+    public static final String FOLLOWING = "following";
+
+    public static final String EXTRA_VIDEO_PATH = "EXTRA_VIDEO_PATH";
+
+    public static final String URL = "url";
+    public static final String FB = "FB";
+    public static final String INSTAGRAM = "Instagram";
+    public static final String SNAPCHAT = "Snapchat";
+    public static final String TWITTER = "Twitter";
+    public static final String YOUTUBE = "Youtube";
+    public static final String LINKEDIN = "LinkedIn";
+
+    public static final String HOME_FEED_ID = "homeFeedId";
+    public static final String IS_FROM = "isFrom";
+    public static final String PREMIUM_MEMBERSHIP = "premiumMembership";
+    public static final String WORKOUT = "workout";
+    public static final String WORKOUT_ID = "workoutId ";
+    public static final String INDIVIDUAL_MEDIA = "individual_media";
+
+    public static final int PROFILE_MI_SIZE = 3;
+    public static final String IS_FROM_PROFILE = "isFromProfile";
+    public static final String FRAG_NAME_KEY = "fragName";
+    public static final String TRAINING = "Training";
+    public static final String SETUP_TRAINING = "Setup_Training";
+    public static final String SUPPLEMENT = "Supplement";
+    public static final String MI_MEAL = "MiMeal";
+    public static final String MEAL = "Meal";
+    public static final String MEAL_NAME = "MealName";
+    public static final String AddMeal = "addMeal";
+    public static final String MI_TRAINING = "miTraining";
+
+    public static final int EXPRESSION_GOAL = 1;
+    public static final int EXPRESSION_INSPIRING = 2;
+    public static final int EXPRESSION_ADMIRING = 3;
+
+    public static final String IMAGE_URL = "url";
+    public static final String LIKE_COUNT = "likeCount";
+    public static final String COMMENT_COUNT = "commentCount";
+    public static final String Array_List = "arrayList";
+
+    public static final String CM = " cm";
+    public static final String KG = " kg";
+    public static final String PERCENT = " %";
+
+    public static final int REQ_FROM_LIKEDETAILS_TO_HOMEFEED = 132;
+    public static final int REQ_DELETE_SUPPLIMENT = 786;
+    public static final int REQUEST_CODE = 1237;
+    public static final String BREAKFAST = "Breakfast";
+    public static final String LUNCH = "Lunch";
+    public static final String SNACK = "Snack";
+    public static final String DINNER = "Dinner";
+    public static final String OTHER = "Others";
+
+    public static final String INSPIRING_ARRAY_LIST = "inspiringArrayList";
+    public static final String GOAL_ARRAY_LIST = "goalArrayList";
+    public static final String ADMIRING_ARRAY_LIST = "admiringArrayList";
+    public static final String SUBSCRIPTION_AMOUNT = "subscriptionAmount";
+    public static final String SETTING = "setting";
+    public static final String PAY_SUBS_WITHOUT_ADD_CARD = "paysubswithoutaddcard";
+    public static final String PAY_SUBS_USING_SLECT_CARD = "paySubUsingSlectCard";
+    public static final String SUBSCRIPTION_ID = "subscriptionId";
+
+
+    //*********Notification***********
+    public static final String NOTIFICATION_TYPE = "notificationType";
+    public static final String MESSAGE_BODY = "alert";
+    public static final int FOLLOWING_YOU = 1;
+    public static final int ADD_MEAL = 2;
+    public static final int ADD_WORKOUT = 3;
+    public static final int ADD_SUPPLEMENT = 4;
+    public static final int GIVE_EXPRESSIONON_FEED = 5;
+    public static final int COMMENTS = 6;
+    public static final int VARIFICATION_BADGE = 7;
+    public static final int ADDEXPRESSIONUSERMEDIA = 10;
+    public static final int ADDCOMMENTMEDIA = 11;
+    public static final String INITIAL_COUNT = "inititalCount";
+    public static final String LATEST_COUNT = "latest_Count";
+    public static final String EXPRESSION_COUNT = "expression_Count";
+    public static final String POSITION = "position";
+
+
+    public static final String FOLLOWING_YOU_NOTIFICATION = "following_you_notification";
+    public static final String COMMENTS_NOTIFICATION = "comments_notification";
+    public static final String ADD_MEAL_NOTIFICATION = "add_meal_notification";
+    public static final String ADD_WORKOUT_NOTIFICATION = "add_workout";
+    public static final String ADD_SUPPLEMENT_NOTIFICATION = "add_supplement";
+    public static final String GIVE_EXPRESSIONON_FEED_NOTIFICATION = "give_expressionon_feed";
+    public static final String VARIFICATION_BADGE_NOTIFICATION = "varification_badge";
+    public static final String MEDIA_COMMENT_NOTIFICATION = "media_comment_notification";
+    public static final String EXPRESSION = "expression";
+
+    //*********Adverisement***********
+    public static final String SEARCH_ADVERTISEMENT = "search";
+    public static final String PARTNER_ADVERTISEMENT = "partner";
+    public static final String ADVERTISEMENT = "advertisment";
+    public static final String PLAY_LIST_NAME = "play_list_name";
+
+    //--comment media
+    public static final String PROFILE_ID = "profileId";
+    public static final String COMMENT_TYPE = "commentType";
+    public static final String NOTFITION_COMMENT_TYPE = "comment_type";
+    public static final String GOAL = "goal";
+    public static final String ADMIRING = "admiring";
+    public static final String INSPIRING = "inspiring";
+    public static final int MEAL_DETAIL_REQ = 902;
+
+    public static final String ITEM_ID = "itemId";
+}

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvVideoPhoto"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerBar" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvWorkoutCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:singleLine="true"
+            android:textColor="@color/text_color_light_grey"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvWorkoutType"
+            app:layout_constraintTop_toBottomOf="@+id/rvVideoPhoto"
+            mytextview:txt_custom_font="@string/font_poppins_light" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvWorkoutType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:singleLine="true"
+            android:textColor="@color/text_color_light_grey"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintLeft_toRightOf="@+id/tvWorkoutCategory"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvVideoPhoto"
+            mytextview:txt_custom_font="@string/font_poppins_light" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvWorkoutName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkoutCategory"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvDuration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/mi_training_duration"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkoutName"
+            mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+        <ImageView
+            android:id="@+id/ivDuration"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/clock"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDuration" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDuration"
+            app:layout_constraintLeft_toLeftOf="@+id/ivDuration"
+            app:layout_constraintRight_toRightOf="@+id/ivDuration"
+            app:layout_constraintTop_toTopOf="@+id/ivDuration">
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center|bottom"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_50ssp"
+                app:layout_constraintBottom_toTopOf="@+id/tvTimeScale"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                mytextview:txt_custom_font="@string/font_poppins_semi_bold" />
+
+            <TextView
+                android:id="@+id/tvTimeScale"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="top|center"
+                android:text="Min"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_25ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTime"
+                mytextview:txt_custom_font="@string/font_poppins_regular" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clExpression"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/rowCom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/expresstion_shadow_two"
+                android:padding="@dimen/_15sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/ivLike"
+                app:layout_constraintLeft_toLeftOf="parent">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivGoal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/goal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivAdmiring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/admiring"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/ivGoal"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/ivInspiring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/inspiration"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/ivAdmiring"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvLikeCount" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvCommentCount"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:singleLine="true"
+                android:text="39"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/ivComment"
+                app:layout_constraintLeft_toRightOf="@+id/ivLike"
+                app:layout_constraintTop_toTopOf="@+id/ivComment"
+                app:txt_custom_font="@string/font_mavenpro_bold" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ivComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/comment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvCommentCount" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvLikeCount"
+                style="@style/MyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="12"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivLike"
+                app:txt_custom_font="@string/font_mavenpro_bold" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:txt_custom_font="@string/font_mavenpro_regular"
+        android:background="@android:color/black"
+        tools:context="com.konkr.Activities.FullScreenActivity">
+
+        <ImageView
+            android:id="@+id/ivFullImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/back_fullscreen"
+            app:layout_constraintTop_toTopOf="parent"
+            mytextview:layout_constraintLeft_toLeftOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/more"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:id="@+id/clEditProfile"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/_10sdp"-->
+        <!--android:visibility="gone"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/ivEdit">-->
+
+        <!--<com.fitinc.Utils.MyTextView-->
+        <!--android:id="@+id/tvEdit"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Edit"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="@dimen/_14ssp"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent" />-->
+
+        <!--<com.fitinc.Utils.MyTextView-->
+        <!--android:id="@+id/tvMakeProfilePic"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/_5sdp"-->
+        <!--android:text="Make Profile Pic"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="@dimen/_14ssp"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--mytextview:layout_constraintTop_toBottomOf="@+id/tvEdit" />-->
+        <!--</android.support.constraint.ConstraintLayout>-->
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

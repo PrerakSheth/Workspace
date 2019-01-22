@@ -1,0 +1,333 @@
+package com.konkr.Activities;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
+import com.konkr.Models.Comments;
+import com.konkr.Models.CommonMessageStatus;
+import com.konkr.Models.ExpressionMedia;
+import com.konkr.Models.SelectDeselectExpression;
+import com.konkr.Models.SendComment;
+import com.konkr.Models.UserDetails;
+import com.konkr.R;
+import com.konkr.SharedPreferences.SessionManager;
+import com.konkr.Utils.AlertDialogUtility;
+import com.konkr.Utils.ConnectivityDetector;
+import com.konkr.Utils.GlobalData;
+import com.konkr.Utils.Headerbar;
+import com.konkr.Utils.LogM;
+import com.konkr.Utils.MyTextView;
+import com.konkr.Webservices.GetJsonWithAndroidNetworkingLib;
+import com.konkr.Webservices.OnUpdateListener;
+import com.konkr.Webservices.WebField;
+import com.konkr.databinding.ActivityFullScreenProfileImagesBinding;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class FullScreenProfileImages extends AppCompatActivity implements View.OnClickListener {
+    private ActivityFullScreenProfileImagesBinding binding;
+    private SimpleDraweeView ivFullImage, ivLike, ivComment, ivGoal, ivAdmiring, ivInspiring;
+    private ImageView ivEdit;
+    private ImageView ivBack;
+    private MyTextView tvLikeCount;
+    private MyTextView tvCommentCount;
+    private UserDetails.UserDetailsBean.ImageArrayBean imageArrayBean;
+    private ConstraintLayout rowCom;
+    private boolean isExpressVisible;
+    private String mediaId, commentType, expressionFor;
+    private int profileId;
+    private boolean isAlreadyLiked;
+    private Activity context;
+    int goal, inspiring, admiring;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_full_screen_profile_images);
+        context = FullScreenProfileImages.this;
+        bindViews();
+        getIntentData();
+        setListner();
+        callgetExpressionMedia();
+
+    }
+
+
+    private void setListner() {
+        ivBack.setOnClickListener(this);
+        ivComment.setOnClickListener(this);
+        ivLike.setOnClickListener(this);
+        ivGoal.setOnClickListener(this);
+        ivInspiring.setOnClickListener(this);
+        ivAdmiring.setOnClickListener(this);
+        ivFullImage.setOnClickListener(this);
+        tvLikeCount.setOnClickListener(this);
+    }
+
+    private void setLikeButton(int goal, int adming, int inspiring) {
+
+        if (goal == 1) {
+            ivLike.setImageResource(R.drawable.goal_green);
+            isAlreadyLiked = true;
+        } else if (adming == 1) {
+            ivLike.setImageResource(R.drawable.admiring_green);
+            isAlreadyLiked = true;
+        } else if (inspiring == 1) {
+            ivLike.setImageResource(R.drawable.inspiration_green);
+            isAlreadyLiked = true;
+        } else {
+            ivLike.setImageResource(R.drawable.like_white);
+        }
+
+    }
+
+    private void getIntentData() {
+
+        if (getIntent().getExtras() != null) {
+            if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.ALBUM)) {
+                imageArrayBean = getIntent().getParcelableExtra(GlobalData.Array_List);
+                ivFullImage.setImageURI(imageArrayBean.getImage());
+                tvCommentCount.setText("" + imageArrayBean.getCommentCount());
+                tvLikeCount.setText("" + imageArrayBean.getExpressionCount());
+
+                goal = imageArrayBean.getIs_goals();
+                inspiring = imageArrayBean.getIs_inspiring();
+                admiring = imageArrayBean.getIs_admiring();
+                LogM.LogE("goal==>" + imageArrayBean.getIs_goals() + "inspiring==>" + imageArrayBean.getIs_inspiring() + "Admining==>" + imageArrayBean.getIs_admiring());
+                setLikeButton(goal, admiring, inspiring);
+
+
+                mediaId = imageArrayBean.getMediaId();
+                expressionFor = "1";
+
+                /**
+                 * profile id 0 and commentTpe "1" will be passed when album phto comments clicked
+                 */
+                profileId = 0;
+                commentType = "1";
+            }
+            if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.PROFILE)) {
+                ivFullImage.setImageURI(getIntent().getStringExtra(GlobalData.IMAGE_URL));
+                tvLikeCount.setText("" + getIntent().getIntExtra(GlobalData.LIKE_COUNT, 0));
+                tvCommentCount.setText("" + getIntent().getIntExtra(GlobalData.COMMENT_COUNT, 0));
+                goal = getIntent().getIntExtra(GlobalData.GOAL, 0);
+                admiring = getIntent().getIntExtra(GlobalData.ADMIRING, 0);
+                inspiring = getIntent().getIntExtra(GlobalData.INSPIRING, 0);
+                setLikeButton(goal, admiring, inspiring);
+
+                mediaId = "0";
+                expressionFor = "0";
+                profileId = (getIntent().getIntExtra(GlobalData.PROFILE_ID, 0));
+                if (profileId == 0) {
+                    profileId = SessionManager.getUserId(context);
+                }
+                commentType = "0";
+
+            }
+            if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.ADD_MEAL_SCREEN)) {
+                ivFullImage.setImageURI(getIntent().getStringExtra(GlobalData.IMAGE_URL));
+                ivComment.setVisibility(View.GONE);
+            }
+            if (getIntent().getStringExtra(GlobalData.FROM).equalsIgnoreCase(GlobalData.SUPPLEMENT_DETAILS)) {
+                ivFullImage.setImageURI(getIntent().getStringExtra(GlobalData.IMAGE_URL));
+                ivComment.setVisibility(View.GONE);
+            }
+
+        }
+    }
+
+    private void bindViews() {
+        ivFullImage = binding.ivFullImage;
+        ivEdit = binding.ivEdit;
+        ivBack = binding.ivBack;
+        ivComment = binding.ivComment;
+        ivLike = binding.ivLike;
+        tvLikeCount = binding.tvLikeCount;
+        tvCommentCount = binding.tvCommentCount;
+        ivGoal = binding.ivGoal;
+        ivAdmiring = binding.ivAdmiring;
+        ivInspiring = binding.ivInspiring;
+        rowCom = binding.rowCom;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.ivBack:
+                finish();
+                break;
+            case R.id.tvLikeCount:
+                Intent intentExpressopn = new Intent(FullScreenProfileImages.this, PostExpressionForMediaActivityActivity.class);
+                intentExpressopn.putExtra(GlobalData.MEDIA_ID, mediaId);
+                intentExpressopn.putExtra(GlobalData.EXPRESSION_FOR, expressionFor);
+                intentExpressopn.putExtra(GlobalData.PROFILE_ID, profileId);
+                startActivity(intentExpressopn);
+                break;
+            case R.id.ivComment:
+                Intent intent = new Intent(FullScreenProfileImages.this, MediaPhotoCommentActivity.class);
+                intent.putExtra(GlobalData.PROFILE_ID, profileId);
+                intent.putExtra(GlobalData.MEDIA_ID, mediaId);
+                intent.putExtra(GlobalData.COMMENT_TYPE, commentType);
+                startActivityForResult(intent, 311);
+                break;
+
+            case R.id.ivLike:
+                if (!isAlreadyLiked) {
+                    if (isExpressVisible) {
+                        rowCom.setVisibility(View.GONE);
+                        isExpressVisible = false;
+                    } else {
+                        rowCom.setVisibility(View.VISIBLE);
+                        isExpressVisible = true;
+                    }
+                } else {
+//--------------------------------------------------------------------------------------------------
+                    if (goal > 0) {
+                        callAddexpressionUserMedia("" + GlobalData.EXPRESSION_GOAL, 1, 1);
+                    }
+                    ;
+                    if (inspiring > 0) {
+                        callAddexpressionUserMedia("" + GlobalData.EXPRESSION_INSPIRING, 2, 1);
+                    }
+                    ;
+                    if (admiring > 0) {
+                        callAddexpressionUserMedia("" + GlobalData.EXPRESSION_ADMIRING, 3, 1);
+                    }
+                    ;
+                }
+
+                break;
+            case R.id.ivGoal:
+                callAddexpressionUserMedia("" + GlobalData.EXPRESSION_GOAL, 1, 0);
+                break;
+            case R.id.ivInspiring:
+                callAddexpressionUserMedia("" + GlobalData.EXPRESSION_INSPIRING, 2, 0);
+                break;
+            case R.id.ivAdmiring:
+                callAddexpressionUserMedia("" + GlobalData.EXPRESSION_ADMIRING, 3, 0);
+                break;
+
+            default:
+                rowCom.setVisibility(View.GONE);
+                isExpressVisible = false;
+
+        }
+    }
+
+    private void callAddexpressionUserMedia(String expression, int selected, int deselect) {
+
+        try {
+            if (!ConnectivityDetector.isConnectingToInternet(context)) {
+                AlertDialogUtility.showInternetAlert(context);
+                return;
+            }
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+            jsonObject.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+            jsonObject.put(WebField.ADD_EXPRESSION_USERMEDIA.MEDIA_ID, mediaId);
+            jsonObject.put(WebField.ADD_EXPRESSION_USERMEDIA.EXPRESSION, expression);
+            jsonObject.put(WebField.ADD_EXPRESSION_USERMEDIA.EXPRESSION_FOR, expressionFor);
+            jsonObject.put(WebField.ADD_EXPRESSION_USERMEDIA.PROFILE_ID, profileId);
+
+
+            LogM.LogE("Request : Media Expression : " + jsonObject.toString());
+            new GetJsonWithAndroidNetworkingLib(context, jsonObject, WebField.BASE_URL + WebField.ADD_EXPRESSION_USERMEDIA.MODE, 1, new OnUpdateListener() {
+                @Override
+                public void onUpdateComplete(JSONObject jsonObject, boolean isSuccess) {
+                    LogM.LogE("Response : Media Expression: " + jsonObject.toString());
+                    if (isSuccess) {
+                        SelectDeselectExpression expression = new Gson().fromJson(String.valueOf(jsonObject), SelectDeselectExpression.class);
+                        tvLikeCount.setText("" + expression.getExpressionCount());
+                        goal = expression.getIs_goals();
+                        inspiring = expression.getIs_inspiring();
+                        admiring = expression.getIs_admiring();
+
+                        rowCom.setVisibility(View.GONE);
+                        isAlreadyLiked = true;
+                        if (selected == 1 && deselect == 0) {
+                            ivLike.setImageResource(R.drawable.goal_green);
+                        } else if (selected == 2 && deselect == 0) {
+                            ivLike.setImageResource(R.drawable.inspiration_green);
+                        } else if (selected == 3 && deselect == 0) {
+                            ivLike.setImageResource(R.drawable.admiring_green);
+                        } else {
+                            isAlreadyLiked = false;
+                            ivLike.setImageResource(R.drawable.like_white);
+                        }
+                    }
+                }
+            }).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private void callgetExpressionMedia() {
+
+        try {
+            if (!ConnectivityDetector.isConnectingToInternet(context)) {
+                AlertDialogUtility.showInternetAlert(context);
+                return;
+            }
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put(WebField.PARAM_USER_ID, SessionManager.getUserId(context));
+            jsonObject.put(WebField.PARAM_ACCESSTOKEN, SessionManager.getAccessToken(context));
+            jsonObject.put(WebField.GET_EXPRESSION_MEDIA.MEDIA_ID, mediaId);
+            jsonObject.put(WebField.GET_EXPRESSION_MEDIA.EXPRESSION_FOR, expressionFor);
+            jsonObject.put(WebField.GET_EXPRESSION_MEDIA.PROFILE_ID, profileId);
+
+
+            LogM.LogE("Request : Media Expression : " + jsonObject.toString());
+            new GetJsonWithAndroidNetworkingLib(context, jsonObject, WebField.BASE_URL + WebField.GET_EXPRESSION_MEDIA.MODE, 1, new OnUpdateListener() {
+                @Override
+                public void onUpdateComplete(JSONObject jsonObject, boolean isSuccess) {
+                    LogM.LogE("Response : Media Expression: " + jsonObject.toString());
+                    if (isSuccess) {
+                        rowCom.setVisibility(View.GONE);
+                        ExpressionMedia express = new Gson().fromJson(String.valueOf(jsonObject), ExpressionMedia.class);
+
+//                        if(express.getGoals().size()>0){
+//
+//                        }
+//                        if(express.getAdmiring().size()>0){
+//
+//                        }
+//                        if(express.getInspiring().size()>0){
+//
+//                        }
+                    }
+                }
+            }).execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 311 && resultCode == RESULT_OK) {
+
+            tvCommentCount.setText("" + data.getIntExtra(GlobalData.COMMENT_COUNT, 0));
+        }
+    }
+}

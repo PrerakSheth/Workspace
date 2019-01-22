@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/row_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4"
+        android:background="@color/directory_item_bg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/scale_60"
+            android:layout_height="@dimen/scale_60"
+            android:layout_margin="@dimen/margin_4"
+            android:src="@drawable/signin_user"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/scale_15"
+            android:layout_height="@dimen/scale_15"
+            android:layout_margin="@dimen/margin_2"
+            android:src="@drawable/messages_online"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+            app:layout_constraintRight_toRightOf="@+id/ivProfile" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_7"
+            android:layout_marginTop="@dimen/margin_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Jhon Doe"
+            android:textColor="@color/view_line"
+            android:textSize="@dimen/textSize_18"
+            app:font="@string/font_poppins_regular"
+            app:layout_constraintLeft_toRightOf="@+id/ivProfile"
+            app:layout_constraintRight_toLeftOf="@+id/ivDelete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_5"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/padding_5"
+            android:src="@drawable/delete"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scale_2"
+            android:background="@color/directory_item_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

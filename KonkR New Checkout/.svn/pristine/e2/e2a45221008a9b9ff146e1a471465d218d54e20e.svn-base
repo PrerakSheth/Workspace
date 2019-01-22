@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/_5sdp">
+
+        <AutoCompleteTextView
+            android:id="@+id/etRowMealName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:hint="Meal Name"
+            android:imeActionLabel="Next"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="25"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text_color"
+            android:textSize="@dimen/_12ssp" />
+
+        <com.konkr.Utils.MyEditText
+            android:id="@+id/etQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:hint="Quantity"
+            android:imeActionLabel="Next"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="25"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text_color"
+            android:textSize="@dimen/_12ssp"
+            myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+
+        <com.konkr.Utils.MyEditText
+            android:id="@+id/etUnit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:hint="Unit"
+            android:imeActionLabel="Next"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="25"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text_color"
+            android:textSize="@dimen/_12ssp"
+            myedittext:edt_custom_font="@string/font_mavenpro_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/View1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@color/colorGray" />
+
+        <View
+            android:id="@+id/View2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@color/colorGray" />
+
+        <View
+            android:id="@+id/View3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@color/colorGray" />
+
+    </LinearLayout>
+
+</LinearLayout>

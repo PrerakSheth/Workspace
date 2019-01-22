@@ -1,0 +1,505 @@
+package com.konkr.Models;
+
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.List;
+
+public class MyWorkouts implements Parcelable {
+
+
+    /**
+     * message : workouts found successfully.
+     * status : 1
+     * workouts : [{"workoutId":19,"userId":10,"homeFeedId":"86","workoutName":"Okk","workoutCategoryId":13,"workoutCategoryName":"Shoulders","excerciseId":0,"excerciseName":"uhh","expressionCount":0,"commentCount":0,"is_admiring":0,"is_goals":0,"is_inspiring":0,"workoutDuration":{"Hour":9,"Min":45},"workoutMedia":[{"itemId":"30","homeFeedId":"86","mediaType":"2","url":"http://dev2.ifuturz.com/core/konkr/assets/upload/workout/30.png","expressionCount":0,"commentCount":0,"is_admiring":0,"is_goals":0,"is_inspiring":0}]},{"workoutId":18,"userId":10,"homeFeedId":"85","workoutName":"HI","workoutCategoryId":14,"workoutCategoryName":"Calves","excerciseId":23,"excerciseName":"Wadenheben an Hackenschmidt","expressionCount":0,"commentCount":0,"is_admiring":0,"is_goals":0,"is_inspiring":0,"workoutDuration":{"Hour":8,"Min":45},"workoutMedia":[]}]
+     */
+
+    private String message;
+    private int status;
+    private List<WorkoutsBean> workouts;
+
+    protected MyWorkouts(Parcel in) {
+        message = in.readString();
+        status = in.readInt();
+    }
+
+    public static final Creator<MyWorkouts> CREATOR = new Creator<MyWorkouts>() {
+        @Override
+        public MyWorkouts createFromParcel(Parcel in) {
+            return new MyWorkouts(in);
+        }
+
+        @Override
+        public MyWorkouts[] newArray(int size) {
+            return new MyWorkouts[size];
+        }
+    };
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public List<WorkoutsBean> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(List<WorkoutsBean> workouts) {
+        this.workouts = workouts;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(message);
+        parcel.writeInt(status);
+    }
+
+    public static class WorkoutsBean implements Parcelable {
+        /**
+         * workoutId : 19
+         * userId : 10
+         * homeFeedId : 86
+         * workoutName : Okk
+         * workoutCategoryId : 13
+         * workoutCategoryName : Shoulders
+         * excerciseId : 0
+         * excerciseName : uhh
+         * expressionCount : 0
+         * commentCount : 0
+         * is_admiring : 0
+         * is_goals : 0
+         * is_inspiring : 0
+         * workoutDuration : {"Hour":9,"Min":45}
+         * workoutMedia : [{"itemId":"30","homeFeedId":"86","mediaType":"2","url":"http://dev2.ifuturz.com/core/konkr/assets/upload/workout/30.png","expressionCount":0,"commentCount":0,"is_admiring":0,"is_goals":0,"is_inspiring":0}]
+         */
+
+        private int workoutId;
+        private int userId;
+        private String homeFeedId;
+        private String workoutName;
+        private int workoutCategoryId;
+        private String workoutCategoryName;
+        private int excerciseId;
+        private String excerciseName;
+        private int expressionCount;
+        private int commentCount;
+        private int is_admiring;
+        private int is_goals;
+        private int is_inspiring;
+        private WorkoutDurationBean workoutDuration;
+        private List<WorkoutMediaBean> workoutMedia;
+
+        protected WorkoutsBean(Parcel in) {
+            workoutId = in.readInt();
+            userId = in.readInt();
+            homeFeedId = in.readString();
+            workoutName = in.readString();
+            workoutCategoryId = in.readInt();
+            workoutCategoryName = in.readString();
+            excerciseId = in.readInt();
+            excerciseName = in.readString();
+            expressionCount = in.readInt();
+            commentCount = in.readInt();
+            is_admiring = in.readInt();
+            is_goals = in.readInt();
+            is_inspiring = in.readInt();
+        }
+
+        public static final Creator<WorkoutsBean> CREATOR = new Creator<WorkoutsBean>() {
+            @Override
+            public WorkoutsBean createFromParcel(Parcel in) {
+                return new WorkoutsBean(in);
+            }
+
+            @Override
+            public WorkoutsBean[] newArray(int size) {
+                return new WorkoutsBean[size];
+            }
+        };
+
+        public int getWorkoutId() {
+            return workoutId;
+        }
+
+        public void setWorkoutId(int workoutId) {
+            this.workoutId = workoutId;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getHomeFeedId() {
+            return homeFeedId;
+        }
+
+        public void setHomeFeedId(String homeFeedId) {
+            this.homeFeedId = homeFeedId;
+        }
+
+        public String getWorkoutName() {
+            return workoutName;
+        }
+
+        public void setWorkoutName(String workoutName) {
+            this.workoutName = workoutName;
+        }
+
+        public int getWorkoutCategoryId() {
+            return workoutCategoryId;
+        }
+
+        public void setWorkoutCategoryId(int workoutCategoryId) {
+            this.workoutCategoryId = workoutCategoryId;
+        }
+
+        public String getWorkoutCategoryName() {
+            return workoutCategoryName;
+        }
+
+        public void setWorkoutCategoryName(String workoutCategoryName) {
+            this.workoutCategoryName = workoutCategoryName;
+        }
+
+        public int getExcerciseId() {
+            return excerciseId;
+        }
+
+        public void setExcerciseId(int excerciseId) {
+            this.excerciseId = excerciseId;
+        }
+
+        public String getExcerciseName() {
+            return excerciseName;
+        }
+
+        public void setExcerciseName(String excerciseName) {
+            this.excerciseName = excerciseName;
+        }
+
+        public int getExpressionCount() {
+            return expressionCount;
+        }
+
+        public void setExpressionCount(int expressionCount) {
+            this.expressionCount = expressionCount;
+        }
+
+        public int getCommentCount() {
+            return commentCount;
+        }
+
+        public void setCommentCount(int commentCount) {
+            this.commentCount = commentCount;
+        }
+
+        public int getIs_admiring() {
+            return is_admiring;
+        }
+
+        public void setIs_admiring(int is_admiring) {
+            this.is_admiring = is_admiring;
+        }
+
+        public int getIs_goals() {
+            return is_goals;
+        }
+
+        public void setIs_goals(int is_goals) {
+            this.is_goals = is_goals;
+        }
+
+        public int getIs_inspiring() {
+            return is_inspiring;
+        }
+
+        public void setIs_inspiring(int is_inspiring) {
+            this.is_inspiring = is_inspiring;
+        }
+
+        public WorkoutDurationBean getWorkoutDuration() {
+            return workoutDuration;
+        }
+
+        public void setWorkoutDuration(WorkoutDurationBean workoutDuration) {
+            this.workoutDuration = workoutDuration;
+        }
+
+        public List<WorkoutMediaBean> getWorkoutMedia() {
+            return workoutMedia;
+        }
+
+        public void setWorkoutMedia(List<WorkoutMediaBean> workoutMedia) {
+            this.workoutMedia = workoutMedia;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeInt(workoutId);
+            parcel.writeInt(userId);
+            parcel.writeString(homeFeedId);
+            parcel.writeString(workoutName);
+            parcel.writeInt(workoutCategoryId);
+            parcel.writeString(workoutCategoryName);
+            parcel.writeInt(excerciseId);
+            parcel.writeString(excerciseName);
+            parcel.writeInt(expressionCount);
+            parcel.writeInt(commentCount);
+            parcel.writeInt(is_admiring);
+            parcel.writeInt(is_goals);
+            parcel.writeInt(is_inspiring);
+        }
+
+        public static class WorkoutDurationBean implements Parcelable {
+            /**
+             * Hour : 9
+             * Min : 45
+             */
+
+            private int Hour;
+            private int Min;
+
+            protected WorkoutDurationBean(Parcel in) {
+                Hour = in.readInt();
+                Min = in.readInt();
+            }
+
+            public static final Creator<WorkoutDurationBean> CREATOR = new Creator<WorkoutDurationBean>() {
+                @Override
+                public WorkoutDurationBean createFromParcel(Parcel in) {
+                    return new WorkoutDurationBean(in);
+                }
+
+                @Override
+                public WorkoutDurationBean[] newArray(int size) {
+                    return new WorkoutDurationBean[size];
+                }
+            };
+
+            public int getHour() {
+                return Hour;
+            }
+
+            public void setHour(int Hour) {
+                this.Hour = Hour;
+            }
+
+            public int getMin() {
+                return Min;
+            }
+
+            public void setMin(int Min) {
+                this.Min = Min;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel parcel, int i) {
+                parcel.writeInt(Hour);
+                parcel.writeInt(Min);
+            }
+        }
+
+        public static class WorkoutMediaBean implements Parcelable {
+            /**
+             * itemId : 30
+             * homeFeedId : 86
+             * mediaType : 2
+             * url : http://dev2.ifuturz.com/core/konkr/assets/upload/workout/30.png
+             * expressionCount : 0
+             * commentCount : 0
+             * is_admiring : 0
+             * is_goals : 0
+             * is_inspiring : 0
+             */
+
+            private String itemId;
+            private String homeFeedId;
+            private String mediaType;
+            private String url;
+            private int expressionCount;
+            private int commentCount;
+            private int is_admiring;
+            private int is_goals;
+            private int is_inspiring;
+            private String videoThumbImage;
+            private String VideoURL;
+
+            public String getVideoURL() {
+                return VideoURL;
+            }
+
+            public void setVideoURL(String videoURL) {
+                VideoURL = videoURL;
+            }
+
+            public static Creator<WorkoutMediaBean> getCREATOR() {
+                return CREATOR;
+            }
+
+            public String getItemId() {
+                return itemId;
+            }
+
+            public void setItemId(String itemId) {
+                this.itemId = itemId;
+            }
+
+            public String getHomeFeedId() {
+                return homeFeedId;
+            }
+
+            public void setHomeFeedId(String homeFeedId) {
+                this.homeFeedId = homeFeedId;
+            }
+
+            public String getMediaType() {
+                return mediaType;
+            }
+
+            public void setMediaType(String mediaType) {
+                this.mediaType = mediaType;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public int getExpressionCount() {
+                return expressionCount;
+            }
+
+            public void setExpressionCount(int expressionCount) {
+                this.expressionCount = expressionCount;
+            }
+
+            public int getCommentCount() {
+                return commentCount;
+            }
+
+            public void setCommentCount(int commentCount) {
+                this.commentCount = commentCount;
+            }
+
+            public int getIs_admiring() {
+                return is_admiring;
+            }
+
+            public void setIs_admiring(int is_admiring) {
+                this.is_admiring = is_admiring;
+            }
+
+            public int getIs_goals() {
+                return is_goals;
+            }
+
+            public void setIs_goals(int is_goals) {
+                this.is_goals = is_goals;
+            }
+
+            public int getIs_inspiring() {
+                return is_inspiring;
+            }
+
+            public void setIs_inspiring(int is_inspiring) {
+                this.is_inspiring = is_inspiring;
+            }
+
+            public String getVideoThumbImage() {
+                return videoThumbImage;
+            }
+
+            public void setVideoThumbImage(String videoThumbImage) {
+                this.videoThumbImage = videoThumbImage;
+            }
+
+            public WorkoutMediaBean(int expressionCount, int commentCount, int is_admiring, int is_goals, int is_inspiring) {
+                this.expressionCount = expressionCount;
+                this.commentCount = commentCount;
+                this.is_admiring = is_admiring;
+                this.is_goals = is_goals;
+                this.is_inspiring = is_inspiring;
+            }
+
+            protected WorkoutMediaBean(Parcel in) {
+                itemId = in.readString();
+                homeFeedId = in.readString();
+                mediaType = in.readString();
+                url = in.readString();
+                expressionCount = in.readInt();
+                commentCount = in.readInt();
+                is_admiring = in.readInt();
+                is_goals = in.readInt();
+                is_inspiring = in.readInt();
+                videoThumbImage = in.readString();
+                VideoURL = in.readString();
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(itemId);
+                dest.writeString(homeFeedId);
+                dest.writeString(mediaType);
+                dest.writeString(url);
+                dest.writeInt(expressionCount);
+                dest.writeInt(commentCount);
+                dest.writeInt(is_admiring);
+                dest.writeInt(is_goals);
+                dest.writeInt(is_inspiring);
+                dest.writeString(videoThumbImage);
+                dest.writeString(VideoURL);
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            public static final Creator<WorkoutMediaBean> CREATOR = new Creator<WorkoutMediaBean>() {
+                @Override
+                public WorkoutMediaBean createFromParcel(Parcel in) {
+                    return new WorkoutMediaBean(in);
+                }
+
+                @Override
+                public WorkoutMediaBean[] newArray(int size) {
+                    return new WorkoutMediaBean[size];
+                }
+            };
+        }
+    }
+}

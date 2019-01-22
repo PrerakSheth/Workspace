@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvMealType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="Breakfast"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintLeft_toLeftOf="@+id/tvCardNo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:txt_custom_font="@string/font_mavenpro_bold" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivMealPhoto"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/user_profile"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMealType"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+    <LinearLayout
+        android:id="@+id/parentlayout"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@+id/ivMealPhoto"
+        app:layout_constraintTop_toTopOf="@+id/ivMealPhoto">
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

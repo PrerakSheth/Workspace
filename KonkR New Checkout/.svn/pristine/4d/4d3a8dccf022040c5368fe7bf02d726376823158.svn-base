@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="defaultTagsTextColor">#FFFFFF</color>
+    <declare-styleable name="TagsEditText"><attr format="boolean" name="allowSpaceInTag"/><attr format="color" name="tagsTextColor"/><attr format="dimension" name="tagsTextSize"/><attr format="integer" name="tagsBackground"/><attr format="integer" name="tagsCloseImageLeft"/><attr format="integer" name="tagsCloseImageRight"/><attr format="dimension" name="tagsCloseImagePadding"/><attr format="dimension" name="tagsPaddingLeft"/><attr format="dimension" name="tagsPaddingRight"/><attr format="dimension" name="tagsPaddingTop"/><attr format="dimension" name="tagsPaddingBottom"/></declare-styleable>
+    <dimen name="defaultTagsCloseImagePadding">10dp</dimen>
+    <dimen name="defaultTagsPadding">0dp</dimen>
+    <dimen name="defaultTagsTextSize">16sp</dimen>
+    <string name="app_name">TagsEditText</string>
+</resources>

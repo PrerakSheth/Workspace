@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:padding="@dimen/_5sdp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@drawable/user_profile"
+        app:actualImageScaleType="focusCrop"
+        app:failureImageScaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImageScaleType="fitCenter"
+        app:retryImageScaleType="centerCrop"
+        app:roundAsCircle="true" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clFirstNameLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/ivUserPhoto"
+        app:layout_constraintRight_toLeftOf="@+id/tvFollowUnFollow"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvFirstName"
+            style="@style/MyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text=""
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:txt_custom_font="@string/font_mavenpro_bold" />
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintTop_toBottomOf="@id/tvFirstName"
+            app:txt_custom_font="@string/font_mavenpro_medium" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <com.konkr.Utils.MyTextView
+        android:id="@+id/tvFollowUnFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/following_bg"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/clFirstNameLastName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clFirstNameLastName"
+        mytextview:txt_custom_font="@string/font_mavenpro_medium" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/ivUnFollow"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/unfollow"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toRightOf="@+id/clFirstNameLastName"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+</android.support.constraint.ConstraintLayout>

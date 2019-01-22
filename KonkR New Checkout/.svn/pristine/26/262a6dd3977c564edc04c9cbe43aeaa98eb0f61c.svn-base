@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\k4l-video-trimmer\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\ic_square_left.png",
+        "source": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\k4l-video-trimmer\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\ic_square_left.png"
+    },
+    {
+        "merged": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\k4l-video-trimmer\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\ic_square_right.png",
+        "source": "D:\\Prerak_Data\\Studio_Workspace\\KonkR\\k4l-video-trimmer\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\ic_square_right.png"
+    }
+]

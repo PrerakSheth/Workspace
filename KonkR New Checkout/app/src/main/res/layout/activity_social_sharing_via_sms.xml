@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myedittext="http://schemas.android.com/apk/res-auto"
+    xmlns:mytextview="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.konkr.Activities.SocialSharingViaSmsActivity">
+
+        <com.konkr.Utils.Headerbar
+            android:id="@+id/headerBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.konkr.Utils.Headerbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:background="@drawable/shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.konkr.Utils.MyEditText
+                android:id="@+id/etWriteYourMessage"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:background="@android:color/transparent"
+                android:hint="@string/write_your_message"
+                android:inputType="textMultiLine"
+                android:maxLength="500"
+                android:maxLines="5"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_12ssp"
+                app:edt_custom_font="@string/font_mavenpro_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:background="@color/view_color"
+                app:layout_constraintLeft_toLeftOf="@+id/etWriteYourMessage"
+                app:layout_constraintRight_toRightOf="@+id/etWriteYourMessage"
+                app:layout_constraintTop_toBottomOf="@+id/etWriteYourMessage" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvFiveHundredCharacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="500"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintRight_toLeftOf="@+id/tvCharacterRemaining"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+            <com.konkr.Utils.MyTextView
+                android:id="@+id/tvCharacterRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:maxLength="25"
+                android:paddingBottom="@dimen/_20sdp"
+                android:singleLine="true"
+                android:text="@string/sp_char_remain"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintRight_toRightOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                mytextview:txt_custom_font="@string/font_mavenpro_regular" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <com.konkr.Utils.MyTextView
+            android:id="@+id/tvSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/button_shadow"
+            android:gravity="center"
+            android:text="@string/send"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            mytextview:txt_custom_font="@string/font_mavenpro_bold" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
+

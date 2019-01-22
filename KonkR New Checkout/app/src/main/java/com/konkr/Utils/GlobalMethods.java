@@ -1,0 +1,147 @@
+package com.konkr.Utils;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.text.format.DateUtils;
+import android.util.Base64;
+import android.util.Patterns;
+import android.webkit.URLUtil;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class GlobalMethods {
+    public static String bitmapToBase64(Bitmap bmp) {
+        String strBase64 = "";
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            strBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return strBase64;
+    }
+
+    public static void checkPicturesFolder() {
+        try {
+            File folder1 = new File(Environment.getExternalStorageDirectory() + "/Pictures");
+            if (!folder1.exists()) {
+                folder1.mkdir();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            // Log exception
+            return null;
+        }
+    }
+
+    public static boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{6,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
+    }
+
+    public static boolean isValidUrl(String url) {
+        try {
+            return URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static Bitmap getThumbFromVideo(String path) {
+        Bitmap bmp = null;
+        try {
+            bmp = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Images.Thumbnails.MINI_KIND);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bmp;
+    }
+
+    public static Bitmap getThumbFromVideoWorkout(String path) {
+        Bitmap bmp = null;
+        try {
+            bmp = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bmp;
+    }
+
+//    /**
+//     * Get file path
+//     */
+//    public static String getPath(Context context, Uri uri) {
+//        String[] projection = {MediaStore.Images.Media.DATA};
+//        Cursor cursor = context.managedQuery(uri, projection, null, null, null);
+//        int column_index = cursor
+//                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//        cursor.moveToFirst();
+//        return cursor.getString(column_index);
+//    }
+
+
+    public static int clearCacheFolder(final File dir, final int numDays) {
+
+        int deletedFiles = 0;
+        if (dir != null && dir.isDirectory()) {
+            try {
+                for (File child : dir.listFiles()) {
+
+                    //first delete subdirectories recursively
+                    if (child.isDirectory()) {
+                        deletedFiles += clearCacheFolder(child, numDays);
+                    }
+
+                    //then delete the files and subdirectories in this dir
+                    //only empty directories can be deleted, so subdirs have been done first
+                    if (child.lastModified() < new Date().getTime() - numDays * DateUtils.DAY_IN_MILLIS) {
+                        if (child.delete()) {
+                            deletedFiles++;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                LogM.LogE(String.format("Failed to clean the cache, error %s", e.getMessage()));
+            }
+        }
+        return deletedFiles;
+    }
+
+}

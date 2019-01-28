@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/explore_search_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="@dimen/scale_0"
+                android:layout_height="@dimen/scale_0"
+                android:layout_margin="@dimen/margin_5"
+                android:background="@drawable/ractangle_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvMapView"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etSearchPark"
+                    android:layout_width="@dimen/scale_0"
+                    android:layout_height="@dimen/scale_0"
+                    android:layout_margin="@dimen/margin_2"
+                    android:background="@color/white"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search_park_or_suburb"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/padding_10"
+                    android:paddingRight="@dimen/padding_10"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_12"
+                    app:font="@string/font_poppins_regular"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/clSearchDistanceSpinner"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clSearchDistanceSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/ibLocation"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/spinnerSearchDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:spinnerMode="dropdown"
+                        android:visibility="invisible" />
+
+                    <com.patchpets.utils.MyTextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@+id/ibSpinnerArrow"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/padding_4"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/textSize_10"
+                        app:font="@string/font_poppins_medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ibSpinnerArrow"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/ibSpinnerArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/explore_down_arrow"
+                        android:rotation="0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+
+                <ImageButton
+                    android:id="@+id/ibLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:padding="@dimen/padding_8"
+                    android:src="@drawable/explore_map_marker_green"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvMapView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_5"
+                android:text="@string/map_view"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/textSize_8"
+                app:font="@string/font_poppins_regular"
+                app:layout_constraintBottom_toBottomOf="@+id/switchMapEnable"
+                app:layout_constraintRight_toLeftOf="@+id/switchMapEnable"
+                app:layout_constraintTop_toTopOf="@+id/switchMapEnable" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switchMapEnable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:background="@null"
+                android:button="@drawable/map_enable_switch_selector"
+                android:checked="true"
+                android:thumb="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:track="@null" />
+        </android.support.constraint.ConstraintLayout>
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clSearch" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvDogParks"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="@dimen/scale_0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clSearch" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/padding_5"
+    android:paddingTop="@dimen/padding_3"
+    android:paddingRight="@dimen/padding_5"
+    android:paddingBottom="@dimen/padding_3">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutReciver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivReceiver"
+            android:layout_width="@dimen/scale_65"
+            android:layout_height="@dimen/scale_65"
+            android:padding="@dimen/padding_5"
+            android:src="@drawable/user" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/ivReceiver"
+            app:layout_constraintRight_toLeftOf="@id/viewReceiver">
+
+            <com.patchpets.utils.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_45"
+                android:layout_marginRight="@dimen/margin_10"
+                android:background="@drawable/bg_reciver"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_5"
+                android:paddingRight="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_5"
+                android:text="@string/lorem_epsum"
+                android:textColor="@color/text_color_dark"
+                android:textSize="@dimen/textSize_15"
+                app:font="@string/font_poppins_regular"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewReceiver"
+            android:layout_width="@dimen/scale_65"
+            android:layout_height="@dimen/scale_1"
+            android:background="@android:color/transparent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutSender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivSender"
+            android:layout_width="@dimen/scale_65"
+            android:layout_height="@dimen/scale_65"
+            android:padding="@dimen/padding_5"
+            android:src="@drawable/user"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/containerReceiver"
+            android:layout_width="@dimen/scale_0"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/viewSender"
+            app:layout_constraintRight_toLeftOf="@id/ivSender">
+
+            <com.patchpets.utils.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_45"
+                android:background="@drawable/bg_sender"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingTop="@dimen/padding_5"
+                android:paddingRight="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_5"
+                android:text="@string/lorem_epsum"
+                android:textColor="@color/text_color_dark"
+                android:textSize="@dimen/textSize_15"
+                app:font="@string/font_poppins_regular"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="@dimen/scale_11"
+                android:layout_height="@dimen/scale_11"
+                android:layout_marginRight="@dimen/margin_5"
+                android:layout_marginBottom="@dimen/margin_5"
+                android:src="@drawable/chat_screen_check"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewSender"
+            android:layout_width="@dimen/scale_65"
+            android:layout_height="@dimen/scale_1"
+            android:background="@android:color/transparent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/clock"
+            android:drawablePadding="@dimen/padding_5"
+            android:gravity="center"
+            android:padding="@dimen/padding_5"
+            android:text="10:00 AM May 30 2018"
+            android:textColor="@color/chat_time_color"
+            app:font="@string/font_poppins_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

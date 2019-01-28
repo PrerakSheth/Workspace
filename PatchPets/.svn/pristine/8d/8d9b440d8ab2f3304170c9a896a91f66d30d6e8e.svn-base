@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="@dimen/scale_60"
+        android:layout_height="@dimen/scale_40"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:background="@drawable/bg_square_border"
+        android:src="@drawable/mastercard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.patchpets.utils.MyTextView
+        android:id="@+id/tvCardNo"
+        android:layout_width="@dimen/scale_0"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:maxLines="1"
+        android:text="@string/card_no_text"
+        android:textColor="@color/card_color"
+        android:textSize="@dimen/textSize_20"
+        app:font="@string/font_poppins_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCard"
+        app:layout_constraintLeft_toRightOf="@+id/ivCard"
+        app:layout_constraintRight_toLeftOf="@+id/ibRightArrow"
+        app:layout_constraintTop_toTopOf="@+id/ivCard" />
+
+    <com.patchpets.utils.MyTextView
+        android:id="@+id/tvExpires"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_5"
+        android:text="@string/expires"
+        android:textColor="@color/text_color_lite"
+        android:textSize="@dimen/textSize_14"
+        app:font="@string/font_poppins_regular"
+        app:layout_constraintLeft_toLeftOf="@+id/tvCardNo"
+        app:layout_constraintTop_toBottomOf="@+id/ivCard" />
+
+    <ImageButton
+        android:id="@+id/ibRightArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/scale_30"
+        android:background="@drawable/right_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="@dimen/scale_0"
+        android:layout_height="@dimen/scale_1"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@color/text_color_lite"
+        app:layout_constraintTop_toBottomOf="@+id/tvExpires" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_25"
+        android:layout_marginRight="@dimen/margin_25"
+        android:background="@drawable/bg_square_white"
+        android:minHeight="@dimen/scale_140"
+        android:padding="@dimen/padding_20"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_blank"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:padding="@dimen/padding_10"
+            android:text="Are you sure you want to delete Jhon Doe from Group?"
+            android:textColor="@color/text_hint_color"
+            android:textSize="@dimen/textSize_18"
+            app:layout_constraintBottom_toTopOf="@id/line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:font="@string/font_poppins_medium" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="@dimen/scale_1"
+            android:layout_height="@dimen/scale_40"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@color/view_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+
+        <View
+            android:id="@+id/viewMovable"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/scale_5"
+            android:alpha="0.3"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/tvYes"
+            app:layout_constraintLeft_toLeftOf="@+id/tvYes"
+            app:layout_constraintRight_toRightOf="@+id/tvYes"
+            app:layout_constraintTop_toTopOf="@+id/tvYes" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_20"
+            android:text="@string/yes"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize_24"
+            app:layout_constraintBottom_toBottomOf="@+id/line"
+            app:layout_constraintRight_toRightOf="@+id/line"
+            app:layout_constraintTop_toTopOf="@+id/line"
+            app:font="@string/font_poppins_medium" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/no"
+            android:textColor="@color/email_text"
+            android:textSize="@dimen/textSize_16"
+            app:layout_constraintBottom_toBottomOf="@+id/line"
+            app:layout_constraintLeft_toLeftOf="@id/line"
+            app:layout_constraintTop_toTopOf="@+id/line"
+            app:font="@string/font_poppins_medium" />
+    </android.support.constraint.ConstraintLayout>
+
+    <com.patchpets.utils.MyButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scale_50"
+        android:layout_marginLeft="@dimen/margin_25"
+        android:layout_marginRight="@dimen/margin_25"
+        android:background="@drawable/bg_button_white"
+        android:text="@string/cp_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/view_line"
+        android:textSize="@dimen/textSize_20"
+        app:font="@string/font_poppins_semibold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_layout" />
+</android.support.constraint.ConstraintLayout>

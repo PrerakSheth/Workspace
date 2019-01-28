@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="true"-->
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            android:background="@drawable/close"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:padding="@dimen/margin_10"
+            android:text="1"
+            android:textColor="@color/number_selected_setupprofile"
+            android:textSize="@dimen/textSize_16"
+            app:font="@string/font_poppins_bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivClose" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:padding="@dimen/margin_10"
+            android:text="2"
+            android:textColor="@color/number_not_selected_setupprofile"
+            android:textSize="@dimen/textSize_16"
+            app:font="@string/font_poppins_bold"
+            app:layout_constraintLeft_toRightOf="@+id/tvOne"
+            app:layout_constraintTop_toTopOf="@+id/tvOne" />
+
+        <com.patchpets.utils.MyTextView
+            android:id="@+id/tvThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:padding="@dimen/margin_10"
+            android:text="3"
+            android:textColor="@color/number_not_selected_setupprofile"
+            android:textSize="@dimen/textSize_16"
+            app:font="@string/font_poppins_bold"
+            app:layout_constraintLeft_toRightOf="@+id/tvTwo"
+            app:layout_constraintTop_toTopOf="@+id/tvOne" />
+
+        <com.patchpets.utils.NonSwipeableViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOne">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clDogName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etDogName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:hint="@string/enter_name"
+                    android:inputType="textCapWords"
+                    android:maxLength="50"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvDogName"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDogName" />
+
+                <View
+                    android:id="@+id/view_bottom_line_dog_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etDogName"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etDogName" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clBreedName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvBreedName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <!--<com.patchpets.utils.MyEditText-->
+                <!--android:id="@+id/etBreedName"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="@dimen/margin_100"-->
+                <!--android:background="@null"-->
+                <!--android:hint="@string/breed_name"-->
+                <!--android:inputType="textCapWords"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="@color/text_color"-->
+                <!--android:textColorHint="@color/text_hint_color"-->
+                <!--android:textCursorDrawable="@drawable/cursor_drawable"-->
+                <!--android:textSize="@dimen/textSize_30"-->
+                <!--app:font="@string/font_poppins_light"-->
+                <!--app:layout_constraintLeft_toLeftOf="@+id/tvBreedName"-->
+                <!--app:layout_constraintRight_toRightOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/tvBreedName" />-->
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvBreedNameValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@null"
+                    android:drawableRight="@drawable/down_arrow"
+                    android:drawablePadding="@dimen/padding_10"
+                    android:ellipsize="end"
+                    android:hint="@string/select_breed"
+                    android:textColor="@color/email_text"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvBreedName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBreedName" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinBreedName"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@null"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvBreedNameValue"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvBreedNameValue"
+                    app:layout_constraintRight_toRightOf="@+id/tvBreedNameValue"
+                    app:layout_constraintTop_toTopOf="@+id/tvBreedNameValue" />
+
+                <View
+                    android:id="@+id/view_bottom_line_breed_name"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvBreedNameValue"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBreedNameValue" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvSizeHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvSize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@null"
+                    android:drawableRight="@drawable/down_arrow"
+                    android:drawablePadding="@dimen/padding_10"
+                    android:hint="@string/size"
+                    android:textColor="@color/email_text"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvSizeHeader"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSizeHeader" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinSize"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@null"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSize"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvSize"
+                    app:layout_constraintRight_toRightOf="@+id/tvSize"
+                    app:layout_constraintTop_toTopOf="@+id/tvSize" />
+
+                <View
+                    android:id="@+id/view_bottom_line_Size"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvSize"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSize" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clDogAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="AAAAAA"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:clipToPadding="false"
+                    android:paddingLeft="150dp"
+                    android:paddingRight="183dp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/add_dog_age_arrow"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clDogGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@drawable/female_gender"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/ivMale"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDogGender" />
+
+                <View
+                    android:id="@+id/viewFemale"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_10"
+                    android:layout_marginBottom="@dimen/margin_12"
+                    android:background="@color/female_color"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvFemale"
+                    app:layout_constraintEnd_toEndOf="@+id/tvFemale"
+                    app:layout_constraintStart_toStartOf="@+id/tvFemale" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/female"
+                    android:textColor="@color/text_hint_color"
+                    android:textSize="@dimen/textSize_28"
+                    app:font="@string/font_poppins_regular"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivFemale"
+                    app:layout_constraintRight_toRightOf="@+id/ivFemale"
+                    app:layout_constraintTop_toBottomOf="@+id/ivFemale" />
+
+                <ImageView
+                    android:id="@+id/ivMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/male_gender"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivFemale"
+                    app:layout_constraintLeft_toRightOf="@+id/ivFemale"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <View
+                    android:id="@+id/viewMale"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_5"
+                    android:layout_marginBottom="@dimen/margin_15"
+                    android:alpha="0.3"
+                    android:background="@color/male_color"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMale"
+                    app:layout_constraintEnd_toEndOf="@+id/tvMale"
+                    app:layout_constraintStart_toStartOf="@+id/tvMale" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:text="@string/male"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/textSize_28"
+                    app:font="@string/font_poppins_regular"
+                    app:layout_constraintLeft_toLeftOf="@+id/ivMale"
+                    app:layout_constraintTop_toBottomOf="@+id/ivMale" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clDesexed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvDogDesexed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="@dimen/scale_1"
+                    android:layout_height="@dimen/scale_40"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@color/view_line"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDogDesexed" />
+
+                <View
+                    android:id="@+id/viewMovable"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_5"
+                    android:alpha="0.3"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvYes"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvYes"
+                    app:layout_constraintRight_toRightOf="@+id/tvYes"
+                    app:layout_constraintTop_toTopOf="@+id/tvYes" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_20"
+                    android:text="@string/yes"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textSize_40"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toBottomOf="@+id/line"
+                    app:layout_constraintRight_toRightOf="@+id/line"
+                    app:layout_constraintTop_toTopOf="@+id/line" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:text="@string/no"
+                    android:textColor="@color/email_text"
+                    android:textSize="@dimen/textSize_16"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toBottomOf="@+id/line"
+                    app:layout_constraintLeft_toLeftOf="@id/line"
+                    app:layout_constraintTop_toTopOf="@+id/line" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clWillingToBreed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvWillingToBreed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="@dimen/scale_1"
+                    android:layout_height="@dimen/scale_40"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@color/view_line"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWillingToBreed" />
+
+                <View
+                    android:id="@+id/viewMovableWillingToBreed"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_5"
+                    android:alpha="0.3"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvYesWillingToBreed"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvYesWillingToBreed"
+                    app:layout_constraintRight_toRightOf="@+id/tvYesWillingToBreed"
+                    app:layout_constraintTop_toTopOf="@+id/tvYesWillingToBreed" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvYesWillingToBreed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_20"
+                    android:text="@string/yes"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textSize_40"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toBottomOf="@+id/line1"
+                    app:layout_constraintRight_toRightOf="@+id/line1"
+                    app:layout_constraintTop_toTopOf="@+id/line1" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvNoWillingToBreed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:text="@string/no"
+                    android:textColor="@color/email_text"
+                    android:textSize="@dimen/textSize_16"
+                    app:font="@string/font_poppins_medium"
+                    app:layout_constraintBottom_toBottomOf="@+id/line1"
+                    app:layout_constraintLeft_toLeftOf="@id/line1"
+                    app:layout_constraintTop_toTopOf="@+id/line1" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clVaccinations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvVaccinationsHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvVaccinations"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_100"
+                    android:background="@null"
+                    android:drawableRight="@drawable/down_arrow"
+                    android:drawablePadding="@dimen/padding_10"
+                    android:hint="@string/vaccinations"
+                    android:textColor="@color/email_text"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvVaccinationsHeader"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVaccinationsHeader" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinVaccinations"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@null"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvVaccinations"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvVaccinations"
+                    app:layout_constraintRight_toRightOf="@+id/tvVaccinations"
+                    app:layout_constraintTop_toTopOf="@+id/tvVaccinations" />
+
+                <View
+                    android:id="@+id/view_bottom_line_vaccinations"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvVaccinations"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvVaccinations" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clTellUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvTellUs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etTellUs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_70"
+                    android:background="@null"
+                    android:hint="@string/write_here"
+                    android:maxLength="500"
+                    android:maxLines="4"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTellUs"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTellUs" />
+
+                <View
+                    android:id="@+id/view_bottom_line_tellus"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etTellUs"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etTellUs" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clInstagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvInstagram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:text="@string/add_your_dog_name"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_25"
+                    app:font="@string/font_poppins_bold"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <com.patchpets.utils.MyEditText
+                    android:id="@+id/etInstagram"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_70"
+                    android:background="@null"
+                    android:hint="@string/enter_link"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:textSize="@dimen/textSize_30"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvInstagram"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvInstagram" />
+
+                <View
+                    android:id="@+id/view_bottom_line_instagram"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/scale_1"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/number_selected_setupprofile"
+                    app:layout_constraintLeft_toLeftOf="@+id/etInstagram"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etInstagram" />
+
+                <com.patchpets.utils.MyTextView
+                    android:id="@+id/tvInstagramLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@string/or_click_here"
+                    android:textColor="@color/tab_bg_color"
+                    android:textSize="@dimen/textSize_22"
+                    app:font="@string/font_poppins_light"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/insta"
+                    app:layout_constraintTop_toBottomOf="@+id/view_bottom_line_instagram" />
+
+                <ImageView
+                    android:id="@+id/insta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:background="@drawable/instagram"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvInstagramLink"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toRightOf="@+id/tvInstagramLink"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvInstagramLink" />
+            </android.support.constraint.ConstraintLayout>
+        </com.patchpets.utils.NonSwipeableViewPager>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.patchpets.utils.MyTextView
+                android:id="@+id/tvNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_next"
+                android:textColor="@color/view_line"
+                android:textSize="@dimen/textSize_20"
+                app:font="@string/font_poppins_bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivNextArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:background="@drawable/next"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNext"
+                app:layout_constraintLeft_toRightOf="@+id/tvNext"
+                app:layout_constraintTop_toTopOf="@+id/tvNext" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,84 @@
+package com.patchpets.Adapters;
+
+import android.content.Context;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.patchpets.R;
+import com.patchpets.utils.CircleTransform;
+import com.patchpets.utils.MyApp;
+
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
+
+    private Context context;
+
+    public ChatAdapter(Context c) {
+        this.context = c;
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_chat_screen, parent, false);
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        try {
+            if (position % 3 == 0) {
+                holder.layoutReciver.setVisibility(View.VISIBLE);
+                MyApp.picasso
+                        .load("https://images-eu.ssl-images-amazon.com/images/I/611YFIz8h+L._AC_SS350_.jpg")
+                        .transform(new CircleTransform())
+                        .placeholder(R.drawable.place_holder)
+                        .error(R.drawable.place_holder)
+                        .into(holder.ivReceiver);
+                holder.layoutSender.setVisibility(View.GONE);
+                holder.layoutDate.setVisibility(View.GONE);
+
+            } else if (position % 3 == 1) {
+                holder.layoutReciver.setVisibility(View.GONE);
+                holder.layoutSender.setVisibility(View.VISIBLE);
+                holder.layoutDate.setVisibility(View.GONE);
+                MyApp.picasso
+                        .load("https://images-na.ssl-images-amazon.com/images/I/51ltYuAUfXL._SY355_.jpg")
+                        .transform(new CircleTransform())
+                        .placeholder(R.drawable.place_holder)
+                        .error(R.drawable.place_holder)
+                        .into(holder.ivSender);
+
+            } else {
+                holder.layoutReciver.setVisibility(View.GONE);
+                holder.layoutSender.setVisibility(View.GONE);
+                holder.layoutDate.setVisibility(View.VISIBLE);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return 20;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        ConstraintLayout layoutSender, layoutReciver, layoutDate;
+        ImageView ivSender, ivReceiver;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            layoutSender = itemView.findViewById(R.id.layoutSender);
+            layoutReciver = itemView.findViewById(R.id.layoutReciver);
+            layoutDate = itemView.findViewById(R.id.layoutDate);
+            ivSender = itemView.findViewById(R.id.ivSender);
+            ivReceiver = itemView.findViewById(R.id.ivReceiver);
+        }
+    }
+}

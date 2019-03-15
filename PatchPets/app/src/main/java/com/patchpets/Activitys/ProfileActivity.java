@@ -230,7 +230,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             alDogs.clear();
             for (int i = 0; i < userDetails.getDogList().size(); i++) {
                 DogDetails dog = new DogDetails();
-                dog.setUserId(userDetails.getUserId());
                 dog.setDogId(userDetails.getDogList().get(i).getDogId());
                 dog.setDogProfilePic(userDetails.getDogList().get(i).getDogProfilePic());
                 dog.setDogName(userDetails.getDogList().get(i).getDogName());

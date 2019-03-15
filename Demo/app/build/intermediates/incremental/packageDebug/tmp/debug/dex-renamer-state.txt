@@ -1,0 +1,4 @@
+#Fri Mar 08 11:25:23 IST 2019
+base.0=D\:\\Prerak_Data\\Studio_Workspace\\Demo\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+path.0=classes.dex
+renamed.0=classes.dex

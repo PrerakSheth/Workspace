@@ -1,7 +1,6 @@
 package com.patchpets.Activitys;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -377,10 +376,6 @@ public class SetupBusinessProfileActivity extends AppCompatActivity implements V
 //        Intent iAddDog = new Intent(this, AddDogProfileActivity.class);
 //        iAddDog.putExtra(Constants.DOG_DETAILS, alDogs.get(position));
 //        startActivity(iAddDog);
-        Intent iEditDog = new Intent(this, FullDogProfileActivity.class);
-        iEditDog.putExtra(Constants.FROM, Constants.EDIT_DOG_PROFILE);
-        iEditDog.putExtra(Constants.DOG_DETAILS, alDogs.get(position));
-        startActivity(iEditDog);
     }
 
     private boolean isValid() {
@@ -642,7 +637,6 @@ public class SetupBusinessProfileActivity extends AppCompatActivity implements V
             return bitmap;
         }
 
-        @SuppressLint("WrongThread")
         @Override
         protected void onPostExecute(Bitmap result) {
             profilePicFile = new File(GlobalMethods.makeCameraDir(), R.string.app_name + ".jpg");

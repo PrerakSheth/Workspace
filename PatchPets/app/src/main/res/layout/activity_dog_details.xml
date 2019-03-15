@@ -37,7 +37,6 @@
                 android:background="@android:color/transparent"
                 android:padding="@dimen/padding_10"
                 android:src="@drawable/edit"
-                android:visibility="gone"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

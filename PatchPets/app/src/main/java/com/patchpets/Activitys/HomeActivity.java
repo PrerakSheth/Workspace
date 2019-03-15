@@ -374,10 +374,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     alDogs.clear();
                     for (int i = 0; i < response.getUserData().size(); i++) {
                         DogDetails dog = new DogDetails();
-                        dog.setUserId(response.getUserData().get(i).getUserId());
                         dog.setLocation(response.getUserData().get(i).getLocation());
                         dog.setIsUserActive(response.getUserData().get(i).getIsUserActive());
-                        dog.setDistance(String.valueOf(response.getUserData().get(i).getDistance()));
+                        dog.setDistance(response.getUserData().get(i).getDistance());
                         for (int j = 0; j < response.getUserData().get(i).getDogDetails().size(); j++) {
                             dog.setDogId(response.getUserData().get(i).getDogDetails().get(j).getDogId());
                             dog.setDogName(response.getUserData().get(i).getDogDetails().get(j).getDogName());

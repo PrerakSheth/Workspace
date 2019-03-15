@@ -136,7 +136,6 @@ public class FavouritesDogActivity extends AppCompatActivity implements View.OnC
                     alDogs.clear();
                     for (int i = 0; i < response.getUserData().size(); i++) {
                         DogDetails dog = new DogDetails();
-                        dog.setUserId(response.getUserData().get(i).getUserId());
                         dog.setLocation(response.getUserData().get(i).getLocation());
                         dog.setIsUserActive(response.getUserData().get(i).getIsUserActive());
                         for (int j = 0; j < response.getUserData().get(i).getDogDetails().size(); j++) {

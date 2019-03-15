@@ -1,0 +1,79 @@
+/*
+ * Copyright (C) 2007 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.internal.os;
+
+import static android.system.OsConstants.F_SETFD;
+import static android.system.OsConstants.O_CLOEXEC;
+import static android.system.OsConstants.STDERR_FILENO;
+import static android.system.OsConstants.STDIN_FILENO;
+import static android.system.OsConstants.STDOUT_FILENO;
+
+import android.net.Credentials;
+import android.net.LocalSocket;
+import android.os.FactoryTest;
+import android.os.Process;
+import android.os.SELinux;
+import android.os.SystemProperties;
+import android.os.Trace;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.util.Log;
+import dalvik.system.VMRuntime;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import libcore.io.IoUtils;
+
+/**
+ * A connection that can make spawn requests.
+ */
+class ZygoteConnection {
+    private static final String TAG = "Zygote";
+
+    /** a prototype instance for a future List.toArray() */
+    private static final int[][] intArray2d = new int[0][0];
+
+    /**
+     * {@link android.net.LocalSocket#setSoTimeout} value for connections.
+     * Effectively, the amount of time a requestor has between the start of
+     * the request and the completed request. The select-loop mode Zygote
+     * doesn't have the logic to return to the select loop in the middle of
+     * a request, so we need to time out here to avoid being denial-of-serviced.
+     */
+    private static final int CONNECTION_TIMEOUT_MILLIS = 1000;
+
+    /** max number of arguments that a connection can specify */
+    private static final int MAX_ZYGOTE_ARGC = 1024;
+
+    /**
+     * The command socket.
+     *
+     * mSocket is retained in the child process in "peer wait" mode, so
+     * that it closes when the child process terminates. In other cases,
+     * it is closed in the peer.
+     */
+    private final LocalSocket mSocket;
+    private final DataOu

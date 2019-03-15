@@ -24,6 +24,14 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="AAA">
 
+                <!--<TextView-->
+                <!--android:id="@+id/tvTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="sdfsdfsdf"-->
+                <!--android:layout_gravity="left|bottom" />-->
+
+
                 <ImageView
                     android:id="@+id/toolbarImage"
                     android:layout_width="match_parent"
@@ -31,7 +39,7 @@
                     android:adjustViewBounds="true"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/paw_green"
+                    android:src="@drawable/dog"
                     app:layout_collapseMode="parallax" />
 
                 <android.support.v7.widget.Toolbar
@@ -65,8 +73,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:layout_marginRight="@dimen/margin_40"
-                    android:layout_marginBottom="@dimen/margin_8"
+                    android:layout_marginRight="@dimen/margin_30"
+                    android:layout_marginBottom="@dimen/margin_10"
                     android:background="@android:color/transparent"
                     android:fitsSystemWindows="true"
                     android:padding="@dimen/padding_10"

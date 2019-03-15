@@ -8,7 +8,6 @@ public class FavouriteDogListResponse {
 //	"message": "Dog list have been fetched successfully.",
 //	"status": 1,
 //	"userData": [{
-//          "userId": 12,
 //			"isUserActive": 0,
 //			"location": "Test address 23.0472548, 72.5673888",
 //			"dogDetails": [{
@@ -89,18 +88,9 @@ public class FavouriteDogListResponse {
 
     public static class UserDataBean {
 
-        private int userId;
         private int isUserActive;
         private String location;
         private List<DogDetailsBean> dogDetails;
-
-        public int getUserId() {
-            return userId;
-        }
-
-        public void setUserId(int userId) {
-            this.userId = userId;
-        }
 
         public int getIsUserActive() {
             return isUserActive;

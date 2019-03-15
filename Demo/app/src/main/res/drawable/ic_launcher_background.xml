@@ -1,0 +1,156 @@
+package com.android.hotspot2;
+
+    import com.android.anqp.Constants;
+
+    import java.nio.ByteBuffer;import java.nio.charset.CharacterCodingException;import java.nio.charset.CharsetDecoder;import java.nio.charset.StandardCharsets;import java.util.ArrayList;import java.util.Calendar;import java.util.Collection;import java.util.LinkedList;import java.util.List;import java.util.TimeZone;
+
+    import static com.android.anqp.Constants.BYTE_MASK;import static com.android.anqp.Constants.NIBBLE_MASK;
+
+    public abstract class Utils {
+
+    public static final long UNSET_TIME = -1;
+
+    private static final int EUI48Length = 6;private static final int EUI64Length = 8;private static final long EUI48Mask = 0xffffffffffffL;private static final String[] PLMNText = {"org", "3gppnetwork", "mcc*", "mnc*", "wlan"};
+
+    public static List
+<String>splitDomain(String domain) {
+
+    if (domain.endsWith("."))
+    domain = domain.substring(0, domain.length() - 1);
+    int at = domain.indexOf('@');
+    if (at >= 0)
+    domain = domain.substring(at + 1);
+
+    String[] labels = domain.toLowerCase().split("\\.");
+    LinkedList
+    <String>labelList = new LinkedList
+        <String>();
+            for (String label : labels) {
+            labelList.addFirst(label);
+            }
+
+            return labelList;
+            }
+
+            public static long parseMac(String s) {
+
+            long mac = 0;
+            int count = 0;
+            for (int n = 0; n< s.length(); n++) {
+            int nibble = Utils.fromHex(s.charAt(n), true); // Set lenient to not blow up on ':'
+            if (nibble >= 0) { // ... and use only legit hex.
+            mac = (mac
+            <
+            <
+            4) | nibble;
+            count++;
+            }
+            }
+            if (count
+            <
+            12 || (count & 1) == 1) {
+            throw new IllegalArgumentException("Bad MAC address: '" + s + "'");
+            }
+            return mac;
+            }
+
+            public static String macToString(long mac) {
+            int len = (mac & ~EUI48Mask) != 0 ? EUI64Length : EUI48Length;
+            StringBuilder sb = new StringBuilder();
+            boolean first = true;
+            for (int n = (len - 1) * Byte.SIZE; n >= 0; n -= Byte.SIZE) {
+            if (first) {
+            first = false;
+            } else {
+            sb.append(':');
+            }
+            sb.append(String.format("%02x", (mac >>> n) & Constants.BYTE_MASK));
+            }
+            return sb.toString();
+            }
+
+            public static String getMccMnc(List
+            <String>domain) {
+                if (domain.size() != PLMNText.length) {
+                return null;
+                }
+
+                for (int n = 0; n< PLMNText.length; n++) {
+                String expect = PLMNText[n];
+                int len = expect.endsWith("*") ? expect.length() - 1 : expect.length();
+                if (!domain.get(n).regionMatches(0, expect, 0, len)) {
+                return null;
+                }
+                }
+
+                String prefix = domain.get(2).substring(3) + domain.get(3).substring(3);
+                for (int n = 0; n< prefix.length(); n++) {
+                char ch = prefix.charAt(n);
+                if (ch
+                <
+                '0' || ch > '9') {
+                return null;
+                }
+                }
+                return prefix;
+                }
+
+                public static String toIpString(int leIp) {
+                return String.format("%d.%d.%d.%d",
+                leIp & BYTE_MASK,
+                (leIp >> 8) & BYTE_MASK,
+                (leIp >> 16) & BYTE_MASK,
+                (leIp >> 24) & BYTE_MASK);
+                }
+
+                public static String bssidsToString(Collection
+                <Long>bssids) {
+                    StringBuilder sb = new StringBuilder();
+                    for (Long bssid : bssids) {
+                    sb.append(String.format(" %012x", bssid));
+                    }
+                    return sb.toString();
+                    }
+
+                    public static String roamingConsortiumsToString(long[] ois) {
+                    if (ois == null) {
+                    return "null";
+                    }
+                    List
+                    <Long>list = new ArrayList
+                        <Long>(ois.length);
+                            for (long oi : ois) {
+                            list.add(oi);
+                            }
+                            return roamingConsortiumsToString(list);
+                            }
+
+                            public static String roamingConsortiumsToString(Collection
+                            <Long>ois) {
+                                StringBuilder sb = new StringBuilder();
+                                boolean first = true;
+                                for (long oi : ois) {
+                                if (first) {
+                                first = false;
+                                } else {
+                                sb.append(", ");
+                                }
+                                if (Long.numberOfLeadingZeros(oi) > 40) {
+                                sb.append(String.format("%06x", oi));
+                                } else {
+                                sb.append(String.format("%010x", oi));
+                                }
+                                }
+                                return sb.toString();
+                                }
+
+                                public static String toUnicodeEscapedString(String s) {
+                                StringBuilder sb = new StringBuilder(s.length());
+                                for (int n = 0; n< s.length(); n++) {
+                                char ch = s.charAt(n);
+                                if (ch >= ' ' && ch
+                                <
+                                127) {
+                                sb.append(ch);
+                                } else {
+                                sb.append("\\u

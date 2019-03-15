@@ -8,8 +8,7 @@ public class HomeDataResponse {
 //	"message": "Dog list have been found based on breed successfully.",
 //	"status": 1,
 //	"userData": [{
-//      "userId": 139,
-//		"distance": 4.5,
+//		"distance": "4.5",
 //		"isUserActive": 0,
 //		"location": "Test address 23.0472548, 72.5673888",
 //		"dogDetails": [{
@@ -66,25 +65,16 @@ public class HomeDataResponse {
 
     public static class UserDataBean {
 
-        private int userId;
-        private double distance;
+        private String distance;
         private int isUserActive;
         private String location;
         private List<DogDetailsBean> dogDetails;
 
-        public int getUserId() {
-            return userId;
-        }
-
-        public void setUserId(int userId) {
-            this.userId = userId;
-        }
-
-        public double getDistance() {
+        public String getDistance() {
             return distance;
         }
 
-        public void setDistance(double distance) {
+        public void setDistance(String distance) {
             this.distance = distance;
         }
 

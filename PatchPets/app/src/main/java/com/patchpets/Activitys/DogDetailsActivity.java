@@ -66,9 +66,6 @@ public class DogDetailsActivity extends AppCompatActivity implements View.OnClic
 
     private void setData() {
         try {
-            if (user.getUserId() == dog.getUserId()) {
-                ibEdit.setVisibility(View.VISIBLE);
-            }
             fav = dog.getIsFavourite();
             ibLike.setBackground(fav == Constants.UN_FAVOURITE ? getResources().getDrawable(R.drawable.unfav) : getResources().getDrawable(R.drawable.fav));
             tvDogName.setText(dog.getDogName());

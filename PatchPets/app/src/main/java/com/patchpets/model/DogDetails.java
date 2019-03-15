@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class DogDetails implements Parcelable {
-    private int userId;
     private int dogId;
     private String distance;
     private int isUserActive;
@@ -30,7 +29,6 @@ public class DogDetails implements Parcelable {
     }
 
     protected DogDetails(Parcel in) {
-        userId = in.readInt();
         dogId = in.readInt();
         distance = in.readString();
         isUserActive = in.readInt();
@@ -62,14 +60,6 @@ public class DogDetails implements Parcelable {
             return new DogDetails[size];
         }
     };
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getDogId() {
         return dogId;
@@ -222,7 +212,6 @@ public class DogDetails implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(userId);
         dest.writeInt(dogId);
         dest.writeString(distance);
         dest.writeInt(isUserActive);
